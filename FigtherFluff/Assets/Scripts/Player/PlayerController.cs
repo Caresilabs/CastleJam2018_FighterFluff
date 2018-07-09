@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour {
 
         if (IsDead())
         {
-            Destroy(this);
+            Destroy(gameObject);
         }
     }
 
