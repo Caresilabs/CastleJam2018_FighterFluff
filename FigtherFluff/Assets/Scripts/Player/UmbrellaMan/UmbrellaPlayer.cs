@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
-namespace Assets.Scripts.Player.Fluff
+namespace Assets.Scripts.Player.UmbrellaMan
 {
-    public class FluffPlayer : PlayerController
+    public class UmbrellaPlayer : PlayerController
     {
         protected override void Start()
         {

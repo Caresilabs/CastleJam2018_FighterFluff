@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Assets.Scripts.Player
 {
-    enum PlayerType
+    public enum PlayerType
     {
         PLAYER1,
         PLAYER2

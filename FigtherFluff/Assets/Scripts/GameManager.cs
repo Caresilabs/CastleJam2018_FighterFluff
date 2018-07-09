@@ -2,33 +2,54 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour {
+public class GameManager : MonoBehaviour
+{
 
     [SerializeField]
     private AnimationCurve hitstunCurve;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		if (Input.GetMouseButtonDown(0))
+    public static GameManager Instance;
+
+    public PlayerController Player1;
+    public PlayerController Player2;
+
+    // Use this for initialization
+    void Start()
+    {
+        Instance = this;
+        this.Player1 = GameObject.Find("Player1").GetComponent<PlayerController>();
+        this.Player2 = GameObject.Find("Player2").GetComponent<PlayerController>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (Player1.IsDead())
         {
-            GameObject.Find("Quad").GetComponent<Rigidbody>().AddForce(Camera.main.transform.forward * 100, ForceMode.Impulse);
-            Hitstun(1);
+
         }
-	}
+        else if (Player2.IsDead())
+        {
+
+        }
+    }
 
     public void PauseGame()
     {
         Time.timeScale = 1;
     }
 
+    public void RestartGame()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
     public void Hitstun(float duration)
     {
+        StopCoroutine("HitstunCoroutine");
         StartCoroutine(HitstunCoroutine(duration));
     }
 
