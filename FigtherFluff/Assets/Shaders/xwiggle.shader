@@ -8,8 +8,11 @@ Shader "Custom/xwiggle" {
 		_Metallic ("Metallic", Range(0,1)) = 0.0
 	}
 	SubShader {
-		Tags { "RenderType"="Opaque" }
+		//Tags { "RenderType"="Opaque" }
+		Tags{ "Queue" = "Transparent" "RenderType" = "Transparent" }
 		LOD 200
+
+		Blend SrcAlpha OneMinusSrcAlpha
 
 		CGPROGRAM
 		// Physically based Standard lighting model, and enable shadows on all light types

@@ -12,16 +12,14 @@ public class MovementController : MonoBehaviour
     private Transform PlayerCamera;
 
     [SerializeField]
-    private PlayerType PlayerType;
-
-    [SerializeField]
     private float Speed;
 
     private Rigidbody RigidBody;
     private CapsuleCollider capsuleCollider;
 
+    public bool Grounded { get; private set; }
+
     private string inputPrefix;
-    private bool grounded;
     private bool canJump;
     private float allowJumpDelay;
 
@@ -35,17 +33,17 @@ public class MovementController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        this.inputPrefix = PlayerType == PlayerType.PLAYER1 ? "P1_" : "P2_";
+        this.inputPrefix = GetComponent<PlayerController>().PlayerType == PlayerType.PLAYER1 ? "P1_" : "P2_";
         this.RigidBody = GetComponent<Rigidbody>();
         this.capsuleCollider = GetComponent<CapsuleCollider>();
-        this.grounded = true;
+        this.Grounded = true;
         this.canJump = true;
     }
 
     void FixedUpdate()
     {
         UpdateMovement();
-        grounded = false;
+        Grounded = false;
         CheckGrounded();
     }
 
@@ -54,7 +52,7 @@ public class MovementController : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(transform.position, -transform.up, out hit)) //, 1.3f); 
         {
-            if (hit.distance <= capsuleCollider.height / 2f + 0.05f)
+            if (hit.distance <= capsuleCollider.height / 2f + 0.2f)
             {
                 if (hit.collider != null && hit.collider.GetComponent<PlayerController>() == null)
                 {
@@ -62,7 +60,7 @@ public class MovementController : MonoBehaviour
                     if (groundNormal.y < 0.25f) // Disable slope jumping
                         return;
 
-                    grounded = true;
+                    Grounded = true;
                     allowJumpDelay = 0;
                 }
             }
@@ -99,13 +97,13 @@ public class MovementController : MonoBehaviour
 
         // Jump
         allowJumpDelay += Time.fixedDeltaTime;
-        if (canJump && (grounded || allowJumpDelay < MAX_JUMP_TIME_DELAY))
+        if (canJump && (Grounded || allowJumpDelay < MAX_JUMP_TIME_DELAY))
         {
             if (isJumpPressed)
             {
                 if (onJump != null)
                 {
-                    grounded = false;
+                    Grounded = false;
                     canJump = false;
                     onJump();
                 }
@@ -130,7 +128,7 @@ public class MovementController : MonoBehaviour
         }
 
         float maxVelocityChange = 1.0f;
-        if (grounded)
+        if (Grounded)
         {
             // Apply a force that attempts to reach our target velocity
             Vector3 velocityChange = (targetVelocity - velocity);

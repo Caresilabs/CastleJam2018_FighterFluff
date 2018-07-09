@@ -36,8 +36,9 @@ public class CameraController : MonoBehaviour
         var targetDir = (Target.position - Source.position).normalized;
 
         var pos = Source.position - targetDir * 5;
-        pos.y += 2;
-        transform.position = pos;
+        pos.y = Mathf.Max(pos.y + 2, Source.position.y);
+        transform.position = Vector3.MoveTowards(transform.position, pos, 0.9f);
+
         transform.LookAt(Target.position);
     }
 
