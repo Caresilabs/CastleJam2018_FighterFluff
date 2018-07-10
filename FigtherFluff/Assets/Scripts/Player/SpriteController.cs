@@ -9,22 +9,57 @@ namespace Assets.Scripts.Player
     public class SpriteController : MonoBehaviour
     {
         [SerializeField]
-        private Transform PlayerCamera;
+        private int CurrentSpriteIndex;
+
+        [Serializable]
+        public struct FAnimation
+        {
+            public string name;
+            public Sprite[] sprite;
+        }
+        [SerializeField]
+        public FAnimation[] Animations;
+
+        private Dictionary<string, Sprite[]> AnimationsMap;
+
+        [SerializeField]
+        private string CurrentSpriteName = "idle";
+
+        private Animator animator;
+        private SpriteRenderer spriteRenderer;
 
         private void Start()
         {
-            CameraController.onPreCull += (x) => {
+            AnimationsMap = Animations.ToDictionary(x => x.name, x => x.sprite);
 
-                //Transform cam = x.transform;
-                //Vector3 lookPoint = /*transform.position -*/ -cam.position;
-                //lookPoint.y = cam.position.y;
-                //Debug.Log(transform.position -lookPoint  );
-                //transform.LookAt(lookPoint);
+            spriteRenderer = GetComponent<SpriteRenderer>();
+            animator = transform.parent.GetComponent<Animator>();
 
-                Vector3 fwd = x.transform.forward;
-                fwd.y = 0;
-                transform.rotation = Quaternion.LookRotation(fwd);
-            };
+            CameraController.onPreCull += BeforeCameraRender;
+        }
+
+        private void BeforeCameraRender(Transform cam)
+        {
+            Vector3 fwd = cam.transform.forward;
+            fwd.y = 0;
+            transform.rotation = Quaternion.LookRotation(fwd);
+
+            if (Vector3.Dot(transform.parent.forward, fwd) <= 0)
+            {
+                // Forward
+                spriteRenderer.sprite = AnimationsMap[CurrentSpriteName + "_f"][CurrentSpriteIndex];
+            }
+            else
+            {
+                // Back
+                spriteRenderer.sprite = AnimationsMap[CurrentSpriteName + "_b"][CurrentSpriteIndex];
+            }
+        }
+
+        public void ChangeAnimation(string name)
+        {
+            animator.Play(name);
+            CurrentSpriteName = name;
         }
     }
 }
