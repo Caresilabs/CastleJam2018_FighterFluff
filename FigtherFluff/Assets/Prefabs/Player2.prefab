@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1476946fc676b034684cccfb2cd90831, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerType: 0
+  PlayerType: 1
   Health: 100
 --- !u!114 &114388388314611404
 MonoBehaviour:
@@ -192,7 +192,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 644729e79ef77b147991559d7a409883, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerCamera: {fileID: 0}
+  CurrentSpriteIndex: 0
+  Animations:
+  - name: idle_f
+    sprite:
+    - {fileID: 21300000, guid: 9fff97d30f08540afa5d3883bd83c55c, type: 3}
+    - {fileID: 21300000, guid: fc4cb5be856484ad1a7cd9ef6618ccd8, type: 3}
+    - {fileID: 21300000, guid: b0edc67b4d1ea4e31b116548fa570193, type: 3}
+  - name: idle_b
+    sprite:
+    - {fileID: 21300000, guid: b75a88ac812754a829d577839d51d92c, type: 3}
+    - {fileID: 21300000, guid: adeae3003aeb946bcbbb38f9b250bf27, type: 3}
+    - {fileID: 21300000, guid: de00a802ecd6b4a09be89bc8e713a462, type: 3}
+  CurrentSpriteName: idle
 --- !u!114 &114664046447515840
 MonoBehaviour:
   m_ObjectHideFlags: 1
