@@ -10,9 +10,8 @@ public class CameraController : MonoBehaviour
     [SerializeField]
     private Transform Source;
 
-    void Awake()
-    {
-    }
+    [SerializeField]
+    private Vector3 Offset;
 
     public delegate void PreCullEvent(Transform camera);
     public static PreCullEvent onPreCull;
@@ -35,8 +34,8 @@ public class CameraController : MonoBehaviour
     {
         var targetDir = (Target.position - Source.position).normalized;
 
-        var pos = Source.position - targetDir * 5;
-        pos.y = Mathf.Max(pos.y + 2, Source.position.y);
+        var pos = Source.position - targetDir * Offset.z;
+        pos.y = Mathf.Max(pos.y + Offset.y, Source.position.y);
         transform.position = Vector3.MoveTowards(transform.position, pos, 0.9f);
 
         transform.LookAt(Target.position);

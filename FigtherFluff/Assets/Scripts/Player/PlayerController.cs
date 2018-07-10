@@ -1,26 +1,31 @@
 ﻿using Assets.Scripts.Player;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour {
-
+public class PlayerController : MonoBehaviour
+{
     [SerializeField]
     public PlayerType PlayerType;
 
     [SerializeField]
-    private float Health = 100;
+    public float MaxHealth = 100;
+
+    public float Health { get; private set; }
 
     public Rigidbody RigidBody { get; private set; }
     public MovementController Movement { get; private set; }
 
     private string inputPrefix;
 
-    protected virtual void Start () {
+    protected virtual void Start()
+    {
+        this.Health = MaxHealth;
         this.RigidBody = GetComponent<Rigidbody>();
         this.Movement = GetComponent<MovementController>();
         this.inputPrefix = GetComponent<PlayerController>().PlayerType == PlayerType.PLAYER1 ? "P1_" : "P2_";
     }
-	
-	protected virtual void Update () {
+
+    protected virtual void Update()
+    {
         Vector3 fwd = (GameManager.Instance.Player1 == this ? GameManager.Instance.Player2.transform.position : GameManager.Instance.Player1.transform.position) - transform.position;
         fwd.y = 0;
         transform.rotation = Quaternion.LookRotation(fwd);
@@ -36,7 +41,7 @@ public class PlayerController : MonoBehaviour {
         var dir = (transform.position - source.position).normalized;
         dir.y = knockbackHeight;
 
-        RigidBody.AddForce(dir *  knockback * 25, ForceMode.Impulse);
+        RigidBody.AddForce(dir * knockback * 25, ForceMode.Impulse);
 
         if (IsDead())
         {
