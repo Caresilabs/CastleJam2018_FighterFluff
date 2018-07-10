@@ -12,7 +12,8 @@ namespace Assets.Scripts.Menu
         private enum State
         {
             TITLE,
-            SELECT
+            SELECT,
+            CREDITS
         }
 
         private State state = State.TITLE;
@@ -22,6 +23,9 @@ namespace Assets.Scripts.Menu
 
         [SerializeField]
         private Transform SelectScreen;
+
+        [SerializeField]
+        private Transform CreditsScreen;
 
         [SerializeField]
         private Transform P1Select;
@@ -45,7 +49,13 @@ namespace Assets.Scripts.Menu
         {
             if (state == State.TITLE)
             {
-                if (Input.anyKeyDown)
+                if (Input.GetButtonDown("P1_Jump") || Input.GetButtonDown("P2_Jump"))
+                {
+                    TitleScreen.gameObject.SetActive(false);
+                    CreditsScreen.gameObject.SetActive(true);
+                    state = State.CREDITS;
+                }
+                else if (Input.anyKeyDown)
                 {
                     TitleScreen.gameObject.SetActive(false);
                     SelectScreen.gameObject.SetActive(true);
@@ -64,14 +74,14 @@ namespace Assets.Scripts.Menu
                     return;
                 }
 
-                if (Input.GetAxis("P1_Horizontal") < -0.4f)
+                if (Input.GetAxis("P1_Horizontal") < -0.2f)
                 {
                     var targetPos = FluffSelect.position;
                     targetPos.y = P1Select.position.y;
                     P1Select.position = targetPos;
                     P1Selectd = -1;
                 }
-                else if (Input.GetAxis("P1_Horizontal") > 0.4f)
+                else if (Input.GetAxis("P1_Horizontal") > 0.2f)
                 {
                     var targetPos = UmbrellaSelect.position;
                     targetPos.y = P1Select.position.y;
@@ -79,14 +89,14 @@ namespace Assets.Scripts.Menu
                     P1Selectd = 1;
                 }
 
-                if (Input.GetAxis("P2_Horizontal") < -0.4f)
+                if (Input.GetAxis("P2_Horizontal") < -0.2f)
                 {
                     var targetPos = FluffSelect.position;
                     targetPos.y = P2Select.position.y;
                     P2Select.position = targetPos;
                     P2Selectd = -1;
                 }
-                else if (Input.GetAxis("P2_Horizontal") > 0.4f)
+                else if (Input.GetAxis("P2_Horizontal") > 0.2f)
                 {
                     var targetPos = UmbrellaSelect.position;
                     targetPos.y = P2Select.position.y;
@@ -101,6 +111,8 @@ namespace Assets.Scripts.Menu
 
                     if (Input.anyKey) // TODO
                     {
+                        PlayerPrefs.SetInt("Player1", P1Selectd);
+                        PlayerPrefs.SetInt("Player2", P2Selectd);
                         SceneManager.LoadScene(1);
                     }
                 }
@@ -109,6 +121,16 @@ namespace Assets.Scripts.Menu
                     StartGame.gameObject.SetActive(false);
                 }
 
+            }
+            else if (state == State.CREDITS)
+            {
+                if (Input.GetButtonDown("P1_Attack") || Input.GetButtonDown("P2_Attack"))
+                {
+                    TitleScreen.gameObject.SetActive(true);
+                    CreditsScreen.gameObject.SetActive(false);
+                    state = State.TITLE;
+                    return;
+                }
             }
 
         }

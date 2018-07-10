@@ -8,6 +8,9 @@ namespace Assets.Scripts.Player.Fluff
 {
     public class MakeItRainAttack : Attack<FluffPlayer>
     {
+        [SerializeField]
+        private WaterController Water;
+
         public bool Attack;
 
         public MakeItRainAttack() : base(5f)
@@ -32,6 +35,7 @@ namespace Assets.Scripts.Player.Fluff
         public override void Use()
         {
             Attack = false;
+            Water.IncreaseWater();
             base.Use();
         }
 

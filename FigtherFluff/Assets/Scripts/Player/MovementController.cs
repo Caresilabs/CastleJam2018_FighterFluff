@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
 using Assets.Scripts.Player;
 using UnityEngine;
 
@@ -59,7 +58,7 @@ public class MovementController : MonoBehaviour
                 if (hit.collider != null && hit.collider.GetComponent<PlayerController>() == null)
                 {
                     groundNormal = hit.normal;
-                    if (groundNormal.y < 0.25f) // Disable slope jumping
+                    if (groundNormal.y < 0.15f) // Disable slope jumping
                         return;
 
                     Grounded = true;
@@ -86,15 +85,17 @@ public class MovementController : MonoBehaviour
 
         var isJumpPressed = Input.GetButton(GetKeyName("Jump"));
 
-        if (velocity.y < 0)
+        if (RigidBody.useGravity)
         {
-            RigidBody.velocity += Physics.gravity * (fallMultiplier) * Time.fixedDeltaTime;
+            if (velocity.y < 0)
+            {
+                RigidBody.velocity += Physics.gravity * (fallMultiplier) * Time.fixedDeltaTime;
+            }
+            else if (!isJumpPressed && velocity.y > 0)
+            {
+                RigidBody.velocity += Physics.gravity * (lowJumpMultiplier) * Time.fixedDeltaTime;
+            }
         }
-        else if (!isJumpPressed && velocity.y > 0)
-        {
-            RigidBody.velocity += Physics.gravity * (lowJumpMultiplier) * Time.fixedDeltaTime;
-        }
-
 
         if (!CanMove)
             return;
@@ -132,8 +133,6 @@ public class MovementController : MonoBehaviour
         //    if (Input.GetKey(kcode))
         //        Debug.Log("KeyCode down: " + kcode);
         //}
-
-       
 
         float maxVelocityChange = 1.0f;
         if (Grounded)
@@ -175,10 +174,17 @@ public class MovementController : MonoBehaviour
         canJump = true;
     }
 
+    void OnCollisionStay(Collision hit)
+    {
+        if (hit.gameObject.name == name) // Nasty bug causes oncollsion enter on itself
+            return;
+
+        canJump = true;
+    }
+
     // Update is called once per frame
     void Update()
     {
-
        
     }
 
@@ -192,6 +198,18 @@ public class MovementController : MonoBehaviour
         CanMove = false;
         yield return new WaitForSeconds(duration);
         CanMove = true;
+    }
+
+    public void LockGravity(float duration)
+    {
+        StartCoroutine(LockGravityCoroutine(duration));
+    }
+
+    private IEnumerator LockGravityCoroutine(float duration)
+    {
+        RigidBody.useGravity = false;
+        yield return new WaitForSeconds(duration);
+        RigidBody.useGravity = true;
     }
 
     private string GetKeyName(string key)

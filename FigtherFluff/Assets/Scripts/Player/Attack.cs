@@ -6,6 +6,7 @@ namespace Assets.Scripts.Player
     public abstract class Attack<T> : MonoBehaviour where T : PlayerController
     {
         private string[] keys;
+
         protected T controller;
 
         private readonly float cooldown;

@@ -10,12 +10,14 @@ public class PlayerController : MonoBehaviour {
     [SerializeField]
     private float Health = 100;
 
-    internal Rigidbody RigidBody;
+    public Rigidbody RigidBody { get; private set; }
+    public MovementController Movement { get; private set; }
 
     private string inputPrefix;
 
     protected virtual void Start () {
         this.RigidBody = GetComponent<Rigidbody>();
+        this.Movement = GetComponent<MovementController>();
         this.inputPrefix = GetComponent<PlayerController>().PlayerType == PlayerType.PLAYER1 ? "P1_" : "P2_";
     }
 	
@@ -58,6 +60,12 @@ public class PlayerController : MonoBehaviour {
                 return false;
         }
         return true;
+    }
+
+    public bool IsAxis(string axis, bool inverted)
+    {
+        var val = Input.GetAxis(GetKeyName(axis));
+        return inverted ? val < -0.2f : val > 0.2f;
     }
 
     private string GetKeyName(string key)

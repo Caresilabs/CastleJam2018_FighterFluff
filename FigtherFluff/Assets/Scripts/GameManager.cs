@@ -21,6 +21,9 @@ public class GameManager : MonoBehaviour
         Instance = this;
         this.Player1 = GameObject.Find("Player1").GetComponent<PlayerController>();
         this.Player2 = GameObject.Find("Player2").GetComponent<PlayerController>();
+
+        this.Player1.PlayerType = PlayerPrefs.GetInt("Player1", -1) == -1 ? Assets.Scripts.Player.PlayerType.PLAYER1 : Assets.Scripts.Player.PlayerType.PLAYER2;
+        this.Player2.PlayerType = PlayerPrefs.GetInt("Player2", 1) == -1 ? Assets.Scripts.Player.PlayerType.PLAYER1 : Assets.Scripts.Player.PlayerType.PLAYER2;
     }
 
     // Update is called once per frame
