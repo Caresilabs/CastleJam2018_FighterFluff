@@ -23,8 +23,10 @@ namespace Assets.Scripts.Player.Fluff
             didJump = true;
         }
 
-        private void Update()
+        protected override void Update()
         {
+            base.Update();
+
             if (didJump)
             {
                 if (RigidBody.velocity.y < 0)

@@ -1,5 +1,4 @@
-﻿using System;
-using Assets.Scripts.Player;
+﻿using Assets.Scripts.Player;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
@@ -21,7 +20,7 @@ public class PlayerController : MonoBehaviour {
         this.inputPrefix = GetComponent<PlayerController>().PlayerType == PlayerType.PLAYER1 ? "P1_" : "P2_";
     }
 	
-	void Update () {
+	protected virtual void Update () {
         Vector3 fwd = (GameManager.Instance.Player1 == this ? GameManager.Instance.Player2.transform.position : GameManager.Instance.Player1.transform.position) - transform.position;
         fwd.y = 0;
         transform.rotation = Quaternion.LookRotation(fwd);

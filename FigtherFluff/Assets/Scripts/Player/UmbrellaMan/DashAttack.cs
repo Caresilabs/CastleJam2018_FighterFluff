@@ -23,7 +23,15 @@ namespace Assets.Scripts.Player.UmbrellaMan
         public override void Use()
         {
             base.Use();
-            controller.RigidBody.AddForce((DashRight ? transform.right : -transform.right) * DashSpeed, ForceMode.VelocityChange);
+
+            var force = Vector3.Lerp(DashRight ? transform.right : -transform.right, transform.forward, 0.5f) * DashSpeed;
+            var velocity = controller.RigidBody.velocity;
+            velocity.x = force.x;
+            velocity.z = force.z;
+
+            controller.RigidBody.velocity = velocity;
+
+            //controller.RigidBody.AddForce(, ForceMode.VelocityChange);
             GetComponent<MovementController>().LockMovement(0.5f); // TODO cache
         }
 

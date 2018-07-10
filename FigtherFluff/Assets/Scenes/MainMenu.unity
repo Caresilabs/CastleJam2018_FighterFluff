@@ -548,8 +548,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 975928594}
-  - component: {fileID: 975928593}
   - component: {fileID: 975928592}
+  - component: {fileID: 975928593}
   m_Layer: 0
   m_Name: Terrain
   m_TagString: Untagged
@@ -575,7 +575,7 @@ Terrain:
   m_GameObject: {fileID: 975928591}
   m_Enabled: 1
   serializedVersion: 3
-  m_TerrainData: {fileID: 15600000, guid: 4e19584f2f183e442bbe32bec8b9e28b, type: 2}
+  m_TerrainData: {fileID: 15600000, guid: 15fde449f3697464b909e334eed1ce90, type: 2}
   m_TreeDistance: 2000
   m_TreeBillboardDistance: 50
   m_TreeCrossFadeLength: 5
@@ -588,7 +588,7 @@ Terrain:
   m_CastShadows: 1
   m_DrawHeightmap: 1
   m_DrawTreesAndFoliage: 1
-  m_ReflectionProbeUsage: 0
+  m_ReflectionProbeUsage: 1
   m_MaterialType: 3
   m_LegacySpecular:
     serializedVersion: 2
@@ -596,7 +596,7 @@ Terrain:
   m_LegacyShininess: 0.078125
   m_MaterialTemplate: {fileID: 2100000, guid: 5d69df9d9d11e49d110086ba44295342, type: 2}
   m_BakeLightProbesForTrees: 1
-  m_ScaleInLightmap: 0.1024
+  m_ScaleInLightmap: 1
   m_LightmapParameters: {fileID: 15203, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!4 &975928594
 Transform:

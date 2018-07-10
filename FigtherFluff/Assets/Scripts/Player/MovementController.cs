@@ -182,10 +182,9 @@ public class MovementController : MonoBehaviour
         canJump = true;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnDrawGizmos()
     {
-       
+        Gizmos.DrawRay(transform.position, transform.forward);
     }
 
     public void LockMovement(float duration)
