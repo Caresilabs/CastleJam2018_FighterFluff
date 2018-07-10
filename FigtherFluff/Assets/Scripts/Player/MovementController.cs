@@ -18,6 +18,7 @@ public class MovementController : MonoBehaviour
     private CapsuleCollider capsuleCollider;
 
     public bool Grounded { get; private set; }
+    public bool CanMove { get; private set; }
 
     private string inputPrefix;
     private bool canJump;
@@ -38,6 +39,7 @@ public class MovementController : MonoBehaviour
         this.capsuleCollider = GetComponent<CapsuleCollider>();
         this.Grounded = true;
         this.canJump = true;
+        this.CanMove = true;
     }
 
     void FixedUpdate()
@@ -80,6 +82,23 @@ public class MovementController : MonoBehaviour
 
     private void UpdateMovement()
     {
+        Vector3 velocity = RigidBody.velocity;
+
+        var isJumpPressed = Input.GetButton(GetKeyName("Jump"));
+
+        if (velocity.y < 0)
+        {
+            RigidBody.velocity += Physics.gravity * (fallMultiplier) * Time.fixedDeltaTime;
+        }
+        else if (!isJumpPressed && velocity.y > 0)
+        {
+            RigidBody.velocity += Physics.gravity * (lowJumpMultiplier) * Time.fixedDeltaTime;
+        }
+
+
+        if (!CanMove)
+            return;
+
         Vector3 targetVelocity = new Vector3(Input.GetAxis(GetKeyName("Horizontal")), 0, Input.GetAxis(GetKeyName("Vertical")));
         if (targetVelocity.magnitude >= 1)
             targetVelocity.Normalize();
@@ -90,10 +109,6 @@ public class MovementController : MonoBehaviour
             targetVelocity.Normalize();
 
         targetVelocity *= Speed;
-
-        Vector3 velocity = RigidBody.velocity;
-
-        var isJumpPressed = Input.GetButton(GetKeyName("Jump"));
 
         // Jump
         allowJumpDelay += Time.fixedDeltaTime;
@@ -118,14 +133,7 @@ public class MovementController : MonoBehaviour
         //        Debug.Log("KeyCode down: " + kcode);
         //}
 
-        if (velocity.y < 0)
-        {
-            RigidBody.velocity += Physics.gravity * (fallMultiplier) * Time.fixedDeltaTime;
-        }
-        else if (!isJumpPressed && velocity.y > 0)
-        {
-            RigidBody.velocity += Physics.gravity * (lowJumpMultiplier) * Time.fixedDeltaTime;
-        }
+       
 
         float maxVelocityChange = 1.0f;
         if (Grounded)
@@ -174,6 +182,17 @@ public class MovementController : MonoBehaviour
        
     }
 
+    public void LockMovement(float duration)
+    {
+        StartCoroutine(LockMovementCoroutine(duration));
+    }
+
+    private IEnumerator LockMovementCoroutine(float duration)
+    {
+        CanMove = false;
+        yield return new WaitForSeconds(duration);
+        CanMove = true;
+    }
 
     private string GetKeyName(string key)
     {

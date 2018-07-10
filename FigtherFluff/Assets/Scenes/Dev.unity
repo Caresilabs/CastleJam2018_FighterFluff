@@ -4891,6 +4891,23 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 28a5e79925e3ce04a82856c16a572cbe, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &205574421 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1213419058837774, guid: 4f1955c79b94a8e41834e3b4355e0cbc,
+    type: 2}
+  m_PrefabInternal: {fileID: 84306501}
+--- !u!114 &205574425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 205574421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  profile: {fileID: 11400000, guid: 951e96b18a70a7a4780db0207eaf7a0c, type: 2}
 --- !u!4 &282840814 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4327781523122926, guid: 4f1955c79b94a8e41834e3b4355e0cbc,
@@ -5085,7 +5102,7 @@ Terrain:
     serializedVersion: 2
     rgba: 4286545791
   m_LegacyShininess: 0.078125
-  m_MaterialTemplate: {fileID: 2100000, guid: 5d69df9d9d11e49d110086ba44295342, type: 2}
+  m_MaterialTemplate: {fileID: 2100000, guid: b472f177f6f791e41811d717efb21181, type: 2}
   m_BakeLightProbesForTrees: 1
   m_ScaleInLightmap: 1
   m_LightmapParameters: {fileID: 15203, guid: 0000000000000000f000000000000000, type: 0}
@@ -5238,7 +5255,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4138758683547864, guid: 3832ab632c044e6478d13b205063cf0d, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 29.95
+      value: 25.84
       objectReference: {fileID: 0}
     - target: {fileID: 4138758683547864, guid: 3832ab632c044e6478d13b205063cf0d, type: 2}
       propertyPath: m_LocalPosition.z
@@ -5264,7 +5281,21 @@ Prefab:
       propertyPath: m_RootOrder
       value: 8
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 1271762663539494, guid: 3832ab632c044e6478d13b205063cf0d, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 23468094725360892, guid: 3832ab632c044e6478d13b205063cf0d,
+        type: 2}
+      propertyPath: m_ReceiveShadows
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 3832ab632c044e6478d13b205063cf0d, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1480595065
@@ -5447,6 +5478,21 @@ Prefab:
       propertyPath: m_Intensity
       value: 0.7
       objectReference: {fileID: 0}
+    - target: {fileID: 108464458520550008, guid: 3fdb940f5d530a24ba6240329b41ae15,
+        type: 2}
+      propertyPath: m_Shadows.m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 108464458520550008, guid: 3fdb940f5d530a24ba6240329b41ae15,
+        type: 2}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 108464458520550008, guid: 3fdb940f5d530a24ba6240329b41ae15,
+        type: 2}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3fdb940f5d530a24ba6240329b41ae15, type: 2}
   m_IsPrefabParent: 0
@@ -5535,6 +5581,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Attack: 0
   Damage: 10
+--- !u!1 &1868760754 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1213419058837774, guid: 4f1955c79b94a8e41834e3b4355e0cbc,
+    type: 2}
+  m_PrefabInternal: {fileID: 22423043}
+--- !u!114 &1868760755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1868760754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  profile: {fileID: 11400000, guid: 951e96b18a70a7a4780db0207eaf7a0c, type: 2}
 --- !u!1 &1999202826
 GameObject:
   m_ObjectHideFlags: 0

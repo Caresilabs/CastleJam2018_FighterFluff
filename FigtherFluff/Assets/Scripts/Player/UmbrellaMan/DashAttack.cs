@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Assets.Scripts.Player.UmbrellaMan
 {
@@ -28,6 +24,7 @@ namespace Assets.Scripts.Player.UmbrellaMan
         {
             base.Use();
             controller.RigidBody.AddForce((DashRight ? transform.right : -transform.right) * DashSpeed, ForceMode.VelocityChange);
+            GetComponent<MovementController>().LockMovement(0.5f); // TODO cache
         }
 
         protected override string[] GetKeys()
