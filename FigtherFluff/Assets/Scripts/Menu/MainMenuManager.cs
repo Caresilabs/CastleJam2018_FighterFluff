@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace Assets.Scripts.Menu
 {
@@ -47,6 +44,12 @@ namespace Assets.Scripts.Menu
 
         private void Update()
         {
+            //foreach (KeyCode kcode in Enum.GetValues(typeof(KeyCode)))
+            //{
+            //    if (Input.GetKey(kcode))
+            //        Debug.Log("KeyCode down: " + kcode);
+            //}
+
             if (state == State.TITLE)
             {
                 if (Input.GetButtonDown("P1_Jump") || Input.GetButtonDown("P2_Jump"))
@@ -104,12 +107,29 @@ namespace Assets.Scripts.Menu
                     P2Selectd = 1;
                 }
 
+                if (P1Selectd != P2Selectd)
+                {
+                    FluffSelect.parent.GetComponent<Outline>().effectColor = Color.black;
+                    UmbrellaSelect.parent.GetComponent<Outline>().effectColor = Color.black;
+
+                    var p1Target = P1Selectd == -1 ? FluffSelect.parent : UmbrellaSelect.parent;
+                    if (P1Selectd != 0)
+                    {
+                        p1Target.GetComponent<Outline>().effectColor = Color.blue;
+                    }
+
+                    var p2Target = P2Selectd == -1 ? FluffSelect.parent : UmbrellaSelect.parent;
+                    if (P2Selectd != 0)
+                    {
+                        p2Target.GetComponent<Outline>().effectColor = Color.green;
+                    }
+                }
 
                 if (P1Selectd != 0 && P2Selectd != 0 && P1Selectd != P2Selectd)
                 {
                     StartGame.gameObject.SetActive(true);
 
-                    if (Input.anyKey) // TODO
+                    if (Input.GetButtonDown("P1_Start") || Input.GetButtonDown("P2_Start"))
                     {
                         PlayerPrefs.SetInt("Player1", P1Selectd);
                         PlayerPrefs.SetInt("Player2", P2Selectd);

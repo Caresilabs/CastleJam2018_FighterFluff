@@ -1,6 +1,4 @@
-﻿
-
-Shader "Custom/xwiggle" {
+﻿Shader "Custom/xwiggle" {
 	Properties {
 		_Color ("Color", Color) = (1,1,1,1)
 		_MainTex ("Albedo (RGB)", 2D) = "white" {}
@@ -9,8 +7,9 @@ Shader "Custom/xwiggle" {
 	}
 	SubShader {
 		//Tags { "RenderType"="Opaque" }
-		Tags{ "Queue" = "Transparent" "RenderType" = "Cutout" }
-		LOD 200
+		Tags{ "Queue" = "Transparent" "RenderType" = "Cutoff" }
+		//LOD 200
+		LOD 100
 
 		Blend SrcAlpha OneMinusSrcAlpha
 
