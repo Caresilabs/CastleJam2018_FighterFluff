@@ -128,11 +128,11 @@ public class MovementController : MonoBehaviour
                // RigidBody.velocity = new Vector3(velocity.x, Mathf.Sqrt(2 * JumpHeight * Gravity), velocity.z);
         }
 
-        //foreach (KeyCode kcode in Enum.GetValues(typeof(KeyCode)))
-        //{
-        //    if (Input.GetKey(kcode))
-        //        Debug.Log("KeyCode down: " + kcode);
-        //}
+        foreach (KeyCode kcode in Enum.GetValues(typeof(KeyCode)))
+        {
+            if (Input.GetKey(kcode))
+                Debug.Log("KeyCode down: " + kcode);
+        }
 
         float maxVelocityChange = 1.0f;
         if (Grounded)

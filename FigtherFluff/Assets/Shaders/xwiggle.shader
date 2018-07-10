@@ -7,15 +7,15 @@
 	}
 	SubShader {
 		//Tags { "RenderType"="Opaque" }
-		Tags{ "Queue" = "Transparent" "RenderType" = "Cutoff" }
+		Tags{ "Queue" = "Transparent" "RenderType" = "Cutoff" "IgnoreProjector" = "True" }
 		//LOD 200
-		LOD 100
+		LOD 200
 
 		Blend SrcAlpha OneMinusSrcAlpha
 
 		CGPROGRAM
 		// Physically based Standard lighting model, and enable shadows on all light types
-		#pragma surface surf Standard fullforwardshadows alphatest:_Cutoff addshadow
+		#pragma surface surf Standard alphatest:_Cutoff addshadow fullforwardshadows 
 
 		// Use shader model 3.0 target, to get nicer looking lighting
 		#pragma target 3.0
@@ -37,7 +37,7 @@
 			// put more per-instance properties here
 		UNITY_INSTANCING_BUFFER_END(Props)
 		
-			float hash(float n)
+		float hash(float n)
 		{
 			return frac(sin(n)*43758.5453);
 		}
@@ -62,7 +62,7 @@
 			// Albedo comes from a texture tinted by color
 			float2 uv = float2(IN.uv_MainTex);
 			uv.x += (noise(uv.y + 5 * round(_Time * 2))) * 0.02;
-			uv.y += (noise(uv.x + 5 * round(_Time * 2))) * 0.02;
+			uv.y += (noise(uv.x + 8 * round(_Time * 2))) * 0.02;
 			//uv.x += 0.1;
 			fixed4 c = tex2D (_MainTex, uv) * _Color;
 			o.Albedo = c.rgb;

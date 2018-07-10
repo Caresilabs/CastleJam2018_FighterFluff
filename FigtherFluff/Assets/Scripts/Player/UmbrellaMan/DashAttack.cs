@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections;
+using UnityEngine;
 
 namespace Assets.Scripts.Player.UmbrellaMan
 {
@@ -9,6 +11,9 @@ namespace Assets.Scripts.Player.UmbrellaMan
 
         [SerializeField]
         private float DashSpeed = 35;
+
+        [SerializeField]
+        private float DashTime = 0.25f;
 
         public DashAttack() : base(1.5f)
         {
@@ -23,16 +28,25 @@ namespace Assets.Scripts.Player.UmbrellaMan
         public override void Use()
         {
             base.Use();
+            StartCoroutine(DoDash());
+        }
 
+        private IEnumerator DoDash()
+        {
+            var startVelocity = controller.RigidBody.velocity;
             var force = Vector3.Lerp(DashRight ? transform.right : -transform.right, transform.forward, 0.5f) * DashSpeed;
-            var velocity = controller.RigidBody.velocity;
+            var velocity = startVelocity;
             velocity.x = force.x;
             velocity.z = force.z;
 
             controller.RigidBody.velocity = velocity;
 
-            //controller.RigidBody.AddForce(, ForceMode.VelocityChange);
-            GetComponent<MovementController>().LockMovement(0.5f); // TODO cache
+           controller.Movement.LockMovement(DashTime); 
+            yield return new WaitForSeconds(DashTime);
+
+            startVelocity.y = controller.RigidBody.velocity.y;
+            controller.RigidBody.velocity = startVelocity;
+
         }
 
         protected override string[] GetKeys()
