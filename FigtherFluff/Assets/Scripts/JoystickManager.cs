@@ -14,11 +14,6 @@ namespace Assets.Scripts
         public static InputLayout PLAYER1;
         public static InputLayout PLAYER2;
 
-        public JoystickManager()
-        {
-
-        }
-
         private void Awake()
         {
             int player = 1;
@@ -26,7 +21,7 @@ namespace Assets.Scripts
             {
                 foreach (var item in Layouts)
                 {
-                    if (Input.GetJoystickNames()[i].Contains(item.TryParseName))
+                    if (Input.GetJoystickNames()[i].IndexOf(item.TryParseName, StringComparison.OrdinalIgnoreCase) >= 0) //Input.GetJoystickNames()[i].Contains(item.TryParseName))
                     {
                         if (player == 1)
                         {
@@ -55,13 +50,6 @@ namespace Assets.Scripts
                 PLAYER2.Init(2);
             }
 
-            //int i = 0;
-            //while (i < 4)
-            //{
-            //    Debug.Log(Input.GetJoystickNames()[i]);
-
-            //    i++;
-            //}
         }
 
     }

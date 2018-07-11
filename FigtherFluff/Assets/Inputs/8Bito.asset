@@ -38,13 +38,18 @@ MonoBehaviour:
     Code2: 0
     Axis: 
     AxisScale: 1
-  - Action: 5
+  - Action: 6
     Code: 0
     Code2: 0
     Axis: 7
     AxisScale: 1
-  - Action: 6
+  - Action: 7
     Code: 0
     Code2: 0
     Axis: 6
     AxisScale: 1
+  - Action: 5
+    Code: 337
+    Code2: 0
+    Axis: 0
+    AxisScale: 0

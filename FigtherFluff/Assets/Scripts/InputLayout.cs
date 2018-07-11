@@ -20,6 +20,8 @@ namespace Assets.Scripts
             SHOULDER_LEFT,
             SHOULDER_RIGHT,
 
+            START,
+
             MOVE_FORWARD,
             MOVE_RIGHT
         }

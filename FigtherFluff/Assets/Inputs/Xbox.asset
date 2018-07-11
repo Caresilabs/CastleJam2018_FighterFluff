@@ -19,12 +19,12 @@ MonoBehaviour:
     Axis: 
     AxisScale: 1
   - Action: 1
-    Code: 332
+    Code: 330
     Code2: 0
     Axis: 
     AxisScale: 1
   - Action: 2
-    Code: 330
+    Code: 332
     Code2: 333
     Axis: 
     AxisScale: 1
@@ -38,13 +38,18 @@ MonoBehaviour:
     Code2: 0
     Axis: 
     AxisScale: 1
-  - Action: 5
+  - Action: 7
     Code: 0
     Code2: 0
-    Axis: Y
+    Axis: 6
     AxisScale: -1
   - Action: 6
     Code: 0
     Code2: 0
-    Axis: X
+    Axis: 7
     AxisScale: 1
+  - Action: 5
+    Code: 337
+    Code2: 0
+    Axis: 0
+    AxisScale: 0

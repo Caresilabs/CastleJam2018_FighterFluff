@@ -1120,6 +1120,7 @@ GameObject:
   - component: {fileID: 1892012569}
   - component: {fileID: 1892012568}
   - component: {fileID: 1892012567}
+  - component: {fileID: 1892012572}
   - component: {fileID: 1892012571}
   m_Layer: 0
   m_Name: Camera
@@ -1210,6 +1211,21 @@ MonoBehaviour:
   FluffSelect: {fileID: 2035721405}
   UmbrellaSelect: {fileID: 645057060}
   StartGame: {fileID: 1209965719}
+--- !u!114 &1892012572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1892012566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46021294098705d4da2628aa0c9f3f89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Layouts:
+  - {fileID: 11400000, guid: 41c87fdc7758c894db31981e7d685ec0, type: 2}
+  - {fileID: 11400000, guid: 7695c7890d52aee4f8e58eaa85fb201c, type: 2}
+  - {fileID: 11400000, guid: 75a4f349f14009b4fafe75009c7225e9, type: 2}
 --- !u!1 &1988970827
 GameObject:
   m_ObjectHideFlags: 0
