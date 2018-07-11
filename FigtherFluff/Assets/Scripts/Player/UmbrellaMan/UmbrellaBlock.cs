@@ -8,24 +8,40 @@ namespace Assets.Scripts.Player.UmbrellaMan
 {
     public class UmbrellaBlock : Attack<UmbrellaPlayer>
     {
-        private float blockTime;
+        [SerializeField]
+        private float ReflectTime;
 
-        protected override void Start()
-        {
-            base.Start();
-        }
+        [SerializeField]
+        private float BlockTime;
+
+        [SerializeField]
+        private float BlockDamageTime;
+
+        [SerializeField]
+        private float PenaltyTime;
+
+        private float blockTime;
+        private bool isBlocking;
+
+        private float TotalTime { get { return ReflectTime + BlockTime + BlockDamageTime; } }
 
         public override void Update()
         {
             base.Update();
-
-            blockTime += Time.deltaTime;
-
+            if (isBlocking)
+            {
+                blockTime += Time.deltaTime;
+                if (blockTime > TotalTime)
+                {
+                    isBlocking = false;
+                    controller.Movement.LockMovement(PenaltyTime);
+                }
+            }
         }
 
         public override bool CanUse()
         {
-            if (controller.Movement.Grounded)
+            if (!controller.Movement.Grounded)
                 return false;
 
             return base.CanUse();
@@ -34,12 +50,38 @@ namespace Assets.Scripts.Player.UmbrellaMan
         public override void Use()
         {
             blockTime = 0;
+            isBlocking = true;
+            controller.Movement.LockMovement();
             base.Use();
         }
 
-        protected override string[] GetKeys()
+        public float TryBlock(Transform attack)
         {
-            return new[] { "Special" };
+            if (!isBlocking)
+                return 1;
+
+            if (blockTime < ReflectTime)
+            {
+                Destroy(attack.gameObject);
+                controller.Movement.UnlockMovement();
+            }
+            else if (blockTime < ReflectTime + BlockTime)
+            {
+                Destroy(attack.gameObject);
+                controller.Movement.UnlockMovement();
+            }
+            else if (blockTime < ReflectTime + BlockTime + BlockDamageTime)
+            {
+                //controller.Damage()
+                return 0.5f;
+            }
+
+            return 0;
+        }
+
+        protected override InputLayout.ActionType[] GetKeys()
+        {
+            return new[] { InputLayout.ActionType.SPECIAL };
         }
     }
 }

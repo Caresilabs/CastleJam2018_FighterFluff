@@ -5,6 +5,9 @@ namespace Assets.Scripts.Player.Fluff
     public class FluffPlayer : PlayerController
     {
         [SerializeField]
+        private Transform FluffHitParticles;
+
+        [SerializeField]
         private float AirTime = 3;
 
         private bool didJump = false;
@@ -38,6 +41,12 @@ namespace Assets.Scripts.Player.Fluff
                     didJump = false;
                 }
             }
+        }
+
+        public override void Damage(Transform source, float damage, float stunTime, float knockback, float knockbackHeight = 0)
+        {
+            base.Damage(source, damage, stunTime, knockback, knockbackHeight);
+            Instantiate(FluffHitParticles, transform);
         }
 
     }

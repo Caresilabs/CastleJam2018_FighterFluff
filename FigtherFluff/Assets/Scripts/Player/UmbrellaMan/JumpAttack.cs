@@ -31,7 +31,7 @@ namespace Assets.Scripts.Player.UmbrellaMan
                 if (Physics.SphereCast(p1, 0.2f, Vector3.Lerp(transform.forward, Vector3.up, 0.1f), out hit, 3f))
                 {
                     PlayerController other = hit.transform.GetComponent<PlayerController>();
-                    if (other != null)
+                    if (other != null && !other.Movement.Grounded)
                     {
                         HasAttacked = true;
 
@@ -55,7 +55,7 @@ namespace Assets.Scripts.Player.UmbrellaMan
             }
         }
 
-        protected override string[] GetKeys()
+        protected override InputLayout.ActionType[] GetKeys()
         {
             return null;
         }

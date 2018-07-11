@@ -17,7 +17,9 @@ public class MovementController : MonoBehaviour
     public bool Grounded { get; private set; }
     public bool CanMove { get; private set; }
 
-    private string inputPrefix;
+    public float SpeedScale { get; set; }
+
+    // private string inputPrefix;
     private bool canJump;
     private float allowJumpDelay;
 
@@ -32,12 +34,13 @@ public class MovementController : MonoBehaviour
     void Start()
     {
         this.controller = GetComponent<PlayerController>();
-        this.inputPrefix = controller.PlayerType == PlayerType.PLAYER1 ? "P1_" : "P2_";
+       // this.inputPrefix = controller.PlayerType == PlayerType.PLAYER1 ? "P1_" : "P2_";
         this.RigidBody = GetComponent<Rigidbody>();
         this.capsuleCollider = GetComponent<CapsuleCollider>();
         this.Grounded = true;
         this.canJump = true;
         this.CanMove = true;
+        this.SpeedScale = 1;
     }
 
     void FixedUpdate()
@@ -64,6 +67,7 @@ public class MovementController : MonoBehaviour
                     allowJumpDelay = 0;
                 }
             }
+
             //// Update shadow distance
             //if (Projector != null)
             //{
@@ -82,7 +86,7 @@ public class MovementController : MonoBehaviour
     {
         Vector3 velocity = RigidBody.velocity;
 
-        var isJumpPressed = Input.GetButton(GetKeyName("Jump"));
+        var isJumpPressed = controller.Input.IsButton(Assets.Scripts.InputLayout.ActionType.JUMP);
 
         if (RigidBody.useGravity)
         {
@@ -99,7 +103,8 @@ public class MovementController : MonoBehaviour
         if (!CanMove)
             return;
 
-        Vector3 targetVelocity = new Vector3(Input.GetAxis(GetKeyName("Horizontal")), 0, Input.GetAxis(GetKeyName("Vertical")));
+        // Vector3 targetVelocity = new Vector3(Input.GetAxis(GetKeyName("Horizontal")), 0, Input.GetAxis(GetKeyName("Vertical")));
+        Vector3 targetVelocity = new Vector3(controller.Input.GetAxis(Assets.Scripts.InputLayout.ActionType.MOVE_RIGHT), 0, controller.Input.GetAxis(Assets.Scripts.InputLayout.ActionType.MOVE_FORWARD));
         if (targetVelocity.magnitude >= 1)
             targetVelocity.Normalize();
 
@@ -108,7 +113,7 @@ public class MovementController : MonoBehaviour
         if (targetVelocity.magnitude > 0.05f)//(PlayerCamera.rotation.eulerAngles.x > 75)
             targetVelocity.Normalize();
 
-        targetVelocity *= Speed;
+        targetVelocity *= Speed * SpeedScale;
 
         // Jump
         allowJumpDelay += Time.fixedDeltaTime;
@@ -181,9 +186,14 @@ public class MovementController : MonoBehaviour
         canJump = true;
     }
 
-    private void OnDrawGizmos()
+    public void LockMovement()
     {
-        Gizmos.DrawRay(transform.position, transform.forward);
+        CanMove = false;
+    }
+
+    public void UnlockMovement()
+    {
+        CanMove = true;
     }
 
     public void LockMovement(float duration)
@@ -212,6 +222,6 @@ public class MovementController : MonoBehaviour
 
     private string GetKeyName(string key)
     {
-        return inputPrefix + key;
+        return "1";//inputPrefix + key;
     }
 }

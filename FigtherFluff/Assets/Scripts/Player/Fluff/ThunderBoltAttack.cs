@@ -25,7 +25,7 @@ namespace Assets.Scripts.Player.Fluff
 
         public override bool CanUse()
         {
-            if (!controller.IsAxis("Vertical", true))
+            if (!controller.IsAxis(InputLayout.ActionType.MOVE_FORWARD, true))
                 return false;
 
             return base.CanUse();
@@ -59,9 +59,9 @@ namespace Assets.Scripts.Player.Fluff
            
         }
 
-        protected override string[] GetKeys()
+        protected override InputLayout.ActionType[] GetKeys()
         {
-            return new[] { "Special" };
+            return new[] { InputLayout.ActionType.SPECIAL };
         }
     }
 }

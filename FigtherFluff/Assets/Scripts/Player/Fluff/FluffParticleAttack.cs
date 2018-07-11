@@ -36,12 +36,12 @@ namespace Assets.Scripts.Player.Fluff
             lastDir = newLook;
         }
 
-        public void OnParticleHit(PlayerController other)
+        public void OnParticleHit(PlayerController other, float blockFactor)
         {
-            other.Damage(GameManager.Instance.Fluff.transform, Damage, Hitstun, Knockback, KnockbackHeight);
-            other.PlayerCamera.Shake(ShakeDuration, ShakeStrength);
+            other.Damage(GameManager.Instance.Fluff.transform, Damage * blockFactor, Hitstun, Knockback * blockFactor, KnockbackHeight * blockFactor);
+            other.PlayerCamera.Shake(ShakeDuration, ShakeStrength * blockFactor);
 
-            GameManager.Instance.Fluff.PlayerCamera.Shake(0.15f, 0.3f);
+            GameManager.Instance.Fluff.PlayerCamera.Shake(0.15f, 0.3f * blockFactor);
 
             Destroy(this);
         }

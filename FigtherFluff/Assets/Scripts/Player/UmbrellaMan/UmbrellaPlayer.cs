@@ -5,12 +5,15 @@ namespace Assets.Scripts.Player.UmbrellaMan
 {
     public class UmbrellaPlayer : PlayerController
     {
+        [SerializeField]
+        private float WaterSpeedScale = 0.5f;
+
+        public bool OnWater { get; private set; }
+
         protected override void Start()
         {
             base.Start();
-
-            MovementController movement = GetComponent<MovementController>();
-            movement.onJump += OnJump;
+            Movement.onJump += OnJump;
         }
 
         private void OnJump()
@@ -23,7 +26,27 @@ namespace Assets.Scripts.Player.UmbrellaMan
             FluffParticleAttack attack = other.GetComponentInParent<FluffParticleAttack>();
             if (attack != null)
             {
-                attack.OnParticleHit(this);
+                var blockFactor = GetComponent<UmbrellaBlock>().TryBlock(attack.transform);
+                if (blockFactor != 0)
+                {
+                    attack.OnParticleHit(this, blockFactor);
+                }
+            }
+        }
+
+        private void OnCollisionEnter(Collision collision)
+        {
+            if (collision.gameObject.CompareTag("Water"))
+            {
+                Movement.SpeedScale = (WaterSpeedScale);
+            }
+        }
+
+        private void OnCollisionExit(Collision collision)
+        {
+            if (collision.gameObject.CompareTag("Water"))
+            {
+                Movement.SpeedScale = 1;
             }
         }
 

@@ -33,13 +33,13 @@ namespace Assets.Scripts.Player.UmbrellaMan
 
                 Vector3 p1 = transform.position + GetComponent<CapsuleCollider>().center;
 
-                if (Physics.SphereCast(p1, 1.3f, Vector3.down, out hit, 4f))
+                if (Physics.SphereCast(p1, 1.5f, Vector3.down, out hit, 4f))
                 {
                     PlayerController other = hit.transform.GetComponent<PlayerController>();
                     if (other != null)
                     {
                         Attack = false;
-                        other.Damage(transform, Damage, 0.2f, 1.3f, 0.25f);
+                        other.Damage(transform, Damage, 0.2f, 1.3f, controller.Movement.Grounded ? 0.9f : -.6f); //0.25f
 
                         other.PlayerCamera.Shake(0.4f, 0.4f);
                         controller.PlayerCamera.Shake(0.3f, 0.3f);
@@ -62,9 +62,9 @@ namespace Assets.Scripts.Player.UmbrellaMan
             base.Use();
         }
 
-        protected override string[] GetKeys()
+        protected override InputLayout.ActionType[] GetKeys()
         {
-            return new[] { "Special" };
+            return new[] { InputLayout.ActionType.SPECIAL };
         }
     }
 }

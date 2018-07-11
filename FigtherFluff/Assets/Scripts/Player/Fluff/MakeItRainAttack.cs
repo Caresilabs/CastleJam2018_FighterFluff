@@ -28,7 +28,8 @@ namespace Assets.Scripts.Player.Fluff
 
         public override bool CanUse()
         {
-            if (controller.IsAxis("Vertical", true) || controller.IsAxis("Vertical", false) || controller.IsAxis("Horizontal", true) || controller.IsAxis("Horizontal", false))
+            if (controller.IsAxis(InputLayout.ActionType.MOVE_FORWARD, true) || controller.IsAxis(InputLayout.ActionType.MOVE_FORWARD, false) 
+                || controller.IsAxis(InputLayout.ActionType.MOVE_RIGHT, true) || controller.IsAxis(InputLayout.ActionType.MOVE_RIGHT, false))
                 return false;
 
             return base.CanUse();
@@ -42,9 +43,9 @@ namespace Assets.Scripts.Player.Fluff
             base.Use();
         }
 
-        protected override string[] GetKeys()
+        protected override InputLayout.ActionType[] GetKeys()
         {
-            return new[] { "Special" };
+            return new[] { InputLayout.ActionType.SPECIAL };
         }
     }
 }

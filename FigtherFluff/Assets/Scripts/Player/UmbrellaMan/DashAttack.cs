@@ -44,9 +44,9 @@ namespace Assets.Scripts.Player.UmbrellaMan
 
         }
 
-        protected override string[] GetKeys()
+        protected override InputLayout.ActionType[] GetKeys()
         {
-            return DashRight ? new[] { "ShoulderRight" } : new[] { "ShoulderLeft" };
+            return DashRight ? new[] { InputLayout.ActionType.SHOULDER_RIGHT } : new[] { InputLayout.ActionType.SHOULDER_LEFT };
         }
     }
 }

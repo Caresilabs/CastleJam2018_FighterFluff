@@ -22,9 +22,9 @@ namespace Assets.Scripts.Player.UmbrellaMan
             {
                 RaycastHit hit;
 
-                Vector3 p1 = transform.position + GetComponent<CapsuleCollider>().center;
+                Vector3 p1 = transform.position/* + GetComponent<CapsuleCollider>().center*/;
 
-                if (Physics.SphereCast(p1, 0.5f, transform.forward, out hit, 3))
+                if (Physics.SphereCast(p1, 0.5f, transform.forward, out hit, 4))
                 {
                     Attack = false;
 
@@ -48,9 +48,9 @@ namespace Assets.Scripts.Player.UmbrellaMan
             base.Use();
         }
 
-        protected override string[] GetKeys()
+        protected override InputLayout.ActionType[] GetKeys()
         {
-            return new[] { "Attack" };
+            return new[] { InputLayout.ActionType.ATTACK };
         }
     }
 }

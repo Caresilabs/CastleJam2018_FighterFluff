@@ -57,9 +57,9 @@ namespace Assets.Scripts.Player.Fluff
             base.Use();
         }
 
-        protected override string[] GetKeys()
+        protected override InputLayout.ActionType[] GetKeys()
         {
-            return new[] { "Attack" };
+            return new[] { InputLayout.ActionType.ATTACK };
         }
     }
 }

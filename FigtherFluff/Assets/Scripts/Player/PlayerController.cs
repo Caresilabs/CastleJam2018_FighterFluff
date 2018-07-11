@@ -1,10 +1,11 @@
-﻿using Assets.Scripts.Player;
+﻿using Assets.Scripts;
+using Assets.Scripts.Player;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField]
-    public PlayerType PlayerType;
+    //[SerializeField]
+    //public PlayerType PlayerType;
 
     [SerializeField]
     public float MaxHealth = 100;
@@ -16,7 +17,7 @@ public class PlayerController : MonoBehaviour
 
     public CameraController PlayerCamera { get; set; }
 
-    private string inputPrefix;
+    public InputLayout Input { get; internal set; }
 
     private float cooldown;
 
@@ -25,7 +26,6 @@ public class PlayerController : MonoBehaviour
         this.Health = MaxHealth;
         this.RigidBody = GetComponent<Rigidbody>();
         this.Movement = GetComponent<MovementController>();
-        this.inputPrefix = GetComponent<PlayerController>().PlayerType == PlayerType.PLAYER1 ? "P1_" : "P2_";
     }
 
     protected virtual void Update()
@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
         cooldown -= Time.deltaTime;
     }
 
-    public void Damage(Transform source, float damage, float stunTime, float knockback, float knockbackHeight = 0)
+    public virtual void Damage(Transform source, float damage, float stunTime, float knockback, float knockbackHeight = 0)
     {
         Health -= damage;
 
@@ -80,26 +80,27 @@ public class PlayerController : MonoBehaviour
         this.cooldown = time;
     }
 
-    public bool IsKeys(params string[] keys)
+    public bool IsKeys(params InputLayout.ActionType[] keys)
     {
         if (keys == null) return false;
 
         foreach (var item in keys)
         {
-            if (!Input.GetButton(GetKeyName(item)))
+            if (!Input.IsButtonDown(item))
                 return false;
+            // if (!Input.GetButton(GetKeyName(item)))
+            //     return false;
         }
         return true;
     }
 
-    public bool IsAxis(string axis, bool inverted)
+    public bool IsAxis(InputLayout.ActionType axis, bool inverted)
     {
-        var val = Input.GetAxis(GetKeyName(axis));
+        var val = Input.GetAxis(axis);
         return inverted ? val < -0.2f : val > 0.2f;
+
+        // var val = Input.GetAxis(GetKeyName(axis));
+        // return inverted ? val < -0.2f : val > 0.2f;
     }
 
-    private string GetKeyName(string key)
-    {
-        return inputPrefix + key;
-    }
 }

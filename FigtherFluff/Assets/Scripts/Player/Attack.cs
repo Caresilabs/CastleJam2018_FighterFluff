@@ -4,7 +4,7 @@ namespace Assets.Scripts.Player
 {
     public abstract class Attack<T> : MonoBehaviour where T : PlayerController
     {
-        private string[] keys;
+        private InputLayout.ActionType[] keys;
 
         protected T controller;
 
@@ -16,7 +16,7 @@ namespace Assets.Scripts.Player
 
         private float cooldownTimer;
 
-        protected abstract string[] GetKeys();
+        protected abstract InputLayout.ActionType[] GetKeys();
 
         protected virtual void Start()
         {

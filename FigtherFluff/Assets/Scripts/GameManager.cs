@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Assets.Scripts;
 using Assets.Scripts.Player.Fluff;
 using Assets.Scripts.Player.UmbrellaMan;
 using UnityEngine;
@@ -48,15 +49,15 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
         ChangeState(State.READY);
 
-        PlayerPrefs.SetInt("Player1", 1);
-        PlayerPrefs.SetInt("Player2", -1);
+        //PlayerPrefs.SetInt("Player1", 1);
+        //PlayerPrefs.SetInt("Player2", -1);
 
         var p1 = GameObject.Find("Player1").GetComponent<PlayerController>();
         var p2 = GameObject.Find("Player2").GetComponent<PlayerController>();
 
         // Todo cleanup
-        p1.PlayerType = PlayerPrefs.GetInt("Player1", -1) == -1 ? Assets.Scripts.Player.PlayerType.PLAYER1 : Assets.Scripts.Player.PlayerType.PLAYER2;
-        p2.PlayerType = PlayerPrefs.GetInt("Player2", 1) == -1 ? Assets.Scripts.Player.PlayerType.PLAYER1 : Assets.Scripts.Player.PlayerType.PLAYER2;
+       // p1.PlayerType = PlayerPrefs.GetInt("Player1", -1) == -1 ? Assets.Scripts.Player.PlayerType.PLAYER1 : Assets.Scripts.Player.PlayerType.PLAYER2;
+       // p2.PlayerType = PlayerPrefs.GetInt("Player2", 1) == -1 ? Assets.Scripts.Player.PlayerType.PLAYER1 : Assets.Scripts.Player.PlayerType.PLAYER2;
 
         // this.Player1.Movement.PlayerCamera.GetComponentInChildren<Camera>().rect = new Rect(PlayerPrefs.GetInt("Player1", -1) == -1 ? 0 : 0.5f, 0, 0.5f, 1);
         // this.Player2.Movement.PlayerCamera.GetComponentInChildren<Camera>().rect = new Rect(PlayerPrefs.GetInt("Player2", -1) == -1 ? 0 : 0.5f, 0, 0.5f, 1);
@@ -89,6 +90,9 @@ public class GameManager : MonoBehaviour
 
         Player1.PlayerCamera = Player1Camera;
         Player2.PlayerCamera = Player2Camera;
+
+        Player1.Input = JoystickManager.PLAYER1;
+        Player2.Input = JoystickManager.PLAYER2;
 
         //Player1.Movement.LockMovement(5);
         //Player2.Movement.LockMovement(5);
