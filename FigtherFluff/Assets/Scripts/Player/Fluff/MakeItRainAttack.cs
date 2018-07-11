@@ -11,11 +11,10 @@ namespace Assets.Scripts.Player.Fluff
         [SerializeField]
         private WaterController Water;
 
-        public bool Attack;
+        [SerializeField]
+        private Transform RainPartiles;
 
-        public MakeItRainAttack() : base(5f)
-        {
-        }
+        public bool Attack;
 
         public override void Update()
         {
@@ -23,18 +22,22 @@ namespace Assets.Scripts.Player.Fluff
 
             if (Attack)
             {
-                
+
             }
         }
 
         public override bool CanUse()
         {
+            if (controller.IsAxis("Vertical", true) || controller.IsAxis("Vertical", false) || controller.IsAxis("Horizontal", true) || controller.IsAxis("Horizontal", false))
+                return false;
+
             return base.CanUse();
         }
 
         public override void Use()
         {
             Attack = false;
+            Instantiate(RainPartiles, transform.position, Quaternion.LookRotation((GameManager.Instance.UmbrellaMan.transform.position - transform.position)), transform);
             Water.IncreaseWater();
             base.Use();
         }

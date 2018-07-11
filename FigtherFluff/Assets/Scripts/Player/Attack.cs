@@ -1,5 +1,4 @@
-﻿
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Assets.Scripts.Player
 {
@@ -9,13 +8,13 @@ namespace Assets.Scripts.Player
 
         protected T controller;
 
-        private readonly float cooldown;
-        private float cooldownTimer;
+        [SerializeField]
+        protected float cooldown;
 
-        public Attack(float cooldown)
-        {
-            this.cooldown = cooldown;
-        }
+        [SerializeField]
+        protected float Duration = 1;
+
+        private float cooldownTimer;
 
         protected abstract string[] GetKeys();
 
@@ -40,12 +39,13 @@ namespace Assets.Scripts.Player
 
         public virtual void Use()
         {
+            controller.SetCooldown(Duration);
             this.cooldownTimer = cooldown;
         }
 
         public virtual bool CanUse()
         {
-            return cooldownTimer < 0;
+            return cooldownTimer < 0 && !controller.HasCooldown();
         }
 
         public bool IsKeysDown()

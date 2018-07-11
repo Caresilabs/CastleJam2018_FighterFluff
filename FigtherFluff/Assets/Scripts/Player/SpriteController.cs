@@ -34,11 +34,14 @@ namespace Assets.Scripts.Player
             spriteRenderer = GetComponent<SpriteRenderer>();
             animator = transform.parent.GetComponent<Animator>();
 
-            CameraController.onPreCull += BeforeCameraRender;
+            CameraHolder.onPreCull += BeforeCameraRender;
         }
 
         private void BeforeCameraRender(Transform cam)
         {
+            if (!enabled)
+                return;
+
             Vector3 fwd = cam.transform.forward;
             fwd.y = 0;
             transform.rotation = Quaternion.LookRotation(fwd);
@@ -53,6 +56,11 @@ namespace Assets.Scripts.Player
                 // Back
                 spriteRenderer.sprite = AnimationsMap[CurrentSpriteName + "_b"][CurrentSpriteIndex];
             }
+        }
+
+        private void OnDestroy()
+        {
+            CameraHolder.onPreCull -= BeforeCameraRender;
         }
 
         public void ChangeAnimation(string name)

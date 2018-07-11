@@ -1,33 +1,28 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Assets.Scripts;
 using UnityEngine;
+
 
 public class CameraController : MonoBehaviour
 {
     [SerializeField]
-    private Transform Target;
+    public Transform Target;
 
     [SerializeField]
-    private Transform Source;
+    public Transform Source;
 
     [SerializeField]
     private Vector3 Offset;
 
-    public delegate void PreCullEvent(Transform camera);
-    public static PreCullEvent onPreCull;
+    private CameraHolder CameraHolder;
 
-    void OnPreCull()
+    private void Start()
     {
-        if (onPreCull != null)
-        {
-            onPreCull(transform);
-        }
+        this.CameraHolder = GetComponentInChildren<CameraHolder>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Shake(float duration, float magnitude)
     {
-
+        StartCoroutine(CameraHolder.ShaketCoroutine(duration, magnitude));
     }
 
     private void LateUpdate()

@@ -8,13 +8,11 @@ public class MovementController : MonoBehaviour
     private const float MAX_JUMP_TIME_DELAY = 0.2f;
 
     [SerializeField]
-    private Transform PlayerCamera;
-
-    [SerializeField]
     private float Speed;
 
     private Rigidbody RigidBody;
     private CapsuleCollider capsuleCollider;
+    private PlayerController controller;
 
     public bool Grounded { get; private set; }
     public bool CanMove { get; private set; }
@@ -33,7 +31,8 @@ public class MovementController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        this.inputPrefix = GetComponent<PlayerController>().PlayerType == PlayerType.PLAYER1 ? "P1_" : "P2_";
+        this.controller = GetComponent<PlayerController>();
+        this.inputPrefix = controller.PlayerType == PlayerType.PLAYER1 ? "P1_" : "P2_";
         this.RigidBody = GetComponent<Rigidbody>();
         this.capsuleCollider = GetComponent<CapsuleCollider>();
         this.Grounded = true;
@@ -104,9 +103,9 @@ public class MovementController : MonoBehaviour
         if (targetVelocity.magnitude >= 1)
             targetVelocity.Normalize();
 
-        targetVelocity = PlayerCamera.TransformDirection(targetVelocity);
+        targetVelocity = controller.PlayerCamera.transform.TransformDirection(targetVelocity);
         targetVelocity.y = 0;
-        if (PlayerCamera.rotation.eulerAngles.x > 75)
+        if (targetVelocity.magnitude > 0.05f)//(PlayerCamera.rotation.eulerAngles.x > 75)
             targetVelocity.Normalize();
 
         targetVelocity *= Speed;
@@ -128,11 +127,11 @@ public class MovementController : MonoBehaviour
                // RigidBody.velocity = new Vector3(velocity.x, Mathf.Sqrt(2 * JumpHeight * Gravity), velocity.z);
         }
 
-        foreach (KeyCode kcode in Enum.GetValues(typeof(KeyCode)))
-        {
-            if (Input.GetKey(kcode))
-                Debug.Log("KeyCode down: " + kcode);
-        }
+        //foreach (KeyCode kcode in Enum.GetValues(typeof(KeyCode)))
+        //{
+        //    if (Input.GetKey(kcode))
+        //        Debug.Log("KeyCode down: " + kcode);
+        //}
 
         float maxVelocityChange = 1.0f;
         if (Grounded)
@@ -176,7 +175,7 @@ public class MovementController : MonoBehaviour
 
     void OnCollisionStay(Collision hit)
     {
-        if (hit.gameObject.name == name) // Nasty bug causes oncollsion enter on itself
+        if (hit.gameObject == GameManager.Instance.Player1.gameObject || hit.gameObject == GameManager.Instance.Player2.gameObject) // Nasty bug causes oncollsion enter on itself
             return;
 
         canJump = true;

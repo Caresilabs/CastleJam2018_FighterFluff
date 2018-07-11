@@ -15,11 +15,6 @@ namespace Assets.Scripts.Player.UmbrellaMan
         [SerializeField]
         private float DashTime = 0.25f;
 
-        public DashAttack() : base(1.5f)
-        {
-            //GetComponent<Animator>().GetCurrentAnimatorClipInfo(0).First().clip.
-        }
-
         protected override void Start()
         {
             base.Start();

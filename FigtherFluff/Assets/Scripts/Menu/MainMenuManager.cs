@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -69,7 +70,7 @@ namespace Assets.Scripts.Menu
             }
             else if (state == State.SELECT)
             {
-                if (Input.GetButtonDown("P1_Attack") || Input.GetButtonDown("P2_Attack"))
+                if (Input.GetButtonDown("P1_Special") || Input.GetButtonDown("P2_Special"))
                 {
                     TitleScreen.gameObject.SetActive(true);
                     SelectScreen.gameObject.SetActive(false);
@@ -144,7 +145,7 @@ namespace Assets.Scripts.Menu
             }
             else if (state == State.CREDITS)
             {
-                if (Input.GetButtonDown("P1_Attack") || Input.GetButtonDown("P2_Attack"))
+                if (Input.GetButtonDown("P1_Special") || Input.GetButtonDown("P2_Special"))
                 {
                     TitleScreen.gameObject.SetActive(true);
                     CreditsScreen.gameObject.SetActive(false);

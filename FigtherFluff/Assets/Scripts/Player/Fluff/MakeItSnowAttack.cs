@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Assets.Scripts.Player.Fluff
 {
@@ -11,25 +7,20 @@ namespace Assets.Scripts.Player.Fluff
         [SerializeField]
         private WaterController Water;
 
-        public bool Attack;
+        [SerializeField]
+        private Transform SnowParticles;
 
-        public MakeItSnowAttack() : base(5f)
-        {
-        }
+        public bool Attack;
 
         public override void Update()
         {
             base.Update();
 
-            if (Attack)
-            {
-                
-            }
         }
 
         public override bool CanUse()
         {
-            if (!controller.IsAxis("Vertical", true))
+            if (!controller.IsAxis("Vertical", false))
             {
                 return false;
             }
@@ -40,7 +31,7 @@ namespace Assets.Scripts.Player.Fluff
         public override void Use()
         {
             Attack = false;
-            Water.IncreaseWater();
+            Instantiate(SnowParticles, transform.position, Quaternion.LookRotation((GameManager.Instance.UmbrellaMan.transform.position - transform.position)), transform);
             base.Use();
         }
 
