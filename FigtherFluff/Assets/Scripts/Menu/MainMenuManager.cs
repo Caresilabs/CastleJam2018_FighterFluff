@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -43,6 +42,15 @@ namespace Assets.Scripts.Menu
         private int P1Selectd = 0;
         private int P2Selectd = 0;
 
+        public InputLayout Input1 { get; set; }
+        public InputLayout Input2 { get; set; }
+
+        private void Start()
+        {
+            Input1 = JoystickManager.PLAYER1;
+            Input2 = JoystickManager.PLAYER2;
+        }
+
         private void Update()
         {
             //foreach (KeyCode kcode in Enum.GetValues(typeof(KeyCode)))
@@ -53,7 +61,7 @@ namespace Assets.Scripts.Menu
 
             if (state == State.TITLE)
             {
-                if (Input.GetButtonDown("P1_Jump") || Input.GetButtonDown("P2_Jump"))
+                if (Input1.IsButtonDown(InputLayout.ActionType.JUMP) || Input2.IsButtonDown(InputLayout.ActionType.JUMP))
                 {
                     TitleScreen.gameObject.SetActive(false);
                     CreditsScreen.gameObject.SetActive(true);
@@ -64,13 +72,13 @@ namespace Assets.Scripts.Menu
                     TitleScreen.gameObject.SetActive(false);
                     SelectScreen.gameObject.SetActive(true);
                     state = State.SELECT;
-                    //  P1Selectd = 0;
+                    //P1Selectd = 0;
                     //P2Selectd = 0;
                 }
             }
             else if (state == State.SELECT)
             {
-                if (Input.GetButtonDown("P1_Special") || Input.GetButtonDown("P2_Special"))
+                if (Input1.IsButtonDown(InputLayout.ActionType.SPECIAL) || Input2.IsButtonDown(InputLayout.ActionType.SPECIAL))
                 {
                     TitleScreen.gameObject.SetActive(true);
                     SelectScreen.gameObject.SetActive(false);
@@ -78,14 +86,14 @@ namespace Assets.Scripts.Menu
                     return;
                 }
 
-                if (Input.GetAxis("P1_Horizontal") < -0.2f)
+                if (Input1.GetAxis(InputLayout.ActionType.MOVE_RIGHT) < -0.2f)
                 {
                     var targetPos = FluffSelect.position;
                     targetPos.y = P1Select.position.y;
                     P1Select.position = targetPos;
                     P1Selectd = -1;
                 }
-                else if (Input.GetAxis("P1_Horizontal") > 0.2f)
+                else if (Input1.GetAxis(InputLayout.ActionType.MOVE_RIGHT) > 0.2f)
                 {
                     var targetPos = UmbrellaSelect.position;
                     targetPos.y = P1Select.position.y;
@@ -93,14 +101,14 @@ namespace Assets.Scripts.Menu
                     P1Selectd = 1;
                 }
 
-                if (Input.GetAxis("P2_Horizontal") < -0.2f)
+                if (Input2.GetAxis(InputLayout.ActionType.MOVE_RIGHT) < -0.2f)
                 {
                     var targetPos = FluffSelect.position;
                     targetPos.y = P2Select.position.y;
                     P2Select.position = targetPos;
                     P2Selectd = -1;
                 }
-                else if (Input.GetAxis("P2_Horizontal") > 0.2f)
+                else if (Input2.GetAxis(InputLayout.ActionType.MOVE_RIGHT) > 0.2f)
                 {
                     var targetPos = UmbrellaSelect.position;
                     targetPos.y = P2Select.position.y;
@@ -130,7 +138,7 @@ namespace Assets.Scripts.Menu
                 {
                     StartGame.gameObject.SetActive(true);
 
-                    if (Input.GetButtonDown("P1_Start") || Input.GetButtonDown("P2_Start"))
+                    if (Input1.IsButtonDown(InputLayout.ActionType.START) || Input2.IsButtonDown(InputLayout.ActionType.START))
                     {
                         PlayerPrefs.SetInt("Player1", P1Selectd);
                         PlayerPrefs.SetInt("Player2", P2Selectd);
@@ -145,7 +153,7 @@ namespace Assets.Scripts.Menu
             }
             else if (state == State.CREDITS)
             {
-                if (Input.GetButtonDown("P1_Special") || Input.GetButtonDown("P2_Special"))
+                if (Input1.IsButtonDown(InputLayout.ActionType.SPECIAL) || Input2.IsButtonDown(InputLayout.ActionType.SPECIAL))
                 {
                     TitleScreen.gameObject.SetActive(true);
                     CreditsScreen.gameObject.SetActive(false);
