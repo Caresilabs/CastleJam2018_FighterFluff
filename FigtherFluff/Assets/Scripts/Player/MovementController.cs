@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections;
-using Assets.Scripts.Player;
 using UnityEngine;
 
 public class MovementController : MonoBehaviour
@@ -13,8 +12,10 @@ public class MovementController : MonoBehaviour
     private Rigidbody RigidBody;
     private CapsuleCollider capsuleCollider;
     private PlayerController controller;
+    private Animator Animator;
 
-    public bool Grounded { get; private set; }
+    private bool _grounded;
+    public bool Grounded { get { return _grounded; } set { _grounded = value; Animator.SetBool("Grounded", value); } }
     public bool CanMove { get; private set; }
 
     public float SpeedScale { get; set; }
@@ -37,6 +38,7 @@ public class MovementController : MonoBehaviour
        // this.inputPrefix = controller.PlayerType == PlayerType.PLAYER1 ? "P1_" : "P2_";
         this.RigidBody = GetComponent<Rigidbody>();
         this.capsuleCollider = GetComponent<CapsuleCollider>();
+        this.Animator = GetComponent<Animator>();
         this.Grounded = true;
         this.canJump = true;
         this.CanMove = true;
@@ -123,6 +125,7 @@ public class MovementController : MonoBehaviour
             {
                 if (onJump != null)
                 {
+                    Animator.SetTrigger("Jumped");
                     Grounded = false;
                     canJump = false;
                     onJump();

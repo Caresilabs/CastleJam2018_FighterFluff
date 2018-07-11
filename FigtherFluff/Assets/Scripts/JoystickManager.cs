@@ -26,7 +26,7 @@ namespace Assets.Scripts
             {
                 foreach (var item in Layouts)
                 {
-                    if (item.TryParseName == Input.GetJoystickNames()[i])
+                    if (Input.GetJoystickNames()[i].Contains(item.TryParseName))
                     {
                         if (player == 1)
                         {

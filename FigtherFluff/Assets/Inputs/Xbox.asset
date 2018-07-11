@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1b1016ffc8cf214ca56b6d316396242, type: 3}
+  m_Name: Xbox
+  m_EditorClassIdentifier: 
+  TryParseName: Xbox
+  Map:
+  - Action: 0
+    Code: 331
+    Code2: 0
+    Axis: 
+    AxisScale: 1
+  - Action: 1
+    Code: 332
+    Code2: 0
+    Axis: 
+    AxisScale: 1
+  - Action: 2
+    Code: 330
+    Code2: 333
+    Axis: 
+    AxisScale: 1
+  - Action: 3
+    Code: 334
+    Code2: 0
+    Axis: 
+    AxisScale: 1
+  - Action: 4
+    Code: 335
+    Code2: 0
+    Axis: 
+    AxisScale: 1
+  - Action: 5
+    Code: 0
+    Code2: 0
+    Axis: Y
+    AxisScale: -1
+  - Action: 6
+    Code: 0
+    Code2: 0
+    Axis: X
+    AxisScale: 1
