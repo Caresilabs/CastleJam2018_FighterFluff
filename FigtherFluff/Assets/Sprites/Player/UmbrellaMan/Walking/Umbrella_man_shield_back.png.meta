@@ -1,7 +1,16 @@
 fileFormatVersion: 2
 guid: bc4ee6d6dc5df4ca0ae7c7f77c945f82
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: Umbrella_man_shield_back_0
+    21300002: Umbrella_man_shield_back_1
+    21300004: Umbrella_man_shield_back_2
+    21300006: Umbrella_man_shield_back_3
+    21300008: Umbrella_man_shield_back_4
+    21300010: Umbrella_man_shield_back_5
+    21300012: Umbrella_man_shield_back_6
+    21300014: Umbrella_man_shield_back_7
+    21300016: Umbrella_man_shield_back_8
   externalObjects: {}
   serializedVersion: 5
   mipmaps:
@@ -80,11 +89,191 @@ TextureImporter:
     androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Umbrella_man_shield_back_0
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 224
+        width: 4
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5834c21991ecb4c0ba0c28c06e123b9d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Umbrella_man_shield_back_1
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 210
+        width: 8
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80d7e353de87140c992b8150b1df0a7a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Umbrella_man_shield_back_2
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 212
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09810d7f1375449dbbd70d373f4cbbe9
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Umbrella_man_shield_back_3
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 205
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91ebfd8e1aa7545b19d36d1206a3b9db
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Umbrella_man_shield_back_4
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 201
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eec89e8566ae44adabced887c10779db
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Umbrella_man_shield_back_5
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 8
+        width: 115
+        height: 224
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c6469254ee5a472b9a5723f3f3328bb
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Umbrella_man_shield_back_6
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 206
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eaaf834cdfd0b48c9babc0b63ffb825f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Umbrella_man_shield_back_7
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 11
+        width: 115
+        height: 224
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c9b5f03c6eec461e9fe40c88032523c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Umbrella_man_shield_back_8
+      rect:
+        serializedVersion: 2
+        x: 314
+        y: 7
+        width: 115
+        height: 224
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05f931f321301455c9c6760841cb97f1
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 9c0a1430bf97f406a85aea89f065a059
     vertices: []
     indices: 
     edges: []

@@ -1,7 +1,10 @@
 fileFormatVersion: 2
 guid: 9e792e493be7141bf84421a61abc8d37
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: Umbrella_man_swing_forward_0
+    21300002: Umbrella_man_swing_forward_1
+    21300004: Umbrella_man_swing_forward_2
   externalObjects: {}
   serializedVersion: 5
   mipmaps:
@@ -80,11 +83,71 @@ TextureImporter:
     androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Umbrella_man_swing_forward_0
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 19
+        width: 123
+        height: 274
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7232ff45e81ec46ef8f4ec5201ad2918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Umbrella_man_swing_forward_1
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 18
+        width: 123
+        height: 274
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4261df3ff87564b03b0efc41df89d157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Umbrella_man_swing_forward_2
+      rect:
+        serializedVersion: 2
+        x: 282
+        y: 18
+        width: 129
+        height: 274
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b80324c98c98b4f5b9016d2fd67a58cf
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 419c2a0d91adc410aa408c7ca43de94d
     vertices: []
     indices: 
     edges: []

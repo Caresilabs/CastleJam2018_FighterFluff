@@ -1,7 +1,10 @@
 fileFormatVersion: 2
 guid: 320b2f4ce08124a8dbc04cdf8e19a267
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: Umbrella_man_shield_forward_0
+    21300002: Umbrella_man_shield_forward_1
+    21300004: Umbrella_man_shield_forward_2
   externalObjects: {}
   serializedVersion: 5
   mipmaps:
@@ -80,11 +83,71 @@ TextureImporter:
     androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Umbrella_man_shield_forward_0
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 15
+        width: 120
+        height: 213
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8275095fb3df2469e950659acdbe6a10
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Umbrella_man_shield_forward_1
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 17
+        width: 120
+        height: 213
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 664f9defd6c02479fa38d2a4a7c2897f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Umbrella_man_shield_forward_2
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 16
+        width: 120
+        height: 213
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae3d4dab48d6441dfa27d743cad54bb3
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: aec34f7d73a444d19b82f573467c25fd
     vertices: []
     indices: 
     edges: []

@@ -1,7 +1,14 @@
 fileFormatVersion: 2
 guid: 94d7c23a51a42431dbe928bcfa3c7788
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: Umbrella_man_jump_forward_0
+    21300002: Umbrella_man_jump_forward_1
+    21300004: Umbrella_man_jump_forward_2
+    21300006: Umbrella_man_jump_forward_3
+    21300008: Umbrella_man_jump_forward_4
+    21300010: Umbrella_man_jump_forward_5
+    21300012: Umbrella_man_jump_forward_6
   externalObjects: {}
   serializedVersion: 5
   mipmaps:
@@ -80,11 +87,151 @@ TextureImporter:
     androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Umbrella_man_jump_forward_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 15
+        width: 120
+        height: 206
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c115517cbc72243fc8ee6ef586cc5254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Umbrella_man_jump_forward_1
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 203
+        width: 8
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3dc6b0a2d2a074607b5c2ea9057381fb
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Umbrella_man_jump_forward_2
+      rect:
+        serializedVersion: 2
+        x: 349
+        y: 202
+        width: 4
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2152c9ad128b84caca298b4291699d1d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Umbrella_man_jump_forward_3
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 16
+        width: 150
+        height: 206
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62c55eb59bb5d46b897033fb107ac4d0
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Umbrella_man_jump_forward_4
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 19
+        width: 123
+        height: 206
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d43fcfa07e9654f909834dad0a0ba796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Umbrella_man_jump_forward_5
+      rect:
+        serializedVersion: 2
+        x: 267
+        y: 16
+        width: 133
+        height: 206
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a55977a56da24913aeac95d108aba18
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Umbrella_man_jump_forward_6
+      rect:
+        serializedVersion: 2
+        x: 345
+        y: 186
+        width: 7
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c09c7b93ab95473caafb3982daca075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 03425b74bfea64370a38e30174acc53b
     vertices: []
     indices: 
     edges: []

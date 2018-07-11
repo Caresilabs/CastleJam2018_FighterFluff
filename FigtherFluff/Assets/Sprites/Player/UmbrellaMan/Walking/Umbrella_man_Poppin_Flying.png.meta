@@ -1,7 +1,9 @@
 fileFormatVersion: 2
 guid: 0f779041fc82b41228ee2898301721d7
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: Umbrella_man_Poppin_Flying_0
+    21300002: Umbrella_man_Poppin_Flying_1
   externalObjects: {}
   serializedVersion: 5
   mipmaps:
@@ -80,11 +82,51 @@ TextureImporter:
     androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Umbrella_man_Poppin_Flying_0
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 8
+        width: 123
+        height: 285
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 099198b71c19b404c8359502986dd328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Umbrella_man_Poppin_Flying_1
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 17
+        width: 123
+        height: 274
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a5d697ff66f243849ceb0463d216caf
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 89e501e11532d4d258841a6139807d31
     vertices: []
     indices: 
     edges: []

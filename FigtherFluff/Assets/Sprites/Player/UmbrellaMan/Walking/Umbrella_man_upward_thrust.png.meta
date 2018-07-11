@@ -1,7 +1,11 @@
 fileFormatVersion: 2
 guid: 8dd2f9e155de44c8a8db4c349827c0a0
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: Umbrella_man_upward_thrust_0
+    21300002: Umbrella_man_upward_thrust_1
+    21300004: Umbrella_man_upward_thrust_2
+    21300006: Umbrella_man_upward_thrust_3
   externalObjects: {}
   serializedVersion: 5
   mipmaps:
@@ -80,11 +84,51 @@ TextureImporter:
     androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Umbrella_man_upward_thrust_0
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 5
+        width: 118
+        height: 291
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45bcbbacc502b4e1fb4ecb5908d5aad1
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Umbrella_man_upward_thrust_1
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 21
+        width: 118
+        height: 279
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 213699f7b2b0748478c3ccfd67b4a759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5311af0308ead4183adcb3af4a2e3d18
     vertices: []
     indices: 
     edges: []

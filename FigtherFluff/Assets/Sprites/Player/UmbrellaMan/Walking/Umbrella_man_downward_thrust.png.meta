@@ -1,7 +1,10 @@
 fileFormatVersion: 2
 guid: 5dd9d23ef786b4de08dd2a8a017453f7
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: Umbrella_man_downward_thrust_0
+    21300002: Umbrella_man_downward_thrust_1
+    21300004: Umbrella_man_downward_thrust_2
   externalObjects: {}
   serializedVersion: 5
   mipmaps:
@@ -80,7 +83,67 @@ TextureImporter:
     androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Umbrella_man_downward_thrust_0
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 19
+        width: 125
+        height: 213
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94b68341549f44bfb848f5ee3c92b59a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Umbrella_man_downward_thrust_1
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 26
+        width: 125
+        height: 206
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0454478cda6504c60b96e4d4c155bec4
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Umbrella_man_downward_thrust_2
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 206
+        width: 5
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b4e153d5d480440da08a7fe7595b62d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

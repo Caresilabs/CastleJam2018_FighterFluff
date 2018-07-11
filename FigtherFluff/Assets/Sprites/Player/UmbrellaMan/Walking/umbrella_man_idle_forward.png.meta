@@ -1,7 +1,10 @@
 fileFormatVersion: 2
 guid: 8713f8f873c0146e6938f07170a04894
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: umbrella_man_idle_forward_0
+    21300002: umbrella_man_idle_forward_1
+    21300004: umbrella_man_idle_forward_2
   externalObjects: {}
   serializedVersion: 5
   mipmaps:
@@ -80,11 +83,71 @@ TextureImporter:
     androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: umbrella_man_idle_forward_0
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 19
+        width: 152
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9903eaff488e24e468839df2a8512576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: umbrella_man_idle_forward_1
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 23
+        width: 152
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 213ab1682999e481ab30bd274d64a134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: umbrella_man_idle_forward_2
+      rect:
+        serializedVersion: 2
+        x: 411
+        y: 25
+        width: 152
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b437db507e19459d92430badc6ec974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 847a85db53f8944a0adf1169e480d3ae
     vertices: []
     indices: 
     edges: []

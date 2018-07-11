@@ -100,10 +100,10 @@ TextureImporter:
       name: Walk_Forward_0
       rect:
         serializedVersion: 2
-        x: 18
-        y: 4
-        width: 126
-        height: 233
+        x: 0
+        y: 8
+        width: 156
+        height: 234
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -120,9 +120,9 @@ TextureImporter:
       name: Walk_Forward_1
       rect:
         serializedVersion: 2
-        x: 150
-        y: 6
-        width: 140
+        x: 164
+        y: 7
+        width: 156
         height: 228
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -140,9 +140,9 @@ TextureImporter:
       name: Walk_Forward_2
       rect:
         serializedVersion: 2
-        x: 277
-        y: 19
-        width: 152
+        x: 349
+        y: 9
+        width: 156
         height: 218
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -160,9 +160,9 @@ TextureImporter:
       name: Walk_Forward_3
       rect:
         serializedVersion: 2
-        x: 408
-        y: 10
-        width: 157
+        x: 529
+        y: 11
+        width: 156
         height: 221
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
