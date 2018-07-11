@@ -11,7 +11,7 @@ namespace Assets.Scripts.Player
         private int CurrentSpriteIndex;
 
         [Serializable]
-        public struct FAnimation
+        public class FAnimation
         {
             public string name;
             public Sprite[] sprite;
@@ -19,22 +19,45 @@ namespace Assets.Scripts.Player
         [SerializeField]
         public FAnimation[] Animations;
 
-        private Dictionary<string, Sprite[]> AnimationsMap;
+        //private Dictionary<int, Sprite[]> AnimationsMap;
+        private Dictionary<int, FAnimation[]> AnimationsMap;
 
         [SerializeField]
         private string CurrentSpriteName = "idle";
+
+        private int CurrentSpriteHash;
 
         private Animator animator;
         private SpriteRenderer spriteRenderer;
 
         private void Start()
         {
-            AnimationsMap = Animations.ToDictionary(x => x.name, x => x.sprite);
-
-            spriteRenderer = GetComponent<SpriteRenderer>();
             animator = transform.parent.GetComponent<Animator>();
 
+            //AnimationsMap = Animations.ToDictionary(x => Animator.StringToHash(x.name), x => x.sprite);
+            AnimationsMap = new Dictionary<int, FAnimation[]>();
+            foreach (var item in Animations)
+            {
+                string name = item.name.Substring(0, item.name.Length - 2);
+                int hash = Animator.StringToHash(name);
+                if (AnimationsMap.ContainsKey(hash)) {
+                    AnimationsMap[hash][1] = item;
+                }
+                else
+                {
+                    AnimationsMap.Add(hash, new FAnimation[2] { item, null });
+                }
+            }
+
+            CurrentSpriteHash = Animator.StringToHash(CurrentSpriteName);
+
+            spriteRenderer = GetComponent<SpriteRenderer>();
+
             CameraHolder.onPreCull += BeforeCameraRender;
+
+            animator.GetBehaviour<OnStateChangeBehaviour>().CallbackFunc += (AnimatorStateInfo x) => {
+                CurrentSpriteHash = x.shortNameHash;
+            };
         }
 
         private void BeforeCameraRender(Transform cam)
@@ -49,12 +72,14 @@ namespace Assets.Scripts.Player
             if (Vector3.Dot(transform.parent.forward, fwd) <= 0)
             {
                 // Forward
-                spriteRenderer.sprite = AnimationsMap[CurrentSpriteName + "_f"][CurrentSpriteIndex];
+                //  spriteRenderer.sprite = AnimationsMap[CurrentSpriteName + "_f"][CurrentSpriteIndex];
+                spriteRenderer.sprite = AnimationsMap[CurrentSpriteHash][0].sprite[CurrentSpriteIndex];
             }
             else
             {
                 // Back
-                spriteRenderer.sprite = AnimationsMap[CurrentSpriteName + "_b"][CurrentSpriteIndex];
+                spriteRenderer.sprite = AnimationsMap[CurrentSpriteHash][1].sprite[CurrentSpriteIndex];
+                // spriteRenderer.sprite = AnimationsMap[CurrentSpriteName + "_b"][CurrentSpriteIndex];
             }
         }
 
@@ -63,10 +88,11 @@ namespace Assets.Scripts.Player
             CameraHolder.onPreCull -= BeforeCameraRender;
         }
 
-        public void ChangeAnimation(string name)
-        {
-            animator.Play(name);
-            CurrentSpriteName = name;
-        }
+        //public void ChangeAnimation(string name)
+        //{
+        //   // animator.Play(name);
+        //    CurrentSpriteName = name;
+        //}
+
     }
 }

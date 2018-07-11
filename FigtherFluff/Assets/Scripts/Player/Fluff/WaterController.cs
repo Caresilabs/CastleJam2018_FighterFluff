@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Assets.Scripts.Player.Fluff
 {
@@ -13,6 +9,9 @@ namespace Assets.Scripts.Player.Fluff
 
         [SerializeField]
         private float IncreaseStep = 5;
+
+        [SerializeField]
+        private float DecreasePerSecond = 0.4f;
 
         private float lowY;
         private float highY;
@@ -31,7 +30,7 @@ namespace Assets.Scripts.Player.Fluff
             target.y = currentY;
             transform.position = Vector3.Lerp(transform.position, target, Time.deltaTime * 3);
 
-            currentY = Mathf.Clamp(currentY - Time.deltaTime * 0.5f, lowY, highY);
+            currentY = Mathf.Clamp(currentY - Time.deltaTime * DecreasePerSecond, lowY, highY);
         }
 
         public void IncreaseWater()
