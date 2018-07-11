@@ -1,7 +1,17 @@
 fileFormatVersion: 2
 guid: 19e8b5f9dd9a8465bbe70ed31f41d75e
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: Umbrella_man_jump_back_0
+    21300002: Umbrella_man_jump_back_1
+    21300004: Umbrella_man_jump_back_2
+    21300006: Umbrella_man_jump_back_3
+    21300008: Umbrella_man_jump_back_4
+    21300010: Umbrella_man_jump_back_5
+    21300012: Umbrella_man_jump_back_6
+    21300014: Umbrella_man_jump_back_7
+    21300016: Umbrella_man_jump_back_8
+    21300018: Umbrella_man_jump_back_9
   externalObjects: {}
   serializedVersion: 5
   mipmaps:
@@ -80,11 +90,211 @@ TextureImporter:
     androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Umbrella_man_jump_back_0
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 213
+        width: 11
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed80948f495cc47adb8f4035558ecfe0
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Umbrella_man_jump_back_1
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 215
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b4360eca056d4d40b0fb730c6785d01
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Umbrella_man_jump_back_2
+      rect:
+        serializedVersion: 2
+        x: 551
+        y: 18
+        width: 173
+        height: 206
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 801521e69838a4a8ca4fa62240f4deec
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Umbrella_man_jump_back_3
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 19
+        width: 160
+        height: 206
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc95b16d223ae45b88edfcf6f8e9ad97
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Umbrella_man_jump_back_4
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 209
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 470d2ec78dd024182b634d87c7bdc49a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Umbrella_man_jump_back_5
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 194
+        width: 10
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e1fc229c0bbe4fbcb9498b1568f2bb0
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Umbrella_man_jump_back_6
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 202
+        width: 5
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54c73525c422e4599888d097b5934708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Umbrella_man_jump_back_7
+      rect:
+        serializedVersion: 2
+        x: 411
+        y: 205
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab7eb1ba176ae4fec979e05841507b1f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Umbrella_man_jump_back_8
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 22
+        width: 160
+        height: 206
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3561b737b0e124ba8a1b3c86a83d4119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Umbrella_man_jump_back_9
+      rect:
+        serializedVersion: 2
+        x: 354
+        y: 20
+        width: 174
+        height: 206
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 045030c6944284974bbf80dc88ab4173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: bdffb06308f4d4aadb3e6a913f70cc08
     vertices: []
     indices: 
     edges: []
