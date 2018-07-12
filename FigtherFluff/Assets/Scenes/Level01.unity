@@ -351,6 +351,10 @@ Prefab:
       propertyPath: field of view
       value: 67
       objectReference: {fileID: 0}
+    - target: {fileID: 1213419058837774, guid: 4f1955c79b94a8e41834e3b4355e0cbc, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114204666554903066, guid: 4f1955c79b94a8e41834e3b4355e0cbc, type: 2}
     - {fileID: 81148410928105872, guid: 4f1955c79b94a8e41834e3b4355e0cbc, type: 2}
@@ -5174,7 +5178,7 @@ Prefab:
     - target: {fileID: 114419103241580658, guid: be80dd07d552b6a4eb1a8a30177c8519,
         type: 2}
       propertyPath: Animations.Array.size
-      value: 18
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 114419103241580658, guid: be80dd07d552b6a4eb1a8a30177c8519,
         type: 2}
@@ -5264,6 +5268,16 @@ Prefab:
     - target: {fileID: 114419103241580658, guid: be80dd07d552b6a4eb1a8a30177c8519,
         type: 2}
       propertyPath: Animations.Array.data[17].sprite.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114419103241580658, guid: be80dd07d552b6a4eb1a8a30177c8519,
+        type: 2}
+      propertyPath: Animations.Array.data[18].sprite.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114419103241580658, guid: be80dd07d552b6a4eb1a8a30177c8519,
+        type: 2}
+      propertyPath: Animations.Array.data[19].sprite.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4666131928563246, guid: be80dd07d552b6a4eb1a8a30177c8519, type: 2}
@@ -5719,13 +5733,13 @@ Prefab:
         type: 2}
       propertyPath: Animations.Array.data[11].sprite.Array.data[0]
       value: 
-      objectReference: {fileID: 21300010, guid: bc4ee6d6dc5df4ca0ae7c7f77c945f82,
+      objectReference: {fileID: 21300014, guid: bc4ee6d6dc5df4ca0ae7c7f77c945f82,
         type: 3}
     - target: {fileID: 114419103241580658, guid: be80dd07d552b6a4eb1a8a30177c8519,
         type: 2}
       propertyPath: Animations.Array.data[11].sprite.Array.data[1]
       value: 
-      objectReference: {fileID: 21300014, guid: bc4ee6d6dc5df4ca0ae7c7f77c945f82,
+      objectReference: {fileID: 21300010, guid: bc4ee6d6dc5df4ca0ae7c7f77c945f82,
         type: 3}
     - target: {fileID: 114419103241580658, guid: be80dd07d552b6a4eb1a8a30177c8519,
         type: 2}
@@ -5868,6 +5882,28 @@ Prefab:
       propertyPath: Duration
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114419103241580658, guid: be80dd07d552b6a4eb1a8a30177c8519,
+        type: 2}
+      propertyPath: Animations.Array.data[18].name
+      value: falling_f
+      objectReference: {fileID: 0}
+    - target: {fileID: 114419103241580658, guid: be80dd07d552b6a4eb1a8a30177c8519,
+        type: 2}
+      propertyPath: Animations.Array.data[18].sprite.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300010, guid: 94d7c23a51a42431dbe928bcfa3c7788,
+        type: 3}
+    - target: {fileID: 114419103241580658, guid: be80dd07d552b6a4eb1a8a30177c8519,
+        type: 2}
+      propertyPath: Animations.Array.data[19].name
+      value: falling_b
+      objectReference: {fileID: 0}
+    - target: {fileID: 114419103241580658, guid: be80dd07d552b6a4eb1a8a30177c8519,
+        type: 2}
+      propertyPath: Animations.Array.data[19].sprite.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300018, guid: 19e8b5f9dd9a8465bbe70ed31f41d75e,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 199736942474261752, guid: be80dd07d552b6a4eb1a8a30177c8519, type: 2}
     - {fileID: 198792529993351046, guid: be80dd07d552b6a4eb1a8a30177c8519, type: 2}
@@ -6184,6 +6220,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 41c87fdc7758c894db31981e7d685ec0, type: 2}
   - {fileID: 11400000, guid: 7695c7890d52aee4f8e58eaa85fb201c, type: 2}
   - {fileID: 11400000, guid: 75a4f349f14009b4fafe75009c7225e9, type: 2}
+  - {fileID: 11400000, guid: 79f57d67228c248f39178eb1053d4cf3, type: 2}
   Default: {fileID: 11400000, guid: aeb65196861044f41ae0bf58d9964dfd, type: 2}
 --- !u!1001 &1152149047
 Prefab:
@@ -6701,6 +6738,10 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: 7f61a05172bc84af7b9d175b93726fd4,
         type: 3}
+    - target: {fileID: 1644398024918824, guid: 3003978c7bf1fff459c9a715e3372d2c, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3003978c7bf1fff459c9a715e3372d2c, type: 2}
   m_IsPrefabParent: 0
