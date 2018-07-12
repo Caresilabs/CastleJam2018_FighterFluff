@@ -90,12 +90,12 @@ TextureImporter:
       name: Umbrella_man_swing_back_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 1
         y: 3
         width: 135
         height: 297
       alignment: 9
-      pivot: {x: 0.5, y: 0.22}
+      pivot: {x: 0.5, y: 0.4}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -115,7 +115,7 @@ TextureImporter:
         width: 135
         height: 294
       alignment: 9
-      pivot: {x: 0.5, y: 0.22335598}
+      pivot: {x: 0.5, y: 0.4}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -171,11 +171,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 325
-        y: 8
+        y: 10
         width: 135
-        height: 292
+        height: 290
       alignment: 9
-      pivot: {x: 0.5, y: 0.2}
+      pivot: {x: 0.5, y: 0.4}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
