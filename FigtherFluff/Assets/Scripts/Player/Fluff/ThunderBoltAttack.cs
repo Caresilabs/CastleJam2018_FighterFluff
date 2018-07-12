@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 namespace Assets.Scripts.Player.Fluff
@@ -13,13 +14,17 @@ namespace Assets.Scripts.Player.Fluff
 
         public bool Attack;
 
+        public float WinddownTime;
+
+        public Color WaterHitColor = Color.yellow;
+
         //public override void Update()
         //{
         //    base.Update();
 
         //    if (Attack)
         //    {
-                
+
         //    }
         //}
 
@@ -35,7 +40,13 @@ namespace Assets.Scripts.Player.Fluff
         {
             StartCoroutine(Light());
 
-            Instantiate(LightParticles, transform.position, Quaternion.LookRotation((GameManager.Instance.UmbrellaMan.transform.position - transform.position)), transform);
+            Transform attack = Instantiate(LightParticles, transform.position, Quaternion.LookRotation((GameManager.Instance.UmbrellaMan.transform.position - transform.position)), transform);
+            attack.GetComponent<FluffParticleAttack>().AttackSource = this;
+
+            controller.Movement.LockMovement(WinddownTime, true);
+
+            controller.Movement.Animator.SetTrigger("Thunder");
+
             Attack = false;
             base.Use();
         }
@@ -57,6 +68,21 @@ namespace Assets.Scripts.Player.Fluff
                 yield return new WaitForSecondsRealtime(0.25f);
             }
            
+        }
+
+        public void LightHit()
+        {
+            StartCoroutine(Light());
+            StartCoroutine(LightHitCoroutine());
+        }
+
+        private IEnumerator LightHitCoroutine()
+        {
+            Material mat = Water.GetComponentInChildren<MeshRenderer>().sharedMaterial;
+            var original = mat.GetColor("_BaseColor");
+            mat.SetColor("_BaseColor", WaterHitColor);
+            yield return new WaitForSecondsRealtime(0.2f);
+            mat.SetColor("_BaseColor", original);
         }
 
         protected override InputLayout.ActionType[] GetKeys()

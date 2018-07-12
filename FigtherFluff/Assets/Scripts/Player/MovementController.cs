@@ -199,20 +199,37 @@ public class MovementController : MonoBehaviour
 
     public void UnlockMovement()
     {
+        Debug.Log("UNLOCK");
         CanMove = true;
     }
 
-    public void LockMovement(float duration)
+    public void LockMovement(float duration, bool freeze = false)
     {
-        StartCoroutine(LockMovementCoroutine(duration));
+        StartCoroutine(LockMovementCoroutine(duration, freeze));
     }
 
-    private IEnumerator LockMovementCoroutine(float duration)
+    private IEnumerator LockMovementCoroutine(float duration, bool freeze)
     {
+        if (freeze)
+            RigidBody.velocity = new Vector3(0, RigidBody.velocity.y , 0);
+
         CanMove = false;
         yield return new WaitForSeconds(duration);
         CanMove = true;
     }
+
+    public void Slow(float slowTime, float slowScale)
+    {
+        StartCoroutine(SlowCoroutine(slowTime, slowScale));
+    }
+
+    private IEnumerator SlowCoroutine(float slowTime, float slowScale)
+    {
+        SpeedScale = slowScale;
+        yield return new WaitForSeconds(slowTime);
+        SpeedScale = 1;
+    }
+
 
     public void LockGravity(float duration)
     {

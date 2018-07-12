@@ -39,13 +39,15 @@ public class GameManager : MonoBehaviour
 
     private float stateTime;
 
-    public GameManager()
-    {
-        Instance = this;
-    }
+    //public GameManager()
+    //{
+    //    Instance = this;
+    //}
 
     void Awake()
     {
+        Instance = this;
+
         Time.timeScale = 1;
         ChangeState(State.READY);
 
@@ -56,8 +58,8 @@ public class GameManager : MonoBehaviour
         var p2 = GameObject.Find("Player2").GetComponent<PlayerController>();
 
         // Todo cleanup
-       // p1.PlayerType = PlayerPrefs.GetInt("Player1", -1) == -1 ? Assets.Scripts.Player.PlayerType.PLAYER1 : Assets.Scripts.Player.PlayerType.PLAYER2;
-       // p2.PlayerType = PlayerPrefs.GetInt("Player2", 1) == -1 ? Assets.Scripts.Player.PlayerType.PLAYER1 : Assets.Scripts.Player.PlayerType.PLAYER2;
+        // p1.PlayerType = PlayerPrefs.GetInt("Player1", -1) == -1 ? Assets.Scripts.Player.PlayerType.PLAYER1 : Assets.Scripts.Player.PlayerType.PLAYER2;
+        // p2.PlayerType = PlayerPrefs.GetInt("Player2", 1) == -1 ? Assets.Scripts.Player.PlayerType.PLAYER1 : Assets.Scripts.Player.PlayerType.PLAYER2;
 
         // this.Player1.Movement.PlayerCamera.GetComponentInChildren<Camera>().rect = new Rect(PlayerPrefs.GetInt("Player1", -1) == -1 ? 0 : 0.5f, 0, 0.5f, 1);
         // this.Player2.Movement.PlayerCamera.GetComponentInChildren<Camera>().rect = new Rect(PlayerPrefs.GetInt("Player2", -1) == -1 ? 0 : 0.5f, 0, 0.5f, 1);
@@ -108,19 +110,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
         stateTime += Time.deltaTime;
-
-        if (Player1.IsDead())
-        {
-            ChangeState(State.GAMEOVER);
-        }
-        else if (Player2.IsDead())
-        {
-            ChangeState(State.GAMEOVER);
-        }
 
         if (GameState == State.READY)
         {
@@ -129,11 +121,31 @@ public class GameManager : MonoBehaviour
                 ChangeState(State.RUNNING);
             }
         }
-        if (GameState == State.GAMEOVER)
+        else if (GameState == State.RUNNING)
         {
-            if (Input.anyKeyDown)
+            if (Player1.IsDead())
             {
-                RestartGame();
+                ChangeState(State.GAMEOVER);
+                Time.timeScale = 1;
+            }
+            else if (Player2.IsDead())
+            {
+                ChangeState(State.GAMEOVER);
+                Time.timeScale = 1;
+            }
+        }
+        else if (GameState == State.GAMEOVER)
+        {
+            if (stateTime >= 2)
+            {
+                if (Player1.Input.IsButtonDown(InputLayout.ActionType.SPECIAL) || Player2.Input.IsButtonDown(InputLayout.ActionType.SPECIAL))
+                {
+                    MainMenu();
+                }
+                else if (Player1.Input.IsButtonDown(InputLayout.ActionType.START) || Player2.Input.IsButtonDown(InputLayout.ActionType.START))
+                {
+                    RestartGame();
+                }
             }
         }
     }
@@ -148,6 +160,13 @@ public class GameManager : MonoBehaviour
         StopCoroutine("HitstunCoroutine");
         Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void MainMenu()
+    {
+        StopCoroutine("HitstunCoroutine");
+        Time.timeScale = 1;
+        SceneManager.LoadScene(0);
     }
 
     public void Hitstun(float duration)

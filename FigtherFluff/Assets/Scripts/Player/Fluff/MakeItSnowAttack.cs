@@ -10,6 +10,11 @@ namespace Assets.Scripts.Player.Fluff
         [SerializeField]
         private Transform SnowParticles;
 
+        public float SlowTime;
+        public float SlowScale;
+
+        public float WinddownTime;
+
         public bool Attack;
 
         public override void Update()
@@ -31,7 +36,12 @@ namespace Assets.Scripts.Player.Fluff
         public override void Use()
         {
             Attack = false;
-            Instantiate(SnowParticles, transform.position, Quaternion.LookRotation((GameManager.Instance.UmbrellaMan.transform.position - transform.position)), transform);
+            Transform attack = Instantiate(SnowParticles, transform.position, Quaternion.LookRotation((GameManager.Instance.UmbrellaMan.transform.position - transform.position)), transform);
+            attack.GetComponent<FluffParticleAttack>().AttackSource = this;
+            controller.Movement.LockMovement(WinddownTime, true);
+
+            controller.Movement.Animator.SetTrigger("Water");
+
             base.Use();
         }
 

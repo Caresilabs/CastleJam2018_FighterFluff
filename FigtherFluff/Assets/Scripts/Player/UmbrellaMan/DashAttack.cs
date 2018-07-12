@@ -45,6 +45,14 @@ namespace Assets.Scripts.Player.UmbrellaMan
 
         }
 
+        public override bool CanUse()
+        {
+            if (controller.OnWater)
+                return false;
+
+            return base.CanUse();
+        }
+
         protected override InputLayout.ActionType[] GetKeys()
         {
             return DashRight ? new[] { InputLayout.ActionType.SHOULDER_RIGHT } : new[] { InputLayout.ActionType.SHOULDER_LEFT };

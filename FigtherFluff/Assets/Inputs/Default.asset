@@ -9,12 +9,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f1b1016ffc8cf214ca56b6d316396242, type: 3}
-  m_Name: 8Bito
+  m_Name: Default
   m_EditorClassIdentifier: 
-  TryParseName: Xbox Bluetooth Gamepad
+  TryParseName: Default
   Map:
   - Action: 0
-    Code: 331
+    Code: 0
     Code2: 0
     Axis: 
     AxisScale: 1
@@ -24,32 +24,32 @@ MonoBehaviour:
     Axis: 
     AxisScale: 1
   - Action: 2
-    Code: 333
-    Code2: 332
+    Code: 0
+    Code2: 0
     Axis: 
     AxisScale: 1
   - Action: 3
-    Code: 334
+    Code: 0
     Code2: 0
     Axis: 
     AxisScale: 1
   - Action: 4
-    Code: 335
+    Code: 0
+    Code2: 0
+    Axis: 
+    AxisScale: 1
+  - Action: 7
+    Code: 0
     Code2: 0
     Axis: 
     AxisScale: 1
   - Action: 6
     Code: 0
     Code2: 0
-    Axis: 7
-    AxisScale: 1
-  - Action: 7
-    Code: 0
-    Code2: 0
-    Axis: 6
+    Axis: 
     AxisScale: 1
   - Action: 5
-    Code: 337
+    Code: 0
     Code2: 0
     Axis: 0
     AxisScale: 0
