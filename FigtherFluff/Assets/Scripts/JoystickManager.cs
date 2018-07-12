@@ -11,6 +11,9 @@ namespace Assets.Scripts
         [SerializeField]
         private InputLayout[] Layouts;
 
+        [SerializeField]
+        private InputLayout Default;
+
         public static InputLayout PLAYER1;
         public static InputLayout PLAYER2;
 
@@ -43,11 +46,19 @@ namespace Assets.Scripts
             // Fallback
             if (player < 3)
             {
-                PLAYER1 = Layouts[0];
-                PLAYER1.Init(1);
+                if (player <= 1)
+                {
+                    InputLayout clone = UnityEngine.Object.Instantiate(Default) as InputLayout;
+                    PLAYER1 = clone;
+                    PLAYER1.Init(1);
+                }
 
-                PLAYER2 = Layouts[1];
-                PLAYER2.Init(2);
+                if (player <= 2)
+                {
+                    InputLayout clone2 = UnityEngine.Object.Instantiate(Default) as InputLayout;
+                    PLAYER2 = clone2;
+                    PLAYER2.Init(2);
+                }
             }
 
         }

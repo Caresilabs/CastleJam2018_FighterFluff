@@ -9,6 +9,10 @@ namespace Assets.Scripts.Player.UmbrellaMan
 
         public float Damage;
 
+        public float ForwardSpeed = 10;
+
+        private bool hasAttacked;
+
         protected override void Start()
         {
             base.Start();
@@ -18,16 +22,16 @@ namespace Assets.Scripts.Player.UmbrellaMan
         {
             base.Update();
 
-            if (Attack)
+            if (Attack && !hasAttacked)
             {
                 RaycastHit hit;
 
-                Vector3 p1 = transform.position/* + GetComponent<CapsuleCollider>().center*/;
+                Vector3 p1 = transform.position /* + GetComponent<CapsuleCollider>().center*/;
 
-                if (Physics.SphereCast(p1, 0.5f, transform.forward, out hit, 4))
+                if (Physics.SphereCast(p1, 0.5f, transform.forward, out hit, 3.5f))
                 {
                     Attack = false;
-
+                    hasAttacked = true;
                     PlayerController other = hit.transform.GetComponent<PlayerController>();
                     if (other != null)
                     {
@@ -39,12 +43,18 @@ namespace Assets.Scripts.Player.UmbrellaMan
 
         public override bool CanUse()
         {
+            if (controller.OnWater)
+                return false;
+
             return base.CanUse();
         }
 
         public override void Use()
         {
+            controller.RigidBody.AddForce(transform.forward * ForwardSpeed, ForceMode.VelocityChange);
             Attack = true;
+            hasAttacked = false;
+            controller.Movement.Animator.SetTrigger("Attacked");
             base.Use();
         }
 

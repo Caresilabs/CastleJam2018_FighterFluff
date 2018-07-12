@@ -15,6 +15,8 @@ namespace Assets.Scripts.Player.Fluff
 
         public float Damage = 5;
 
+        public float WinddownTime;
+
         public override void Update()
         {
             base.Update();
@@ -53,7 +55,13 @@ namespace Assets.Scripts.Player.Fluff
         public override void Use()
         {
             Attack = false;
-            Instantiate(BlowParticles, transform.position, transform.rotation, transform);
+            Transform attack =  Instantiate(BlowParticles, transform.position, transform.rotation, transform);
+            attack.GetComponent<FluffParticleAttack>().AttackSource = this;
+
+            controller.Movement.LockMovement(WinddownTime, true);
+
+            controller.Movement.Animator.SetTrigger("Blow");
+
             base.Use();
         }
 

@@ -10,10 +10,7 @@ namespace Assets.Scripts.Player.UmbrellaMan
 
         public float Speed = 5;
 
-        protected override void Start()
-        {
-            base.Start();
-        }
+        public float WinddownTime = 1;
 
         public override void Update()
         {
@@ -24,6 +21,8 @@ namespace Assets.Scripts.Player.UmbrellaMan
                 if (controller.Movement.Grounded)
                 {
                     Attack = false;
+                    Invoke("SpikeOff", WinddownTime);
+                    controller.Movement.LockMovement(WinddownTime);
                     return;
                 }
 
@@ -39,13 +38,26 @@ namespace Assets.Scripts.Player.UmbrellaMan
                     if (other != null)
                     {
                         Attack = false;
-                        other.Damage(transform, Damage, 0.2f, 1.3f, controller.Movement.Grounded ? 0.9f : -.6f); //0.25f
+                        Invoke("SpikeOff", WinddownTime);
+                        controller.Movement.LockMovement(WinddownTime);
+
+                        // Small upforce
+                        var selfVel = controller.RigidBody.velocity;
+                        selfVel.y = 5;
+                        controller.RigidBody.velocity = selfVel;
+
+                        other.Damage(transform, Damage, 0.2f, 1.3f, other.Movement.Grounded ? 0.9f : -.6f); //0.25f
 
                         other.PlayerCamera.Shake(0.4f, 0.4f);
                         controller.PlayerCamera.Shake(0.3f, 0.3f);
                     }
                 }
             }
+        }
+
+        private void SpikeOff()
+        {
+            controller.Movement.Animator.SetBool("Spike", false);
         }
 
         public override bool CanUse()
@@ -59,6 +71,7 @@ namespace Assets.Scripts.Player.UmbrellaMan
         public override void Use()
         {
             Attack = true;
+            controller.Movement.Animator.SetBool("Spike", true);
             base.Use();
         }
 

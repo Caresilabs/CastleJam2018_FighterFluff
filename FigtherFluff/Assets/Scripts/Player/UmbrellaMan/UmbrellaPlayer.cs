@@ -18,7 +18,13 @@ namespace Assets.Scripts.Player.UmbrellaMan
 
         private void OnJump()
         {
-            RigidBody.AddForce(new Vector3(0, 900, 0));
+            RigidBody.AddForce(new Vector3(0, 800, 0));
+        }
+
+        protected override void Update()
+        {
+            base.Update();
+            Movement.Animator.SetFloat("VerticalSpeed", RigidBody.velocity.y);
         }
 
         private void OnParticleCollision(GameObject other)
@@ -29,7 +35,7 @@ namespace Assets.Scripts.Player.UmbrellaMan
                 var blockFactor = GetComponent<UmbrellaBlock>().TryBlock(attack.transform);
                 if (blockFactor != 0)
                 {
-                    attack.OnParticleHit(this, blockFactor);
+                    attack.OnParticleHit(this, blockFactor, OnWater);
                 }
             }
         }
@@ -39,6 +45,8 @@ namespace Assets.Scripts.Player.UmbrellaMan
             if (collision.gameObject.CompareTag("Water"))
             {
                 Movement.SpeedScale = (WaterSpeedScale);
+                OnWater = true;
+                Movement.Animator.SetBool("IsFloating", true);
             }
         }
 
@@ -47,6 +55,8 @@ namespace Assets.Scripts.Player.UmbrellaMan
             if (collision.gameObject.CompareTag("Water"))
             {
                 Movement.SpeedScale = 1;
+                OnWater = false;
+                Movement.Animator.SetBool("IsFloating", false);
             }
         }
 

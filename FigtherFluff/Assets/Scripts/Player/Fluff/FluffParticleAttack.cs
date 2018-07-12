@@ -1,10 +1,11 @@
-﻿using Assets.Scripts.Player.UmbrellaMan;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Assets.Scripts.Player.Fluff
 {
     public class FluffParticleAttack : MonoBehaviour
     {
+        public Attack<FluffPlayer> AttackSource { get; set; }
+
         public float Damage = 5;
         public float KnockbackHeight;
         public float Knockback;
@@ -36,12 +37,36 @@ namespace Assets.Scripts.Player.Fluff
             lastDir = newLook;
         }
 
-        public void OnParticleHit(PlayerController other, float blockFactor)
+        public void OnParticleHit(PlayerController other, float blockFactor, bool onWater)
         {
+            if (onWater)
+            {
+                if (AttackSource is ThunderBoltAttack)
+                {
+                    var light = AttackSource as ThunderBoltAttack;
+                    light.LightHit();
+
+                    blockFactor = 2; // hack
+
+                   // Damage *= 2;
+                    Knockback = 2;
+                    KnockbackHeight = 99999; // hack
+                    Hitstun *= 1.5f;
+
+                    other.Movement.LockMovement(1.5f);
+                }
+            }
+
+            if (AttackSource is MakeItSnowAttack)
+            {
+                var snow = AttackSource as MakeItSnowAttack;
+                other.Movement.Slow(snow.SlowTime, snow.SlowScale);
+            }
+
             other.Damage(GameManager.Instance.Fluff.transform, Damage * blockFactor, Hitstun, Knockback * blockFactor, KnockbackHeight * blockFactor);
             other.PlayerCamera.Shake(ShakeDuration, ShakeStrength * blockFactor);
 
-            GameManager.Instance.Fluff.PlayerCamera.Shake(0.15f, 0.3f * blockFactor);
+            GameManager.Instance.Fluff.PlayerCamera.Shake(0.2f * blockFactor, 0.3f * blockFactor);
 
             Destroy(this);
         }

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using UnityEngine;
 
 namespace Assets.Scripts
@@ -59,19 +58,28 @@ namespace Assets.Scripts
         public bool IsButtonDown(ActionType type)
         {
             InputMap map = Inputs[type];
-            return Input.GetKeyDown(Remap(map.Code)) || Input.GetKeyDown(Remap(map.Code2));
+            if (map.Code != KeyCode.None)
+                return Input.GetKeyDown(Remap(map.Code)) || Input.GetKeyDown(Remap(map.Code2));
+            else
+                return Input.GetButtonDown(string.Format("P{0}_{1}", JoyStickIndex, type.ToString()));
         }
 
         public bool IsButton(ActionType type)
         {
             InputMap map = Inputs[type];
-            return Input.GetKey(Remap(map.Code)) || Input.GetKey(Remap(map.Code2));
+            if (map.Code != KeyCode.None)
+                return Input.GetKey(Remap(map.Code)) || Input.GetKey(Remap(map.Code2));
+             else
+                return Input.GetButton(string.Format("P{0}_{1}", JoyStickIndex, type.ToString()));
         }
 
         public float GetAxis(ActionType type)
         {
             InputMap map = Inputs[type];
-            return Input.GetAxis(string.Format("J{0}_A{1}", JoyStickIndex, map.Axis)) * map.AxisScale;  //Input.GetKey(Remap(map.Code)) || Input.GetKeyDown(Remap(map.Code2));
+            if (!string.IsNullOrEmpty(map.Axis))
+                return Input.GetAxis(string.Format("J{0}_A{1}", JoyStickIndex, map.Axis)) * map.AxisScale;  //Input.GetKey(Remap(map.Code)) || Input.GetKeyDown(Remap(map.Code2));
+            else
+                return Input.GetAxis(string.Format("P{0}_{1}", JoyStickIndex, type.ToString()));
         }
 
 

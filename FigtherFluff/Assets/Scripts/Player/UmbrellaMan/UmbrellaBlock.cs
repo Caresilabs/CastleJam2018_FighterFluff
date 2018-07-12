@@ -34,6 +34,7 @@ namespace Assets.Scripts.Player.UmbrellaMan
                 if (blockTime > TotalTime)
                 {
                     isBlocking = false;
+                    controller.Movement.Animator.SetBool("Shield", false);
                     controller.Movement.LockMovement(PenaltyTime);
                 }
             }
@@ -44,6 +45,9 @@ namespace Assets.Scripts.Player.UmbrellaMan
             if (!controller.Movement.Grounded)
                 return false;
 
+            if (controller.OnWater)
+                return false;
+
             return base.CanUse();
         }
 
@@ -51,6 +55,7 @@ namespace Assets.Scripts.Player.UmbrellaMan
         {
             blockTime = 0;
             isBlocking = true;
+            controller.Movement.Animator.SetBool("Shield", true);
             controller.Movement.LockMovement();
             base.Use();
         }
