@@ -28,7 +28,7 @@ namespace Assets.Scripts.Player.UmbrellaMan
 
                 Vector3 p1 = transform.position /* + GetComponent<CapsuleCollider>().center*/;
 
-                if (Physics.SphereCast(p1, 0.5f, transform.forward, out hit, 3.5f))
+                if (Physics.SphereCast(p1, 0.5f, transform.forward, out hit, 4f))
                 {
                     Attack = false;
                     hasAttacked = true;

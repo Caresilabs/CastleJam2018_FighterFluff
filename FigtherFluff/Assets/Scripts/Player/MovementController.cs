@@ -192,8 +192,11 @@ public class MovementController : MonoBehaviour
         canJump = true;
     }
 
-    public void LockMovement()
+    public void LockMovement(bool freeze = false)
     {
+        //if (freeze)
+        //    RigidBody.velocity = new Vector3(0, RigidBody.velocity.y, 0);
+
         CanMove = false;
     }
 

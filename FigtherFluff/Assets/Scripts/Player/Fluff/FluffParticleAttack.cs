@@ -58,8 +58,8 @@ namespace Assets.Scripts.Player.Fluff
                     blockFactor = 2; // hack
 
                    // Damage *= 2;
-                    Knockback = 2;
-                    KnockbackHeight = 99999; // hack
+                    Knockback = 0.5f;
+                    KnockbackHeight = 9999; // hack
                     Hitstun *= 1.5f;
 
                     other.Movement.LockMovement(1.5f);
@@ -72,7 +72,7 @@ namespace Assets.Scripts.Player.Fluff
                 other.Movement.Slow(snow.SlowTime, snow.SlowScale);
             }
 
-            other.Damage(AttackSource.transform, Damage * blockFactor, Hitstun, Knockback * blockFactor, KnockbackHeight * blockFactor);
+            other.Damage((AttackSource != null ? AttackSource.transform : transform), Damage * blockFactor, Hitstun, Knockback * blockFactor, KnockbackHeight * blockFactor);
             other.PlayerCamera.Shake(ShakeDuration, ShakeStrength * blockFactor);
 
             GameManager.Instance.Fluff.PlayerCamera.Shake(0.2f * blockFactor, 0.3f * blockFactor); // TODO

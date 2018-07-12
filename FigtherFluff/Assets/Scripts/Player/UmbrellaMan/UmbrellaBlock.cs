@@ -57,7 +57,7 @@ namespace Assets.Scripts.Player.UmbrellaMan
             blockTime = 0;
             isBlocking = true;
             controller.Movement.Animator.SetBool("Shield", true);
-            controller.Movement.LockMovement();
+            controller.Movement.LockMovement(true);
             base.Use();
         }
 
