@@ -41,7 +41,7 @@ namespace Assets.Scripts.Player.Fluff
             StartCoroutine(Light());
 
             Transform attack = Instantiate(LightParticles, transform.position, Quaternion.LookRotation((GameManager.Instance.UmbrellaMan.transform.position - transform.position)), transform);
-            attack.GetComponent<FluffParticleAttack>().AttackSource = this;
+            attack.GetComponent<FluffParticleAttack>().Init(this, GameManager.Instance.UmbrellaMan.transform);
 
             controller.Movement.LockMovement(WinddownTime, true);
 

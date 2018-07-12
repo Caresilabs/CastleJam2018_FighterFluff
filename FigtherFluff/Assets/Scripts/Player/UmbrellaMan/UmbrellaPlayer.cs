@@ -32,7 +32,7 @@ namespace Assets.Scripts.Player.UmbrellaMan
             FluffParticleAttack attack = other.GetComponentInParent<FluffParticleAttack>();
             if (attack != null)
             {
-                var blockFactor = GetComponent<UmbrellaBlock>().TryBlock(attack.transform);
+                var blockFactor = GetComponent<UmbrellaBlock>().TryBlock(attack.AttackSource.transform, attack.transform);
                 if (blockFactor != 0)
                 {
                     attack.OnParticleHit(this, blockFactor, OnWater);

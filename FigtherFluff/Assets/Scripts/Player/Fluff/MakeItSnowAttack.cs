@@ -37,7 +37,7 @@ namespace Assets.Scripts.Player.Fluff
         {
             Attack = false;
             Transform attack = Instantiate(SnowParticles, transform.position, Quaternion.LookRotation((GameManager.Instance.UmbrellaMan.transform.position - transform.position)), transform);
-            attack.GetComponent<FluffParticleAttack>().AttackSource = this;
+            attack.GetComponent<FluffParticleAttack>().Init(this, GameManager.Instance.UmbrellaMan.transform);
             controller.Movement.LockMovement(WinddownTime, true);
 
             controller.Movement.Animator.SetTrigger("Water");

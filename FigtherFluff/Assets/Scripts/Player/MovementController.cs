@@ -199,7 +199,6 @@ public class MovementController : MonoBehaviour
 
     public void UnlockMovement()
     {
-        Debug.Log("UNLOCK");
         CanMove = true;
     }
 

@@ -56,7 +56,7 @@ namespace Assets.Scripts.Player.Fluff
         {
             Attack = false;
             Transform attack =  Instantiate(BlowParticles, transform.position, transform.rotation, transform);
-            attack.GetComponent<FluffParticleAttack>().AttackSource = this;
+            attack.GetComponent<FluffParticleAttack>().Init(this, GameManager.Instance.UmbrellaMan.transform);
 
             controller.Movement.LockMovement(WinddownTime, true);
 

@@ -1,10 +1,13 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Assets.Scripts.Player.Fluff
 {
     public class FluffParticleAttack : MonoBehaviour
     {
         public Attack<FluffPlayer> AttackSource { get; set; }
+
+        public Transform Target { get; set; }
 
         public float Damage = 5;
         public float KnockbackHeight;
@@ -16,18 +19,18 @@ namespace Assets.Scripts.Player.Fluff
 
         public float RetargetAlpha = 30f;
 
-        private PlayerController UmbrellaMan;
+        //private PlayerController UmbrellaMan;
 
         private void Awake()
         {
-            this.UmbrellaMan = GameManager.Instance.UmbrellaMan;    //GameObject.FindObjectOfType<UmbrellaMan.UmbrellaPlayer>();
-            lastDir = (UmbrellaMan.transform.position - transform.position).normalized;
+            //this.UmbrellaMan = Target//; GameManager.Instance.UmbrellaMan;    //GameObject.FindObjectOfType<UmbrellaMan.UmbrellaPlayer>();
+            //lastDir = (Target.position - transform.position).normalized;
         }
 
         private Vector3 lastDir;
         private void LateUpdate()
         {
-            Vector3 fwd = UmbrellaMan.transform.position - transform.position;
+            Vector3 fwd = Target.position - transform.position;
             fwd.Normalize();
 
             var newLook = Vector3.Slerp(lastDir, fwd, Time.deltaTime * RetargetAlpha);
@@ -35,6 +38,12 @@ namespace Assets.Scripts.Player.Fluff
             transform.rotation = Quaternion.LookRotation(newLook); // Quaternion.Slerp(Quaternion.LookRotation(lastDir), Quaternion.LookRotation(fwd), Time.deltaTime * 0.001f);
 
             lastDir = newLook;
+        }
+
+        internal void Init(Attack<FluffPlayer> attack, Transform target)
+        {
+            this.AttackSource = attack;
+            this.Target = target;
         }
 
         public void OnParticleHit(PlayerController other, float blockFactor, bool onWater)
@@ -63,10 +72,10 @@ namespace Assets.Scripts.Player.Fluff
                 other.Movement.Slow(snow.SlowTime, snow.SlowScale);
             }
 
-            other.Damage(GameManager.Instance.Fluff.transform, Damage * blockFactor, Hitstun, Knockback * blockFactor, KnockbackHeight * blockFactor);
+            other.Damage(AttackSource.transform, Damage * blockFactor, Hitstun, Knockback * blockFactor, KnockbackHeight * blockFactor);
             other.PlayerCamera.Shake(ShakeDuration, ShakeStrength * blockFactor);
 
-            GameManager.Instance.Fluff.PlayerCamera.Shake(0.2f * blockFactor, 0.3f * blockFactor);
+            GameManager.Instance.Fluff.PlayerCamera.Shake(0.2f * blockFactor, 0.3f * blockFactor); // TODO
 
             Destroy(this);
         }

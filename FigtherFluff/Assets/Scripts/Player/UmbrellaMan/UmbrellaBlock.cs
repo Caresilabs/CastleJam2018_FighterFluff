@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Assets.Scripts.Player.Fluff;
 using UnityEngine;
 
 namespace Assets.Scripts.Player.UmbrellaMan
@@ -60,13 +61,15 @@ namespace Assets.Scripts.Player.UmbrellaMan
             base.Use();
         }
 
-        public float TryBlock(Transform attack)
+        public float TryBlock(Transform source, Transform attack)
         {
             if (!isBlocking)
                 return 1;
 
             if (blockTime < ReflectTime)
             {
+                Transform reflect = Instantiate(attack, transform.position, Quaternion.LookRotation(attack.position - transform.position), transform);
+                reflect.GetComponent<FluffParticleAttack>().Init(null, source);
                 Destroy(attack.gameObject);
                 controller.Movement.UnlockMovement();
             }

@@ -43,6 +43,15 @@ namespace Assets.Scripts.Player.Fluff
             }
         }
 
+        private void OnParticleCollision(GameObject other)
+        {
+            FluffParticleAttack attack = other.GetComponentInParent<FluffParticleAttack>();
+            if (attack != null && attack.AttackSource == null)
+            {
+                attack.OnParticleHit(this, 1, false);
+            }
+        }
+
         public override void Damage(Transform source, float damage, float stunTime, float knockback, float knockbackHeight = 0)
         {
             base.Damage(source, damage, stunTime, knockback, knockbackHeight);
