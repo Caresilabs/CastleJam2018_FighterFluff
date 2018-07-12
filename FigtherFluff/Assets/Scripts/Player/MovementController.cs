@@ -12,11 +12,12 @@ public class MovementController : MonoBehaviour
     private Rigidbody RigidBody;
     private CapsuleCollider capsuleCollider;
     private PlayerController controller;
-    private Animator Animator;
+  
 
     private bool _grounded;
     public bool Grounded { get { return _grounded; } set { _grounded = value; Animator.SetBool("Grounded", value); } }
     public bool CanMove { get; private set; }
+    public Animator Animator { get; set; }
 
     public float SpeedScale { get; set; }
 
@@ -150,6 +151,8 @@ public class MovementController : MonoBehaviour
             velocityChange.z = Mathf.Clamp(velocityChange.z, -maxVelocityChange, maxVelocityChange);
             velocityChange.y = 0;
             RigidBody.AddForce(velocityChange, ForceMode.VelocityChange);
+
+            Animator.SetFloat("Speed", (velocity.magnitude / Speed) + 1);
         }
         else
         {

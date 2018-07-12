@@ -23,6 +23,7 @@ namespace Assets.Scripts.Player.UmbrellaMan
         public override void Use()
         {
             base.Use();
+            controller.Movement.Animator.SetTrigger("Dashed");
             StartCoroutine(DoDash());
         }
 
