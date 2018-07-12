@@ -10,6 +10,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     public float MaxHealth = 100;
 
+    [SerializeField]
+    public ParticleSystem SweatParticles;
+
     public float Health { get; private set; }
 
     public Rigidbody RigidBody { get; private set; }
@@ -35,6 +38,10 @@ public class PlayerController : MonoBehaviour
         transform.rotation = Quaternion.LookRotation(fwd);
 
         cooldown -= Time.deltaTime;
+
+        #pragma warning disable CS0618 // Type or member is obsolete
+        SweatParticles.emissionRate = (1 - Movement.SpeedScale) * 6;
+        #pragma warning restore CS0618 // Type or member is obsolete
     }
 
     public virtual void Damage(Transform source, float damage, float stunTime, float knockback, float knockbackHeight = 0)
