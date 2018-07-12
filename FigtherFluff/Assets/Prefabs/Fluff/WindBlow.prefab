@@ -219,12 +219,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b015934956177746ae2997aeda72311, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 5
+  Damage: 4
   KnockbackHeight: 0.1
-  Knockback: 3
+  Knockback: 2.8
   Hitstun: 0.5
   ShakeDuration: 0.5
   ShakeStrength: 0.6
+  StunTime: 0.7
   RetargetAlpha: 30
 --- !u!198 &198120635721309054
 ParticleSystem:

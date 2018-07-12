@@ -173,7 +173,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1717977565952824}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.71, z: -1.86}
+  m_LocalPosition: {x: 0, y: 2, z: -1.86}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4798044464261294}
@@ -219,12 +219,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b015934956177746ae2997aeda72311, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 5
+  Damage: 4
   KnockbackHeight: 0.1
-  Knockback: 1.5
+  Knockback: 1.35
   Hitstun: 0.05
   ShakeDuration: 0.2
   ShakeStrength: 0.3
+  StunTime: 0.5
   RetargetAlpha: 20
 --- !u!198 &198120635721309054
 ParticleSystem:
@@ -14257,7 +14258,7 @@ ParticleSystem:
     gravityModifier:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 3
+      scalar: 2
       minScalar: 1
       maxCurve:
         serializedVersion: 2

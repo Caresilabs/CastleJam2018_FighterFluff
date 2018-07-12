@@ -30,7 +30,7 @@ namespace Assets.Scripts.Player.UmbrellaMan
         private void OnParticleCollision(GameObject other)
         {
             FluffParticleAttack attack = other.GetComponentInParent<FluffParticleAttack>();
-            if (attack != null)
+            if (attack != null && attack.AttackSource != null)
             {
                 var blockFactor = GetComponent<UmbrellaBlock>().TryBlock(attack.AttackSource.transform, attack.transform);
                 if (blockFactor != 0)

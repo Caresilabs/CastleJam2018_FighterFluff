@@ -15,7 +15,9 @@ public class MovementController : MonoBehaviour
   
 
     private bool _grounded;
-    public bool Grounded { get { return _grounded; } set { _grounded = value; Animator.SetBool("Grounded", value); } }
+    public bool Grounded { get { return _grounded; } set { _grounded = value; Animator.SetBool("Grounded", value);
+        } }
+
     public bool CanMove { get; private set; }
     public Animator Animator { get; set; }
 
@@ -49,7 +51,7 @@ public class MovementController : MonoBehaviour
     void FixedUpdate()
     {
         UpdateMovement();
-        Grounded = false;
+       // Grounded = false;
         CheckGrounded();
     }
 
@@ -66,7 +68,13 @@ public class MovementController : MonoBehaviour
                     if (groundNormal.y < 0.15f) // Disable slope jumping
                         return;
 
-                    Grounded = true;
+                    if (!Grounded && canJump)
+                    {
+                        controller.OnGrounded();
+                        Grounded = true;
+                    }
+
+                  
                     allowJumpDelay = 0;
                 }
             }
@@ -81,7 +89,7 @@ public class MovementController : MonoBehaviour
         }
         else
         {
-
+            Grounded = false;
         }
     }
 
@@ -152,7 +160,7 @@ public class MovementController : MonoBehaviour
             velocityChange.y = 0;
             RigidBody.AddForce(velocityChange, ForceMode.VelocityChange);
 
-            Animator.SetFloat("Speed", (velocity.magnitude / Speed) + 1);
+            Animator.SetFloat("Speed", Mathf.Min((velocity.magnitude / Speed) + 1, 2));
         }
         else
         {
@@ -181,7 +189,7 @@ public class MovementController : MonoBehaviour
         if (hit.gameObject.name == name) // Nasty bug causes oncollsion enter on itself
             return;
 
-        canJump = true;
+            canJump = true;
     }
 
     void OnCollisionStay(Collision hit)
@@ -189,7 +197,7 @@ public class MovementController : MonoBehaviour
         if (hit.gameObject == GameManager.Instance.Player1.gameObject || hit.gameObject == GameManager.Instance.Player2.gameObject) // Nasty bug causes oncollsion enter on itself
             return;
 
-        canJump = true;
+            canJump = true;
     }
 
     public void LockMovement(bool freeze = false)

@@ -30,8 +30,8 @@ namespace Assets.Scripts.Player.Fluff
 
         public override bool CanUse()
         {
-            if (controller.IsAxis(InputLayout.ActionType.MOVE_FORWARD, true) || controller.IsAxis(InputLayout.ActionType.MOVE_FORWARD, false) 
-                || controller.IsAxis(InputLayout.ActionType.MOVE_RIGHT, true) || controller.IsAxis(InputLayout.ActionType.MOVE_RIGHT, false))
+            if (controller.IsAxis(InputLayout.ActionType.MOVE_FORWARD, true) || controller.IsAxis(InputLayout.ActionType.MOVE_FORWARD, false)) 
+                //|| controller.IsAxis(InputLayout.ActionType.MOVE_RIGHT, true) || controller.IsAxis(InputLayout.ActionType.MOVE_RIGHT, false))
                 return false;
 
             return base.CanUse();

@@ -30,12 +30,25 @@ namespace Assets.Scripts.Player.UmbrellaMan
 
                 if (Physics.SphereCast(p1, 0.5f, transform.forward, out hit, 4f))
                 {
-                    Attack = false;
-                    hasAttacked = true;
                     PlayerController other = hit.transform.GetComponent<PlayerController>();
                     if (other != null)
                     {
-                        other.Damage(transform, Damage, 0.03f, .8f, controller.Movement.Grounded ? 0.8f : -1.6f);
+                        Attack = false;
+                        hasAttacked = true;
+
+                        controller.PlayerCamera.Shake(0.2f, 0.1f);
+
+                        other.Damage(transform, Damage, 0.03f, .5f, controller.Movement.Grounded ? 3.5f : -3.8f);
+                        if (controller.Movement.Grounded)
+                        {
+                            //controller.Movement.LockGravity(0.5f);
+                            //controller.Movement.LockMovement(0.01f, true);
+                            other.Movement.LockMovement(0.3f);
+                        }
+                        else
+                        {
+                            other.Movement.LockMovement(1.8f);
+                        }
                     }
                 }
             }

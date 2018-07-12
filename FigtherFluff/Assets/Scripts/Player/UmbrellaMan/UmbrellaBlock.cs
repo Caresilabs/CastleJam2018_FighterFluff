@@ -58,6 +58,7 @@ namespace Assets.Scripts.Player.UmbrellaMan
             isBlocking = true;
             controller.Movement.Animator.SetBool("Shield", true);
             controller.Movement.LockMovement(true);
+            controller.RigidBody.velocity *= 0.3f;
             base.Use();
         }
 
@@ -72,11 +73,15 @@ namespace Assets.Scripts.Player.UmbrellaMan
                 reflect.GetComponent<FluffParticleAttack>().Init(null, source);
                 Destroy(attack.gameObject);
                 controller.Movement.UnlockMovement();
+                isBlocking = false;
+                controller.Movement.Animator.SetBool("Shield", false);
             }
             else if (blockTime < ReflectTime + BlockTime)
             {
                 Destroy(attack.gameObject);
                 controller.Movement.UnlockMovement();
+                isBlocking = false;
+                controller.Movement.Animator.SetBool("Shield", false);
             }
             else if (blockTime < ReflectTime + BlockTime + BlockDamageTime)
             {

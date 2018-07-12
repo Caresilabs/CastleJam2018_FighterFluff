@@ -1,4 +1,5 @@
-﻿using Assets.Scripts;
+﻿using System;
+using Assets.Scripts;
 using Assets.Scripts.Player;
 using UnityEngine;
 
@@ -20,6 +21,10 @@ public class PlayerController : MonoBehaviour
 
     public CameraController PlayerCamera { get; set; }
 
+    public virtual void OnGrounded()
+    {
+    }
+
     public InputLayout Input { get; internal set; }
 
     private float cooldown;
@@ -40,7 +45,7 @@ public class PlayerController : MonoBehaviour
         cooldown -= Time.deltaTime;
 
         #pragma warning disable CS0618 // Type or member is obsolete
-        SweatParticles.emissionRate = (1 - Movement.SpeedScale) * 6;
+        SweatParticles.emissionRate = Movement.CanMove ? (1 - Movement.SpeedScale) * 6 : 7;
         #pragma warning restore CS0618 // Type or member is obsolete
     }
 
@@ -104,7 +109,7 @@ public class PlayerController : MonoBehaviour
     public bool IsAxis(InputLayout.ActionType axis, bool inverted)
     {
         var val = Input.GetAxis(axis);
-        return inverted ? val < -0.2f : val > 0.2f;
+        return inverted ? val < -0.25f : val > 0.25f;
 
         // var val = Input.GetAxis(GetKeyName(axis));
         // return inverted ? val < -0.2f : val > 0.2f;

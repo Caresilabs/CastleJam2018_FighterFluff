@@ -22,13 +22,21 @@ namespace Assets.Scripts.Player.Fluff
        
         private void OnJump()
         {
-            RigidBody.AddForce(new Vector3(0, 800, 0));
+            RigidBody.AddForce(new Vector3(0, 700, 0));
             didJump = true;
+        }
+
+        public override void OnGrounded()
+        {
+            base.OnGrounded();
+            //Movement.LockMovement(0.25f);
         }
 
         protected override void Update()
         {
             base.Update();
+
+            //Debug.Log(Movement.CanMove);
 
             if (didJump)
             {
@@ -48,7 +56,7 @@ namespace Assets.Scripts.Player.Fluff
             FluffParticleAttack attack = other.GetComponentInParent<FluffParticleAttack>();
             if (attack != null && attack.AttackSource == null)
             {
-                attack.OnParticleHit(this, 1, false);
+                attack.OnParticleHit(this, 2, false);
             }
         }
 

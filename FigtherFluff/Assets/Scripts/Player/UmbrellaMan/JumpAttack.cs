@@ -28,7 +28,7 @@ namespace Assets.Scripts.Player.UmbrellaMan
 
                 Vector3 p1 = transform.position + GetComponent<CapsuleCollider>().center;
 
-                if (Physics.SphereCast(p1, 0.2f, Vector3.Lerp(transform.forward, Vector3.up, 0.1f), out hit, 3f))
+                if (Physics.SphereCast(p1, 0.2f, Vector3.Lerp(transform.forward, Vector3.down, 0.1f), out hit, 4.6f))
                 {
                     PlayerController other = hit.transform.GetComponent<PlayerController>();
                     if (other != null && !other.Movement.Grounded)
@@ -44,8 +44,9 @@ namespace Assets.Scripts.Player.UmbrellaMan
                         controller.RigidBody.velocity = vel;
 
                         other.RigidBody.velocity = Vector3.zero;
+                        other.Movement.LockMovement(1);
 
-                        controller.Movement.LockGravity(1.5f);
+                        controller.Movement.LockGravity(0.5f);
                     }
                 }
             }

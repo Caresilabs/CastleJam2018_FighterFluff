@@ -17,6 +17,8 @@ namespace Assets.Scripts.Player.Fluff
         public float ShakeDuration;
         public float ShakeStrength;
 
+        public float StunTime = 0.5f;
+
         public float RetargetAlpha = 30f;
 
         //private PlayerController UmbrellaMan;
@@ -48,6 +50,7 @@ namespace Assets.Scripts.Player.Fluff
 
         public void OnParticleHit(PlayerController other, float blockFactor, bool onWater)
         {
+
             if (onWater)
             {
                 if (AttackSource is ThunderBoltAttack)
@@ -57,8 +60,8 @@ namespace Assets.Scripts.Player.Fluff
 
                     blockFactor = 2; // hack
 
-                   // Damage *= 2;
-                    Knockback = 0.5f;
+                    // Damage *= 2;
+                    Knockback = 2.0f;
                     KnockbackHeight = 9999; // hack
                     Hitstun *= 1.5f;
 
@@ -72,10 +75,22 @@ namespace Assets.Scripts.Player.Fluff
                 other.Movement.Slow(snow.SlowTime, snow.SlowScale);
             }
 
+            if (AttackSource == null)
+            {
+                Knockback *= 0.15f;
+                GameManager.Instance.Fluff.PlayerCamera.Shake(0.4f, 0.4f);
+            }
+            else
+            {
+                GameManager.Instance.Fluff.PlayerCamera.Shake(0.2f * blockFactor, 0.3f * blockFactor); // TODO
+            }
+
             other.Damage((AttackSource != null ? AttackSource.transform : transform), Damage * blockFactor, Hitstun, Knockback * blockFactor, KnockbackHeight * blockFactor);
             other.PlayerCamera.Shake(ShakeDuration, ShakeStrength * blockFactor);
 
-            GameManager.Instance.Fluff.PlayerCamera.Shake(0.2f * blockFactor, 0.3f * blockFactor); // TODO
+            other.Movement.LockMovement(StunTime * blockFactor);
+
+
 
             Destroy(this);
         }

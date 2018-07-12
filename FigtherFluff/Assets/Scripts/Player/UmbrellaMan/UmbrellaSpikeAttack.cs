@@ -32,7 +32,7 @@ namespace Assets.Scripts.Player.UmbrellaMan
 
                 Vector3 p1 = transform.position + GetComponent<CapsuleCollider>().center;
 
-                if (Physics.SphereCast(p1, 1.5f, Vector3.down, out hit, 4f))
+                if (Physics.SphereCast(p1, 2f, Vector3.down, out hit, 4f))
                 {
                     PlayerController other = hit.transform.GetComponent<PlayerController>();
                     if (other != null)
@@ -46,10 +46,20 @@ namespace Assets.Scripts.Player.UmbrellaMan
                         selfVel.y = 6;
                         controller.RigidBody.velocity = selfVel;
 
-                        other.Damage(transform, Damage, 0.2f, 1.3f, other.Movement.Grounded ? 1.2f : -.6f); //0.25f
+                        other.Damage(transform, Damage, 0.2f, 0.8f, other.Movement.Grounded ? 1.0f : -.6f); //0.25f
 
                         other.PlayerCamera.Shake(0.4f, 0.4f);
                         controller.PlayerCamera.Shake(0.3f, 0.3f);
+                    }
+                }
+                else if (Physics.SphereCast(p1, 10, transform.forward, out hit, 2f))
+                {
+                    PlayerController other = hit.transform.GetComponent<PlayerController>();
+                    if (other != null && other.Movement.Grounded)
+                    {
+                        other.Damage(transform, Damage * 0.333f, 0.02f, .3f, 20.5f);
+                        other.Movement.LockMovement(WinddownTime*3.0f);
+                        other.PlayerCamera.Shake(0.3f, 0.2f);
                     }
                 }
             }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Assets.Scripts
 {
@@ -24,19 +20,17 @@ namespace Assets.Scripts
             {
                 foreach (var item in Layouts)
                 {
-                    if (Input.GetJoystickNames()[i].IndexOf(item.TryParseName, StringComparison.OrdinalIgnoreCase) >= 0) //Input.GetJoystickNames()[i].Contains(item.TryParseName))
+                    if (Input.GetJoystickNames()[i].IndexOf(item.TryParseName, System.StringComparison.OrdinalIgnoreCase) >= 0) //Input.GetJoystickNames()[i].Contains(item.TryParseName))
                     {
                         if (player == 1)
                         {
                             player++;
-                            PLAYER1 = item;
-                            item.Init(i+1);
+                            PLAYER1 = Init(item, i+1);
                         }
                         else if (player == 2)
                         {
                             player++;
-                            PLAYER2 = item;
-                            item.Init(i+1);
+                            PLAYER2 = Init(item, i+1);
                         }
                         break;
                     }
@@ -48,19 +42,22 @@ namespace Assets.Scripts
             {
                 if (player <= 1)
                 {
-                    InputLayout clone = UnityEngine.Object.Instantiate(Default) as InputLayout;
-                    PLAYER1 = clone;
-                    PLAYER1.Init(1);
+                    PLAYER1 = Init(Default, 1);
                 }
 
                 if (player <= 2)
                 {
-                    InputLayout clone2 = UnityEngine.Object.Instantiate(Default) as InputLayout;
-                    PLAYER2 = clone2;
-                    PLAYER2.Init(2);
+                    PLAYER2 = Init(Default, 2);
                 }
             }
 
+        }
+
+        private InputLayout Init(InputLayout layout, int id)
+        {
+            InputLayout clone = Instantiate(layout) as InputLayout;
+            clone.Init(id);
+            return clone;
         }
 
     }

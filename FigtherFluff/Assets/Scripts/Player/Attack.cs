@@ -45,7 +45,7 @@ namespace Assets.Scripts.Player
 
         public virtual bool CanUse()
         {
-            return cooldownTimer < 0 && !controller.HasCooldown();
+            return cooldownTimer < 0 && !controller.HasCooldown() && controller.Movement.CanMove;
         }
 
         public bool IsKeysDown()
