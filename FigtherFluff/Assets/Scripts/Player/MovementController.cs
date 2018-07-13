@@ -51,7 +51,7 @@ public class MovementController : MonoBehaviour
     void FixedUpdate()
     {
         UpdateMovement();
-       // Grounded = false;
+        Grounded = false;
         CheckGrounded();
     }
 
@@ -71,10 +71,9 @@ public class MovementController : MonoBehaviour
                     if (!Grounded && canJump)
                     {
                         controller.OnGrounded();
-                        Grounded = true;
                     }
 
-                  
+                    Grounded = true;
                     allowJumpDelay = 0;
                 }
             }
@@ -86,10 +85,6 @@ public class MovementController : MonoBehaviour
             //    var mr = MeshRenderer.transform.position;
             //    Projector.transform.position = new Vector3(mr.x, Projector.transform.position.y, mr.z);
             //}
-        }
-        else
-        {
-            Grounded = false;
         }
     }
 
@@ -121,7 +116,7 @@ public class MovementController : MonoBehaviour
 
         targetVelocity = controller.PlayerCamera.transform.TransformDirection(targetVelocity);
         targetVelocity.y = 0;
-        if (targetVelocity.magnitude > 0.05f)//(PlayerCamera.rotation.eulerAngles.x > 75)
+        if (targetVelocity.magnitude > 0.05f)   //(PlayerCamera.rotation.eulerAngles.x > 75)
             targetVelocity.Normalize();
 
         targetVelocity *= Speed * SpeedScale;
@@ -181,6 +176,16 @@ public class MovementController : MonoBehaviour
             velocityChange.y = 0;
 
             RigidBody.AddForce(velocityChange, ForceMode.VelocityChange);
+        }
+
+        var dist = (controller.PlayerCamera.Target.position - transform.position);
+        dist.y = 0;
+        if (dist.magnitude < 1.5f)
+        {
+            var newPos = controller.PlayerCamera.Target.position;
+            newPos.y = transform.position.y;
+            newPos -= dist.normalized * 1.5f;
+            RigidBody.MovePosition(newPos);
         }
     }
 

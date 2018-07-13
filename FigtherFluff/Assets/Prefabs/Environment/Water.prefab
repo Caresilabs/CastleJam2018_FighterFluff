@@ -62,6 +62,7 @@ GameObject:
   - component: {fileID: 114131569507922160}
   - component: {fileID: 65258240297332606}
   - component: {fileID: 114974598455691646}
+  - component: {fileID: 54411802032873538}
   m_Layer: 0
   m_Name: Water
   m_TagString: Water
@@ -342,6 +343,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1160336975824704}
   m_Mesh: {fileID: 4300002, guid: 681e41ee1260343b395ca58745c94870, type: 3}
+--- !u!54 &54411802032873538
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1609211805522194}
+  serializedVersion: 2
+  m_Mass: 10
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 1
 --- !u!65 &65258240297332606
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -485,3 +501,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FillHeight: 20
   IncreaseStep: 5
+  DecreasePerSecond: 0.4

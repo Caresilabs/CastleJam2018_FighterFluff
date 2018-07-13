@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
         cooldown -= Time.deltaTime;
 
         #pragma warning disable CS0618 // Type or member is obsolete
-        SweatParticles.emissionRate = Movement.CanMove ? (1 - Movement.SpeedScale) * 6 : 7;
+        SweatParticles.emissionRate = Movement.CanMove ? (1 - Movement.SpeedScale) * 6 : 1;
         #pragma warning restore CS0618 // Type or member is obsolete
     }
 

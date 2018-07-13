@@ -13,20 +13,26 @@ namespace Assets.Scripts.Player.Fluff
         private Transform LightParticles;
 
         public bool Attack;
+        private bool hasAttacked;
 
         public float WinddownTime;
 
         public Color WaterHitColor = Color.yellow;
 
-        //public override void Update()
-        //{
-        //    base.Update();
+        public override void Update()
+        {
+            base.Update();
 
-        //    if (Attack)
-        //    {
+            if (Attack && !hasAttacked)
+            {
+                hasAttacked = true;
 
-        //    }
-        //}
+                StartCoroutine(Light());
+
+                Transform attack = Instantiate(LightParticles, transform.position, Quaternion.LookRotation((GameManager.Instance.UmbrellaMan.transform.position - transform.position)), transform);
+                attack.GetComponent<FluffParticleAttack>().Init(this, GameManager.Instance.UmbrellaMan.transform);
+            }
+        }
 
         public override bool CanUse()
         {
@@ -38,16 +44,10 @@ namespace Assets.Scripts.Player.Fluff
 
         public override void Use()
         {
-            StartCoroutine(Light());
-
-            Transform attack = Instantiate(LightParticles, transform.position, Quaternion.LookRotation((GameManager.Instance.UmbrellaMan.transform.position - transform.position)), transform);
-            attack.GetComponent<FluffParticleAttack>().Init(this, GameManager.Instance.UmbrellaMan.transform);
-
-            controller.Movement.LockMovement(WinddownTime, true);
-
+            //Attack = false;
             controller.Movement.Animator.SetTrigger("Thunder");
-
-            Attack = false;
+            controller.Movement.LockMovement(WinddownTime, true);
+            hasAttacked = false;
             base.Use();
         }
 
