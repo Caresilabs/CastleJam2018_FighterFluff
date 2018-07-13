@@ -21,7 +21,7 @@ namespace Assets.Scripts.Player
 
             while(sprite.color.a < 0.95f)
             {
-                sprite.color = Color.Lerp(sprite.color, Color.black, Time.deltaTime * 7);
+                sprite.color = Color.Lerp(sprite.color, Color.black, Time.deltaTime * 10);
                 yield return null;
             }
 
@@ -29,7 +29,7 @@ namespace Assets.Scripts.Player
 
             while (sprite.color.a > 0.05f)
             {
-                sprite.color = Color.Lerp(sprite.color, Color.clear, Time.deltaTime * 5);
+                sprite.color = Color.Lerp(sprite.color, Color.clear, Time.deltaTime * 10);
                 yield return null;
             }
 
