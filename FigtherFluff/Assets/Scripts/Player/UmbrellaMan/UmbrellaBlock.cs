@@ -21,6 +21,12 @@ namespace Assets.Scripts.Player.UmbrellaMan
         [SerializeField]
         private float PenaltyTime;
 
+        [SerializeField]
+        private Transform BlockTooltip;
+
+        [SerializeField]
+        private Transform ReflectTooltip;
+
         private float blockTime;
         private bool isBlocking;
 
@@ -71,6 +77,9 @@ namespace Assets.Scripts.Player.UmbrellaMan
             {
                 Transform reflect = Instantiate(attack, transform.position, Quaternion.LookRotation(attack.position - transform.position), transform);
                 reflect.GetComponent<FluffParticleAttack>().Init(null, source);
+
+                Instantiate(ReflectTooltip);
+
                 Destroy(attack.gameObject);
                 controller.Movement.UnlockMovement();
                 isBlocking = false;
@@ -79,6 +88,8 @@ namespace Assets.Scripts.Player.UmbrellaMan
             else if (blockTime < ReflectTime + BlockTime)
             {
                 Destroy(attack.gameObject);
+                Instantiate(BlockTooltip);
+
                 controller.Movement.UnlockMovement();
                 isBlocking = false;
                 controller.Movement.Animator.SetBool("Shield", false);
