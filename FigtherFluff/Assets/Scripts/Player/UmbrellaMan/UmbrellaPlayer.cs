@@ -18,7 +18,7 @@ namespace Assets.Scripts.Player.UmbrellaMan
 
         private void OnJump()
         {
-            RigidBody.AddForce(new Vector3(0, 800, 0));
+            RigidBody.AddForce(new Vector3(0, 800 * 2, 0));
         }
 
         protected override void Update()

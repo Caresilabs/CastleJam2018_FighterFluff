@@ -25,6 +25,7 @@ namespace Assets.Scripts.Player.Fluff
             this.lowY = transform.position.y;
             this.highY = lowY + FillHeight;
             this.currentY = lowY;
+            Rigidbody = GetComponent<Rigidbody>();
         }
 
         internal void DecreaseWater(int v)
@@ -32,10 +33,8 @@ namespace Assets.Scripts.Player.Fluff
             currentY = Mathf.Clamp(currentY - v, lowY, highY);
         }
 
-        private void Update()
+        private void FixedUpdate()
         {
-            Rigidbody = GetComponent<Rigidbody>();
-
             var target = transform.position;
             target.y = currentY;
 

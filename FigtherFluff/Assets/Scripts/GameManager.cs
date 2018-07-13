@@ -97,8 +97,8 @@ public class GameManager : MonoBehaviour
         Player1.Input = JoystickManager.PLAYER1;
         Player2.Input = JoystickManager.PLAYER2;
 
-        //Player1.Movement.LockMovement(5);
-        //Player2.Movement.LockMovement(5);
+        Player1.GetComponent<MovementController>().LockMovement(5);
+        Player2.GetComponent<MovementController>().LockMovement(5);
     }
 
     private void ChangeState(State state)
