@@ -14,6 +14,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     public ParticleSystem SweatParticles;
 
+    [SerializeField]
+    private AudioClip[] HitSounds;
+
     public float Health { get; private set; }
 
     public Rigidbody RigidBody { get; private set; }
@@ -56,6 +59,8 @@ public class PlayerController : MonoBehaviour
         var dir = (transform.position - source.position);
         dir.y = knockbackHeight;
         dir.Normalize();
+
+        MusicManager.Instance.PlaySound(HitSounds[UnityEngine.Random.Range(0, HitSounds.Length - 1)], 0.9f);
 
         if (IsDead())
         {
@@ -109,7 +114,7 @@ public class PlayerController : MonoBehaviour
     public bool IsAxis(InputLayout.ActionType axis, bool inverted)
     {
         var val = Input.GetAxis(axis);
-        return inverted ? val < -0.25f : val > 0.25f;
+        return inverted ? val < -0.3f : val > 0.3f;
 
         // var val = Input.GetAxis(GetKeyName(axis));
         // return inverted ? val < -0.2f : val > 0.2f;

@@ -13,6 +13,9 @@ namespace Assets.Scripts.Player.UmbrellaMan
 
         public float WinddownTime = 1;
 
+        [SerializeField]
+        private AudioClip SoundEffect;
+
         public override void Update()
         {
             base.Update();
@@ -87,6 +90,7 @@ namespace Assets.Scripts.Player.UmbrellaMan
         {
             Attack = true;
             controller.Movement.Animator.SetBool("Spike", true);
+            MusicManager.Instance.PlaySound(SoundEffect, 1f);
             base.Use();
         }
 

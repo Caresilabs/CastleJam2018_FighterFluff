@@ -9,14 +9,16 @@ public class MovementController : MonoBehaviour
     [SerializeField]
     private float Speed;
 
+    [SerializeField]
+    private AudioClip[] JumpSounds;
+
     private Rigidbody RigidBody;
     private CapsuleCollider capsuleCollider;
     private PlayerController controller;
-  
+
 
     private bool _grounded;
-    public bool Grounded { get { return _grounded; } set { _grounded = value; Animator.SetBool("Grounded", value);
-        } }
+    public bool Grounded { get { return _grounded; } set { _grounded = value; Animator.SetBool("Grounded", value); } }
 
     public bool CanMove { get; private set; }
     public Animator Animator { get; set; }
@@ -38,7 +40,7 @@ public class MovementController : MonoBehaviour
     void Start()
     {
         this.controller = GetComponent<PlayerController>();
-       // this.inputPrefix = controller.PlayerType == PlayerType.PLAYER1 ? "P1_" : "P2_";
+        // this.inputPrefix = controller.PlayerType == PlayerType.PLAYER1 ? "P1_" : "P2_";
         this.RigidBody = GetComponent<Rigidbody>();
         this.capsuleCollider = GetComponent<CapsuleCollider>();
         this.Animator = GetComponent<Animator>();
@@ -129,14 +131,15 @@ public class MovementController : MonoBehaviour
             {
                 if (onJump != null)
                 {
+                    MusicManager.Instance.PlaySound(JumpSounds[UnityEngine.Random.Range(0, JumpSounds.Length - 1)], 0.9f);
                     Animator.SetTrigger("Jumped");
                     Grounded = false;
                     canJump = false;
                     onJump();
                 }
             }
-               // canJump = false;
-               // RigidBody.velocity = new Vector3(velocity.x, Mathf.Sqrt(2 * JumpHeight * Gravity), velocity.z);
+            // canJump = false;
+            // RigidBody.velocity = new Vector3(velocity.x, Mathf.Sqrt(2 * JumpHeight * Gravity), velocity.z);
         }
 
         //foreach (KeyCode kcode in Enum.GetValues(typeof(KeyCode)))
@@ -194,7 +197,7 @@ public class MovementController : MonoBehaviour
         if (hit.gameObject.name == name) // Nasty bug causes oncollsion enter on itself
             return;
 
-            canJump = true;
+        canJump = true;
     }
 
     void OnCollisionStay(Collision hit)
@@ -202,7 +205,7 @@ public class MovementController : MonoBehaviour
         if (hit.gameObject == GameManager.Instance.Player1.gameObject || hit.gameObject == GameManager.Instance.Player2.gameObject) // Nasty bug causes oncollsion enter on itself
             return;
 
-            canJump = true;
+        canJump = true;
     }
 
     public void LockMovement(bool freeze = false)
@@ -226,7 +229,7 @@ public class MovementController : MonoBehaviour
     private IEnumerator LockMovementCoroutine(float duration, bool freeze)
     {
         if (freeze)
-            RigidBody.velocity = new Vector3(0, RigidBody.velocity.y , 0);
+            RigidBody.velocity = new Vector3(0, RigidBody.velocity.y, 0);
 
         CanMove = false;
         yield return new WaitForSeconds(duration);

@@ -213,4 +213,22 @@ public class GameManager : MonoBehaviour
         }
         Time.timeScale = 1;
     }
+
+    //private static AsyncOperation asyncLoad;
+    //public static IEnumerator LoadLevel(int level)
+    //{
+    //    if (asyncLoad == null)
+    //    {
+
+    //        asyncLoad = SceneManager.LoadSceneAsync(level);
+
+    //        // Wait until the asynchronous scene fully loads
+    //        while (!asyncLoad.isDone)
+    //        {
+    //             yield return null;
+    //        }
+
+    //        asyncLoad = null;
+    //    }
+    //}
 }

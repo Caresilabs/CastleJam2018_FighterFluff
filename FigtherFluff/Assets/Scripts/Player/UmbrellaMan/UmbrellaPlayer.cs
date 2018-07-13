@@ -8,9 +8,6 @@ namespace Assets.Scripts.Player.UmbrellaMan
         [SerializeField]
         private float WaterSpeedScale = 0.5f;
 
-        [SerializeField]
-        private AudioClip[] HitSounds;
-
         public bool OnWater { get; private set; }
 
         protected override void Start()
@@ -22,12 +19,6 @@ namespace Assets.Scripts.Player.UmbrellaMan
         private void OnJump()
         {
             RigidBody.AddForce(new Vector3(0, 800 * 2, 0));
-        }
-
-        public override void Damage(Transform source, float damage, float stunTime, float knockback, float knockbackHeight = 0)
-        {
-            base.Damage(source, damage, stunTime, knockback, knockbackHeight);
-            MusicManager.Instance.PlaySound(HitSounds[Random.Range(0, HitSounds.Length - 1)], 0.8f);
         }
 
         protected override void Update()

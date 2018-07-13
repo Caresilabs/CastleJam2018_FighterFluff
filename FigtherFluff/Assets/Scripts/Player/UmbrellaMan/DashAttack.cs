@@ -15,6 +15,9 @@ namespace Assets.Scripts.Player.UmbrellaMan
         [SerializeField]
         private float DashTime = 0.25f;
 
+        [SerializeField]
+        private AudioClip SoundEffect;
+
         protected override void Start()
         {
             base.Start();
@@ -24,6 +27,8 @@ namespace Assets.Scripts.Player.UmbrellaMan
         {
             base.Use();
             controller.Movement.Animator.SetTrigger("Dashed");
+            MusicManager.Instance.PlaySound(SoundEffect, 1f);
+
             StartCoroutine(DoDash());
         }
 

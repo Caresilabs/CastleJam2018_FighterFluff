@@ -10,6 +10,9 @@ namespace Assets.Scripts.Player.Fluff
         [SerializeField]
         private Transform SnowParticles;
 
+        [SerializeField]
+        private AudioClip[] SoundEffects;
+
         public float SlowTime;
         public float SlowScale;
 
@@ -41,6 +44,8 @@ namespace Assets.Scripts.Player.Fluff
             controller.Movement.LockMovement(WinddownTime, true);
 
             controller.Movement.Animator.SetTrigger("Water");
+
+            MusicManager.Instance.PlaySound(SoundEffects[UnityEngine.Random.Range(0, SoundEffects.Length - 1)], 0.9f);
 
             base.Use();
         }

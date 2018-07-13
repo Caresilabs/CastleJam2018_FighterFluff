@@ -27,6 +27,13 @@ namespace Assets.Scripts.Player.UmbrellaMan
         [SerializeField]
         private Transform ReflectTooltip;
 
+
+        [SerializeField]
+        private AudioClip ReflectSound;
+
+        [SerializeField]
+        private AudioClip BlockSound;
+
         private float blockTime;
         private bool isBlocking;
 
@@ -87,6 +94,7 @@ namespace Assets.Scripts.Player.UmbrellaMan
                 controller.Movement.UnlockMovement();
                 isBlocking = false;
                 controller.Movement.Animator.SetBool("Shield", false);
+                MusicManager.Instance.PlaySound(ReflectSound, 0.9f);
             }
             else if (blockTime < ReflectTime + BlockTime)
             {
@@ -96,6 +104,7 @@ namespace Assets.Scripts.Player.UmbrellaMan
                 controller.Movement.UnlockMovement();
                 isBlocking = false;
                 controller.Movement.Animator.SetBool("Shield", false);
+                MusicManager.Instance.PlaySound(BlockSound, 0.9f);
             }
             else if (blockTime < ReflectTime + BlockTime + BlockDamageTime)
             {

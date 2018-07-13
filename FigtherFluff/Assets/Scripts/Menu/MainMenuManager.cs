@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -74,14 +75,14 @@ namespace Assets.Scripts.Menu
             {
                 if (Input1.IsButtonDown(InputLayout.ActionType.JUMP) || Input2.IsButtonDown(InputLayout.ActionType.JUMP))
                 {
-                    MusicManager.Instance.PlaySound(P2SelectMusic, 0.7f);
+                    MusicManager.Instance.PlaySound(P2SelectMusic, 0.6f);
                     TitleScreen.gameObject.SetActive(false);
                     CreditsScreen.gameObject.SetActive(true);
                     state = State.CREDITS;
                 }
                 else if (Input.anyKeyDown)
                 {
-                    MusicManager.Instance.PlaySound(P1SelectMusic, 0.7f);
+                    MusicManager.Instance.PlaySound(P1SelectMusic, 0.6f);
                     TitleScreen.gameObject.SetActive(false);
                     SelectScreen.gameObject.SetActive(true);
                     state = State.SELECT;
@@ -95,9 +96,9 @@ namespace Assets.Scripts.Menu
                     SelectScreen.gameObject.SetActive(false);
                     state = State.TITLE;
                     if (P1Back)
-                        MusicManager.Instance.PlaySound(P1SelectMusic, 0.7f);
+                        MusicManager.Instance.PlaySound(P1SelectMusic, 0.6f);
                     else
-                        MusicManager.Instance.PlaySound(P2SelectMusic, 0.7f);
+                        MusicManager.Instance.PlaySound(P2SelectMusic, 0.6f);
                     return;
                 }
 
@@ -110,7 +111,7 @@ namespace Assets.Scripts.Menu
                     if (P1Selectd != -1)
                     {
                         P1Selectd = -1;
-                        MusicManager.Instance.PlaySound(P1SelectMusic, 0.7f);
+                        MusicManager.Instance.PlaySound(P1SelectMusic, 0.6f);
                     }
                 }
                 else if (Input1.GetAxis(InputLayout.ActionType.MOVE_RIGHT) > 0.2f)
@@ -121,7 +122,7 @@ namespace Assets.Scripts.Menu
                     if (P1Selectd != 1)
                     {
                         P1Selectd = 1;
-                        MusicManager.Instance.PlaySound(P1SelectMusic, 0.7f);
+                        MusicManager.Instance.PlaySound(P1SelectMusic, 0.6f);
                     }
                 }
 
@@ -133,7 +134,7 @@ namespace Assets.Scripts.Menu
                     if (P2Selectd != -1)
                     {
                         P2Selectd = -1;
-                        MusicManager.Instance.PlaySound(P2SelectMusic, 0.7f);
+                        MusicManager.Instance.PlaySound(P2SelectMusic, 0.6f);
                     }
                 }
                 else if (Input2.GetAxis(InputLayout.ActionType.MOVE_RIGHT) > 0.2f)
@@ -144,7 +145,7 @@ namespace Assets.Scripts.Menu
                     if (P2Selectd != 1)
                     {
                         P2Selectd = 1;
-                        MusicManager.Instance.PlaySound(P2SelectMusic, 0.7f);
+                        MusicManager.Instance.PlaySound(P2SelectMusic, 0.6f);
                     }
                 }
 
@@ -172,7 +173,7 @@ namespace Assets.Scripts.Menu
 
                     if (Input1.IsButtonDown(InputLayout.ActionType.START) || Input2.IsButtonDown(InputLayout.ActionType.START))
                     {
-                        MusicManager.Instance.PlaySound(P1SelectMusic, 0.7f);
+                        MusicManager.Instance.PlaySound(P1SelectMusic, 0.6f);
 
                         PlayerPrefs.SetInt("Player1", P1Selectd);
                         PlayerPrefs.SetInt("Player2", P2Selectd);
@@ -193,13 +194,14 @@ namespace Assets.Scripts.Menu
                     CreditsScreen.gameObject.SetActive(false);
                     state = State.TITLE;
                     if (P1Back)
-                        MusicManager.Instance.PlaySound(P1SelectMusic, 0.7f);
+                        MusicManager.Instance.PlaySound(P1SelectMusic, 0.6f);
                     else
-                        MusicManager.Instance.PlaySound(P2SelectMusic, 0.7f);
+                        MusicManager.Instance.PlaySound(P2SelectMusic, 0.6f);
                     return;
                 }
             }
 
         }
+
     }
 }
