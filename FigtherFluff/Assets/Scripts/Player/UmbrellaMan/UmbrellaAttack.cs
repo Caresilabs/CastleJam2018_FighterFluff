@@ -64,7 +64,9 @@ namespace Assets.Scripts.Player.UmbrellaMan
 
         public override void Use()
         {
-            controller.RigidBody.AddForce(transform.forward * ForwardSpeed, ForceMode.VelocityChange);
+            if (controller.Movement.Grounded)
+                controller.RigidBody.AddForce(transform.forward * ForwardSpeed, ForceMode.VelocityChange);
+
             Attack = true;
             hasAttacked = false;
             controller.Movement.Animator.SetTrigger("Attacked");

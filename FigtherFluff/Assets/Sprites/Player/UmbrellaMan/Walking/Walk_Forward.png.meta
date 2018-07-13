@@ -6,6 +6,7 @@ TextureImporter:
     21300002: Walk_Forward_1
     21300004: Walk_Forward_2
     21300006: Walk_Forward_3
+    21300008: Transparent
   externalObjects: {}
   serializedVersion: 5
   mipmaps:
@@ -172,6 +173,26 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: ca85c61e4f1804342af38c6195f295ce
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Transparent
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 234
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04622608896ee914c97b5cc9ec818711
       vertices: []
       indices: 
       edges: []

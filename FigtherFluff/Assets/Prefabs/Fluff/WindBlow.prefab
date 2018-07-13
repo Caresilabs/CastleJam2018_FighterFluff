@@ -221,12 +221,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Damage: 4
   KnockbackHeight: 0.5
-  Knockback: 3.5
+  Knockback: 3
   Hitstun: 0.5
   ShakeDuration: 0.5
   ShakeStrength: 0.6
-  StunTime: 0.8
-  RetargetAlpha: 30
+  StunTime: 0.75
+  RetargetAlpha: 25
 --- !u!198 &198120635721309054
 ParticleSystem:
   m_ObjectHideFlags: 1

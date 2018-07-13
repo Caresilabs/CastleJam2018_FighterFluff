@@ -528,7 +528,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -170, y: -49.99996}
+  m_AnchoredPosition: {x: -170, y: -33.99997}
   m_SizeDelta: {x: 273.09, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &415019291
@@ -596,7 +596,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 106, y: 138}
+  m_AnchoredPosition: {x: 110.2, y: 146.3}
   m_SizeDelta: {x: 100, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &441724933
@@ -731,8 +731,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 528914023}
-  m_LocalRotation: {x: -0.18720992, y: 0, z: 0, w: 0.98231995}
-  m_LocalPosition: {x: 248, y: -60.460003, z: 81.22}
+  m_LocalRotation: {x: -0.0228488, y: 0.017545516, z: 0.00039951416, w: 0.9995849}
+  m_LocalPosition: {x: 377.909, y: -287.20636, z: -703.1968}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -847,7 +847,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 235, y: -50}
+  m_AnchoredPosition: {x: 235, y: -34.000008}
   m_SizeDelta: {x: 468.3, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &888265141
@@ -1665,7 +1665,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 14, y: -96}
+  m_AnchoredPosition: {x: 14, y: -80.00001}
   m_SizeDelta: {x: 112.8, y: 79.77}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1593486632
@@ -1864,7 +1864,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 9, y: -215}
+  m_AnchoredPosition: {x: 9, y: -199}
   m_SizeDelta: {x: 100, y: 112.899994}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1788460409

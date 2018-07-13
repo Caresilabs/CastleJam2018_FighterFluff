@@ -30,9 +30,7 @@ public class MusicManager : MonoBehaviour
     {
         if (sound != null)
         {
-            FxSource.clip = sound;
-            FxSource.volume = volume;
-            FxSource.Play();
+            FxSource.PlayOneShot(sound, volume);
         }
     }
 

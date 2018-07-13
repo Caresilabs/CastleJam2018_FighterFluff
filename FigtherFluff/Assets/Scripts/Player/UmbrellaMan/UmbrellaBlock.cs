@@ -73,13 +73,16 @@ namespace Assets.Scripts.Player.UmbrellaMan
             if (!isBlocking)
                 return 1;
 
+            if (!attack.gameObject.activeInHierarchy)
+                return 1;
+
             if (blockTime < ReflectTime)
             {
                 Transform reflect = Instantiate(attack, transform.position, Quaternion.LookRotation(attack.position - transform.position), transform);
                 reflect.GetComponent<FluffParticleAttack>().Init(null, source);
 
                 Instantiate(ReflectTooltip, transform.position + new Vector3(0, 3,0), transform.rotation);
-
+                attack.gameObject.SetActive(false);
                 Destroy(attack.gameObject);
                 controller.Movement.UnlockMovement();
                 isBlocking = false;
@@ -89,7 +92,7 @@ namespace Assets.Scripts.Player.UmbrellaMan
             {
                 Destroy(attack.gameObject);
                 Instantiate(BlockTooltip, transform.position + new Vector3(0, 3, 0), transform.rotation);
-
+                attack.gameObject.SetActive(false);
                 controller.Movement.UnlockMovement();
                 isBlocking = false;
                 controller.Movement.Animator.SetBool("Shield", false);
