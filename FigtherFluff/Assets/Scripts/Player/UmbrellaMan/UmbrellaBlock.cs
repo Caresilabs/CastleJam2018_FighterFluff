@@ -78,7 +78,7 @@ namespace Assets.Scripts.Player.UmbrellaMan
                 Transform reflect = Instantiate(attack, transform.position, Quaternion.LookRotation(attack.position - transform.position), transform);
                 reflect.GetComponent<FluffParticleAttack>().Init(null, source);
 
-                Instantiate(ReflectTooltip, transform.position, transform.rotation);
+                Instantiate(ReflectTooltip, transform.position + new Vector3(0, 3,0), transform.rotation);
 
                 Destroy(attack.gameObject);
                 controller.Movement.UnlockMovement();
@@ -88,7 +88,7 @@ namespace Assets.Scripts.Player.UmbrellaMan
             else if (blockTime < ReflectTime + BlockTime)
             {
                 Destroy(attack.gameObject);
-                Instantiate(BlockTooltip, transform.position, transform.rotation);
+                Instantiate(BlockTooltip, transform.position + new Vector3(0, 3, 0), transform.rotation);
 
                 controller.Movement.UnlockMovement();
                 isBlocking = false;
