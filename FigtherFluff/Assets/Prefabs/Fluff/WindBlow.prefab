@@ -133,7 +133,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1168066727103630}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 274.8373, y: 30.47, z: 209.66681}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4974501698382530}
@@ -220,12 +220,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damage: 4
-  KnockbackHeight: 0.1
-  Knockback: 2.8
+  KnockbackHeight: 0.5
+  Knockback: 3.5
   Hitstun: 0.5
   ShakeDuration: 0.5
   ShakeStrength: 0.6
-  StunTime: 0.7
+  StunTime: 0.8
   RetargetAlpha: 30
 --- !u!198 &198120635721309054
 ParticleSystem:
@@ -21563,7 +21563,7 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 0
+    enabled: 1
     serializedVersion: 3
     type: 1
     collisionMode: 0
@@ -21738,12 +21738,12 @@ ParticleSystem:
         m_RotationOrder: 4
     minKillSpeed: 0
     maxKillSpeed: 10000
-    radiusScale: 0.01
+    radiusScale: 0.1
     collidesWith:
       serializedVersion: 2
-      m_Bits: 256
+      m_Bits: 4294967007
     maxCollisionShapes: 256
-    quality: 1
+    quality: 0
     voxelSize: 0.5
     collisionMessages: 1
     collidesWithDynamic: 1

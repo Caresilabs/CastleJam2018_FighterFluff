@@ -23,7 +23,7 @@ namespace Assets.Scripts.Player.UmbrellaMan
                 {
                     if (controller.OnWater)
                     {
-                        FindObjectOfType<WaterController>().DecreaseWater(1);
+                        FindObjectOfType<WaterController>().DecreaseWater(3);
                     }
                     Attack = false;
                     Invoke("SpikeOff", WinddownTime);

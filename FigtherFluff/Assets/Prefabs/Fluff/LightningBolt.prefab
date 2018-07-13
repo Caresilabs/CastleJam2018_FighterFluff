@@ -90,7 +90,7 @@ MonoBehaviour:
   ShakeDuration: 0.6
   ShakeStrength: 0.6
   StunTime: 0.8
-  RetargetAlpha: 25
+  RetargetAlpha: 40
 --- !u!114 &114987223549863630
 MonoBehaviour:
   m_ObjectHideFlags: 1

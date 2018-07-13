@@ -61,7 +61,7 @@ namespace Assets.Scripts.Player.Fluff
                     blockFactor = 2; // hack
 
                     // Damage *= 2;
-                    Knockback = 2.0f;
+                    Knockback = 1.4f;
                     KnockbackHeight = 9999; // hack
                     Hitstun *= 1.5f;
 
