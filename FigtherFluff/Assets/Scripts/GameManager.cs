@@ -24,7 +24,6 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private CameraController Player2Camera;
 
-
     public delegate void OnGameStateChanged(State newState);
     public OnGameStateChanged OnGameStateChangedCallback;
 
@@ -99,6 +98,8 @@ public class GameManager : MonoBehaviour
 
         Player1.GetComponent<MovementController>().LockMovement(5);
         Player2.GetComponent<MovementController>().LockMovement(5);
+
+        MusicManager.Instance.PlayCountdownAndFight();
     }
 
     private void ChangeState(State state)
@@ -127,11 +128,13 @@ public class GameManager : MonoBehaviour
             if (Player1.IsDead())
             {
                 ChangeState(State.GAMEOVER);
+                MusicManager.Instance.PlayWinMusic();
                 Time.timeScale = 1;
             }
             else if (Player2.IsDead())
             {
                 ChangeState(State.GAMEOVER);
+                MusicManager.Instance.PlayWinMusic();
                 Time.timeScale = 1;
             }
 
@@ -143,7 +146,7 @@ public class GameManager : MonoBehaviour
         }
         else if (GameState == State.GAMEOVER)
         {
-            if (stateTime >= 2)
+            if (stateTime >= 4)
             {
                 if (Player1.Input.IsButtonDown(InputLayout.ActionType.SPECIAL) || Player2.Input.IsButtonDown(InputLayout.ActionType.SPECIAL))
                 {
@@ -188,6 +191,7 @@ public class GameManager : MonoBehaviour
     {
         StopCoroutine("HitstunCoroutine");
         Time.timeScale = 1;
+        MusicManager.Instance.PlayMenuMusic();
         SceneManager.LoadScene(0);
     }
 

@@ -44,7 +44,7 @@ namespace Assets.Scripts.Player.UmbrellaMan
                         controller.RigidBody.velocity = vel;
 
                         other.RigidBody.velocity = Vector3.zero;
-                        other.Movement.LockMovement(1);
+                        other.Movement.LockMovement(2.1f);
 
                         controller.Movement.LockGravity(0.5f);
                     }

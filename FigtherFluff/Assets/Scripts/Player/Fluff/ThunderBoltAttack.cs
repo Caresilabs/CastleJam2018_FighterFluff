@@ -12,6 +12,9 @@ namespace Assets.Scripts.Player.Fluff
         [SerializeField]
         private Transform LightParticles;
 
+        [SerializeField]
+        private AudioClip SoundEffect;
+
         public bool Attack;
         private bool hasAttacked;
 
@@ -26,6 +29,8 @@ namespace Assets.Scripts.Player.Fluff
             if (Attack && !hasAttacked)
             {
                 hasAttacked = true;
+
+                MusicManager.Instance.PlaySound(SoundEffect, 0.95f);
 
                 StartCoroutine(Light());
 

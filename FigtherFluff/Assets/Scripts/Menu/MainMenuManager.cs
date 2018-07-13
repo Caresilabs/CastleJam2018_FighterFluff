@@ -39,6 +39,12 @@ namespace Assets.Scripts.Menu
         [SerializeField]
         private Transform StartGame;
 
+        [SerializeField]
+        private AudioClip P1SelectMusic;
+
+        [SerializeField]
+        private AudioClip P2SelectMusic;
+
         private int P1Selectd = 0;
         private int P2Selectd = 0;
 
@@ -53,6 +59,11 @@ namespace Assets.Scripts.Menu
 
         private void Update()
         {
+
+            bool P1Back = Input1.IsButtonDown(InputLayout.ActionType.SPECIAL);
+            bool P2Back = Input2.IsButtonDown(InputLayout.ActionType.SPECIAL);
+
+
             //foreach (KeyCode kcode in Enum.GetValues(typeof(KeyCode)))
             //{
             //    if (Input.GetKey(kcode))
@@ -63,26 +74,30 @@ namespace Assets.Scripts.Menu
             {
                 if (Input1.IsButtonDown(InputLayout.ActionType.JUMP) || Input2.IsButtonDown(InputLayout.ActionType.JUMP))
                 {
+                    MusicManager.Instance.PlaySound(P2SelectMusic, 0.7f);
                     TitleScreen.gameObject.SetActive(false);
                     CreditsScreen.gameObject.SetActive(true);
                     state = State.CREDITS;
                 }
                 else if (Input.anyKeyDown)
                 {
+                    MusicManager.Instance.PlaySound(P1SelectMusic, 0.7f);
                     TitleScreen.gameObject.SetActive(false);
                     SelectScreen.gameObject.SetActive(true);
                     state = State.SELECT;
-                    //P1Selectd = 0;
-                    //P2Selectd = 0;
                 }
             }
             else if (state == State.SELECT)
             {
-                if (Input1.IsButtonDown(InputLayout.ActionType.SPECIAL) || Input2.IsButtonDown(InputLayout.ActionType.SPECIAL))
+                if (P1Back || P2Back)
                 {
                     TitleScreen.gameObject.SetActive(true);
                     SelectScreen.gameObject.SetActive(false);
                     state = State.TITLE;
+                    if (P1Back)
+                        MusicManager.Instance.PlaySound(P1SelectMusic, 0.7f);
+                    else
+                        MusicManager.Instance.PlaySound(P2SelectMusic, 0.7f);
                     return;
                 }
 
@@ -91,14 +106,23 @@ namespace Assets.Scripts.Menu
                     var targetPos = FluffSelect.position;
                     targetPos.y = P1Select.position.y;
                     P1Select.position = targetPos;
-                    P1Selectd = -1;
+
+                    if (P1Selectd != -1)
+                    {
+                        P1Selectd = -1;
+                        MusicManager.Instance.PlaySound(P1SelectMusic, 0.7f);
+                    }
                 }
                 else if (Input1.GetAxis(InputLayout.ActionType.MOVE_RIGHT) > 0.2f)
                 {
                     var targetPos = UmbrellaSelect.position;
                     targetPos.y = P1Select.position.y;
                     P1Select.position = targetPos;
-                    P1Selectd = 1;
+                    if (P1Selectd != 1)
+                    {
+                        P1Selectd = 1;
+                        MusicManager.Instance.PlaySound(P1SelectMusic, 0.7f);
+                    }
                 }
 
                 if (Input2.GetAxis(InputLayout.ActionType.MOVE_RIGHT) < -0.2f)
@@ -106,31 +130,39 @@ namespace Assets.Scripts.Menu
                     var targetPos = FluffSelect.position;
                     targetPos.y = P2Select.position.y;
                     P2Select.position = targetPos;
-                    P2Selectd = -1;
+                    if (P2Selectd != -1)
+                    {
+                        P2Selectd = -1;
+                        MusicManager.Instance.PlaySound(P2SelectMusic, 0.7f);
+                    }
                 }
                 else if (Input2.GetAxis(InputLayout.ActionType.MOVE_RIGHT) > 0.2f)
                 {
                     var targetPos = UmbrellaSelect.position;
                     targetPos.y = P2Select.position.y;
                     P2Select.position = targetPos;
-                    P2Selectd = 1;
+                    if (P2Selectd != 1)
+                    {
+                        P2Selectd = 1;
+                        MusicManager.Instance.PlaySound(P2SelectMusic, 0.7f);
+                    }
                 }
 
                 if (P1Selectd != P2Selectd)
                 {
                     //FluffSelect.parent.GetComponent<Outline>().effectColor = Color.black;
-                   // UmbrellaSelect.parent.GetComponent<Outline>().effectColor = Color.black;
+                    // UmbrellaSelect.parent.GetComponent<Outline>().effectColor = Color.black;
 
                     var p1Target = P1Selectd == -1 ? FluffSelect.parent : UmbrellaSelect.parent;
                     if (P1Selectd != 0)
                     {
-                       // p1Target.GetComponent<Outline>().effectColor = Color.blue;
+                        // p1Target.GetComponent<Outline>().effectColor = Color.blue;
                     }
 
                     var p2Target = P2Selectd == -1 ? FluffSelect.parent : UmbrellaSelect.parent;
                     if (P2Selectd != 0)
                     {
-                       // p2Target.GetComponent<Outline>().effectColor = Color.green;
+                        // p2Target.GetComponent<Outline>().effectColor = Color.green;
                     }
                 }
 
@@ -140,6 +172,8 @@ namespace Assets.Scripts.Menu
 
                     if (Input1.IsButtonDown(InputLayout.ActionType.START) || Input2.IsButtonDown(InputLayout.ActionType.START))
                     {
+                        MusicManager.Instance.PlaySound(P1SelectMusic, 0.7f);
+
                         PlayerPrefs.SetInt("Player1", P1Selectd);
                         PlayerPrefs.SetInt("Player2", P2Selectd);
                         SceneManager.LoadScene(1);
@@ -153,11 +187,15 @@ namespace Assets.Scripts.Menu
             }
             else if (state == State.CREDITS)
             {
-                if (Input1.IsButtonDown(InputLayout.ActionType.SPECIAL) || Input2.IsButtonDown(InputLayout.ActionType.SPECIAL))
+                if (P1Back || P2Back)
                 {
                     TitleScreen.gameObject.SetActive(true);
                     CreditsScreen.gameObject.SetActive(false);
                     state = State.TITLE;
+                    if (P1Back)
+                        MusicManager.Instance.PlaySound(P1SelectMusic, 0.7f);
+                    else
+                        MusicManager.Instance.PlaySound(P2SelectMusic, 0.7f);
                     return;
                 }
             }

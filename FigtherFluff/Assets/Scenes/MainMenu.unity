@@ -731,8 +731,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 528914023}
-  m_LocalRotation: {x: -0.0228488, y: 0.017545516, z: 0.00039951416, w: 0.9995849}
-  m_LocalPosition: {x: 377.909, y: -287.20636, z: -703.1968}
+  m_LocalRotation: {x: 0.030348985, y: 0.006446167, z: 0.00019727518, w: -0.9995186}
+  m_LocalPosition: {x: 263.46774, y: -8.96925, z: 272.94818}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1532,16 +1532,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 82650109017936882, guid: 2497637d1469dbe469b952fbcea6e49e,
-        type: 2}
-      propertyPath: m_Volume
-      value: 0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 82751598135924502, guid: 2497637d1469dbe469b952fbcea6e49e,
-        type: 2}
-      propertyPath: m_Volume
-      value: 0.8
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2497637d1469dbe469b952fbcea6e49e, type: 2}
   m_IsPrefabParent: 0
@@ -2002,6 +1992,8 @@ MonoBehaviour:
   FluffSelect: {fileID: 2035721405}
   UmbrellaSelect: {fileID: 645057060}
   StartGame: {fileID: 1209965719}
+  P1SelectMusic: {fileID: 8300000, guid: 4826c19f343f113468260f73a1fc80f5, type: 3}
+  P2SelectMusic: {fileID: 8300000, guid: 2a9d20eda6807f04d804cf17371df896, type: 3}
 --- !u!114 &1892012572
 MonoBehaviour:
   m_ObjectHideFlags: 0

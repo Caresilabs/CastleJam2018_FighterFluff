@@ -51,9 +51,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 249f788dbaf75704b9dd15df80509688, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.7
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -148,7 +148,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.8
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -243,3 +243,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23aa1cc146e3e084db04edfb8fcd2701, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MenuMusic: {fileID: 8300000, guid: 6f3ac19b55bcd074eae81f3cb47b9a70, type: 3}
+  FightMusic: {fileID: 8300000, guid: 10fac394999eb084c83629640bca2389, type: 3}
+  CoundDown: {fileID: 8300000, guid: 9b955e94f9e03b54cb99d1994aec73c1, type: 3}
+  StartStinger: {fileID: 8300000, guid: 752e52b747e57e74481afa4e1f15fd39, type: 3}
+  WinMusic: {fileID: 8300000, guid: c68d6026b393b64498a10b51575d492c, type: 3}
