@@ -11,7 +11,8 @@ public class GameManager : MonoBehaviour
     {
         READY,
         RUNNING,
-        GAMEOVER
+        GAMEOVER,
+        PAUSE
     }
 
     [SerializeField]
@@ -133,6 +134,12 @@ public class GameManager : MonoBehaviour
                 ChangeState(State.GAMEOVER);
                 Time.timeScale = 1;
             }
+
+            if (Player1.Input.IsButtonDown(InputLayout.ActionType.START) || Player2.Input.IsButtonDown(InputLayout.ActionType.START))
+            {
+                PauseGame();
+            }
+
         }
         else if (GameState == State.GAMEOVER)
         {
@@ -148,12 +155,27 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
+        else if (GameState == State.PAUSE)
+        {
+            if (Player1.Input.IsButtonDown(InputLayout.ActionType.START) || Player2.Input.IsButtonDown(InputLayout.ActionType.START))
+            {
+                ResumeGame();
+            }
+        }
     }
 
     public void PauseGame()
     {
+        ChangeState(State.PAUSE);
+        Time.timeScale = 0.0001f;
+    }
+
+    public void ResumeGame()
+    {
+        ChangeState(State.RUNNING);
         Time.timeScale = 1;
     }
+
 
     public void RestartGame()
     {

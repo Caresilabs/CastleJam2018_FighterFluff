@@ -17,6 +17,9 @@ namespace Assets.Scripts.Menu
         private Transform GameOverScreen;
 
         [SerializeField]
+        private Transform PausedScreen;
+
+        [SerializeField]
         private Slider Player1Health;
 
         [SerializeField]
@@ -51,6 +54,7 @@ namespace Assets.Scripts.Menu
             else if (state == GameManager.State.RUNNING)
             {
                 ReadyScreen.gameObject.SetActive(false);
+                PausedScreen.gameObject.SetActive(false);
                 RunningScreen.gameObject.SetActive(true);
             }
             else if (state == GameManager.State.GAMEOVER)
@@ -68,6 +72,11 @@ namespace Assets.Scripts.Menu
                     Player1GameOverStatus.sprite = WinText;
                     Player2GameOverStatus.sprite = LoseText;
                 }
+            }
+            else if (state == GameManager.State.PAUSE)
+            {
+                RunningScreen.gameObject.SetActive(false);
+                PausedScreen.gameObject.SetActive(true);
             }
         }
 

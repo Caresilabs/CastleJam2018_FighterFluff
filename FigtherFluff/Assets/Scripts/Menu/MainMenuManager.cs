@@ -118,19 +118,19 @@ namespace Assets.Scripts.Menu
 
                 if (P1Selectd != P2Selectd)
                 {
-                    FluffSelect.parent.GetComponent<Outline>().effectColor = Color.black;
-                    UmbrellaSelect.parent.GetComponent<Outline>().effectColor = Color.black;
+                    //FluffSelect.parent.GetComponent<Outline>().effectColor = Color.black;
+                   // UmbrellaSelect.parent.GetComponent<Outline>().effectColor = Color.black;
 
                     var p1Target = P1Selectd == -1 ? FluffSelect.parent : UmbrellaSelect.parent;
                     if (P1Selectd != 0)
                     {
-                        p1Target.GetComponent<Outline>().effectColor = Color.blue;
+                       // p1Target.GetComponent<Outline>().effectColor = Color.blue;
                     }
 
                     var p2Target = P2Selectd == -1 ? FluffSelect.parent : UmbrellaSelect.parent;
                     if (P2Selectd != 0)
                     {
-                        p2Target.GetComponent<Outline>().effectColor = Color.green;
+                       // p2Target.GetComponent<Outline>().effectColor = Color.green;
                     }
                 }
 

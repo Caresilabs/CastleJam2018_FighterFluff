@@ -72,7 +72,7 @@ namespace Assets.Scripts.Player.Fluff
 
         public void LightHit()
         {
-            StartCoroutine(Light());
+            //StartCoroutine(Light());
             StartCoroutine(LightHitCoroutine());
         }
 
