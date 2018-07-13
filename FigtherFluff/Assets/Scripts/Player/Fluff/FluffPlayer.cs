@@ -22,7 +22,7 @@ namespace Assets.Scripts.Player.Fluff
        
         private void OnJump()
         {
-            RigidBody.AddForce(new Vector3(0, 700, 0));
+            RigidBody.AddForce(new Vector3(0, 700 * 2, 0));
             didJump = true;
         }
 

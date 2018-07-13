@@ -44,7 +44,7 @@ public class MovementController : MonoBehaviour
         this.Animator = GetComponent<Animator>();
         this.Grounded = true;
         this.canJump = true;
-        this.CanMove = true;
+        //this.CanMove = true;
         this.SpeedScale = 1;
     }
 
@@ -123,7 +123,7 @@ public class MovementController : MonoBehaviour
 
         // Jump
         allowJumpDelay += Time.fixedDeltaTime;
-        if (canJump && (Grounded || allowJumpDelay < MAX_JUMP_TIME_DELAY))
+        if (canJump && (Grounded || allowJumpDelay < MAX_JUMP_TIME_DELAY) && velocity.y < 3)
         {
             if (isJumpPressed)
             {

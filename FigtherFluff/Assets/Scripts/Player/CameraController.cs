@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    [SerializeField]
-    public Transform Target;
+    public Transform Target { get; set; }
 
-    [SerializeField]
-    public Transform Source;
+    public Transform Source { get; set; }
 
     [SerializeField]
     private Vector3 Offset;
@@ -31,7 +29,7 @@ public class CameraController : MonoBehaviour
 
         var pos = Source.position - targetDir * Offset.z;
         pos.y = Mathf.Max(pos.y + Offset.y, Source.position.y);
-        transform.position = Vector3.MoveTowards(transform.position, pos, 0.9f);
+        transform.position = Vector3.MoveTowards(transform.position, pos, 0.93f);
 
         transform.LookAt(Target.position);
     }
