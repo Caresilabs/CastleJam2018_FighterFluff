@@ -57,7 +57,7 @@ namespace Assets.Scripts.Player.UmbrellaMan
                         controller.PlayerCamera.Shake(0.3f, 0.3f);
                     }
                 }
-                else if (Physics.SphereCast(p1, 10, transform.forward, out hit, 4f))
+                else if (Physics.SphereCast(p1, 9, transform.forward, out hit, 4f))
                 {
                     PlayerController other = hit.transform.GetComponent<PlayerController>();
                     if (other != null && other.Movement.Grounded)
