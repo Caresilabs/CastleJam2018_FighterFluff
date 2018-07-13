@@ -5216,6 +5216,16 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 224014986290910644, guid: cc0cc829eb900ed48974afcc162ff82d,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 307.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 224890896886123784, guid: cc0cc829eb900ed48974afcc162ff82d,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 307.2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cc0cc829eb900ed48974afcc162ff82d, type: 2}
   m_IsPrefabParent: 0
@@ -5530,7 +5540,7 @@ Prefab:
     - target: {fileID: 114041527574790122, guid: be80dd07d552b6a4eb1a8a30177c8519,
         type: 2}
       propertyPath: cooldown
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 114881671323506238, guid: be80dd07d552b6a4eb1a8a30177c8519,
         type: 2}
@@ -6207,12 +6217,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 988a6cd7ec56c0c4c9828c1bab8ae222, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldown: 0.7
+  cooldown: 0.5
   Duration: 0.5
   Attack: 0
   Damage: 10
   Speed: 10
-  WinddownTime: 0.25
+  WinddownTime: 0.22
 --- !u!1 &975928591
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Assets.Scripts.Player.Fluff
 {
@@ -13,6 +14,8 @@ namespace Assets.Scripts.Player.Fluff
         [SerializeField]
         private float DecreasePerSecond = 0.4f;
 
+        private Rigidbody Rigidbody;
+
         private float lowY;
         private float highY;
         private float currentY;
@@ -24,11 +27,20 @@ namespace Assets.Scripts.Player.Fluff
             this.currentY = lowY;
         }
 
+        internal void DecreaseWater(int v)
+        {
+            currentY = Mathf.Clamp(currentY - v, lowY, highY);
+        }
+
         private void Update()
         {
+            Rigidbody = GetComponent<Rigidbody>();
+
             var target = transform.position;
             target.y = currentY;
-            transform.position = Vector3.Lerp(transform.position, target, Time.deltaTime * 3);
+
+            Rigidbody.MovePosition(Vector3.Lerp(transform.position, target, Time.deltaTime * 3));
+            //transform.position = Vector3.Lerp(transform.position, target, Time.deltaTime * 3);
 
             currentY = Mathf.Clamp(currentY - Time.deltaTime * DecreasePerSecond, lowY, highY);
         }

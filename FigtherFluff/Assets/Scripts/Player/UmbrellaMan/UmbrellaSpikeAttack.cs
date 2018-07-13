@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Player.Fluff;
+using UnityEngine;
 
 namespace Assets.Scripts.Player.UmbrellaMan
 {
@@ -20,6 +21,10 @@ namespace Assets.Scripts.Player.UmbrellaMan
             {
                 if (controller.Movement.Grounded)
                 {
+                    if (controller.OnWater)
+                    {
+                        FindObjectOfType<WaterController>().DecreaseWater(1);
+                    }
                     Attack = false;
                     Invoke("SpikeOff", WinddownTime);
                     controller.Movement.LockMovement(WinddownTime);
@@ -52,7 +57,7 @@ namespace Assets.Scripts.Player.UmbrellaMan
                         controller.PlayerCamera.Shake(0.3f, 0.3f);
                     }
                 }
-                else if (Physics.SphereCast(p1, 10, transform.forward, out hit, 2f))
+                else if (Physics.SphereCast(p1, 10, transform.forward, out hit, 4f))
                 {
                     PlayerController other = hit.transform.GetComponent<PlayerController>();
                     if (other != null && other.Movement.Grounded)
