@@ -22,11 +22,9 @@ public class MusicManager : MonoBehaviour
 
     [SerializeField]
     private AudioClip WinMusic;
-    private Texture2D blackTex;
 
     void Awake()
     {
-        DynamicGI.synchronousMode = true;
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
@@ -39,11 +37,6 @@ public class MusicManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
         Invoke("PlayMenuMusic", 2.35f);
-    }
-
-    private void Start()
-    {
-        blackTex =  Texture2D.blackTexture;
     }
 
     public void PlayMenuMusic()
