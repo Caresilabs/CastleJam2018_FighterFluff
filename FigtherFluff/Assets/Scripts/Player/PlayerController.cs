@@ -60,7 +60,7 @@ public class PlayerController : MonoBehaviour
         dir.y = knockbackHeight;
         dir.Normalize();
 
-        MusicManager.Instance.PlaySound(HitSounds[UnityEngine.Random.Range(0, HitSounds.Length - 1)], 0.9f);
+        MusicManager.Instance.PlaySound(HitSounds[UnityEngine.Random.Range(0, HitSounds.Length)], 0.9f);
 
         if (IsDead())
         {

@@ -14,7 +14,7 @@ namespace Assets.Scripts.Player.UmbrellaMan
         private bool hasAttacked;
 
         [SerializeField]
-        private AudioClip SoundEffect;
+        private AudioClip[] SoundEffects;
 
         protected override void Start()
         {
@@ -70,7 +70,7 @@ namespace Assets.Scripts.Player.UmbrellaMan
             if (controller.Movement.Grounded)
                 controller.RigidBody.AddForce(transform.forward * ForwardSpeed, ForceMode.VelocityChange);
 
-            MusicManager.Instance.PlaySound(SoundEffect, 0.9f);
+            MusicManager.Instance.PlaySound(SoundEffects[Random.Range(0, SoundEffects.Length)], 0.95f);
 
             Attack = true;
             hasAttacked = false;

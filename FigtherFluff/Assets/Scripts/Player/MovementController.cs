@@ -131,7 +131,7 @@ public class MovementController : MonoBehaviour
             {
                 if (onJump != null)
                 {
-                    MusicManager.Instance.PlaySound(JumpSounds[UnityEngine.Random.Range(0, JumpSounds.Length - 1)], 0.9f);
+                    MusicManager.Instance.PlaySound(JumpSounds[UnityEngine.Random.Range(0, JumpSounds.Length)], 0.9f);
                     Animator.SetTrigger("Jumped");
                     Grounded = false;
                     canJump = false;

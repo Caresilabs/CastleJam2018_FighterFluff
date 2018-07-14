@@ -15,7 +15,7 @@ namespace Assets.Scripts.Player.Fluff
         private Transform RainPartiles;
 
         [SerializeField]
-        private AudioClip SoundEffect;
+        private AudioClip[] SoundEffects;
 
         public float WinddownTime;
 
@@ -46,7 +46,7 @@ namespace Assets.Scripts.Player.Fluff
             Transform attack =  Instantiate(RainPartiles, transform.position, Quaternion.LookRotation((GameManager.Instance.UmbrellaMan.transform.position - transform.position)), transform);
             attack.GetComponent<FluffParticleAttack>().Init(this, GameManager.Instance.UmbrellaMan.transform);
 
-            MusicManager.Instance.PlaySound(SoundEffect, 0.9f);
+            MusicManager.Instance.PlaySound(SoundEffects[UnityEngine.Random.Range(0, SoundEffects.Length)], 1);
 
             controller.Movement.LockMovement(WinddownTime, true);
 

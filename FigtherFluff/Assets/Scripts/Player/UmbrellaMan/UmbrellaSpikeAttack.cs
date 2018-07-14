@@ -14,7 +14,7 @@ namespace Assets.Scripts.Player.UmbrellaMan
         public float WinddownTime = 1;
 
         [SerializeField]
-        private AudioClip SoundEffect;
+        private AudioClip[] SoundEffects;
 
         public override void Update()
         {
@@ -90,7 +90,7 @@ namespace Assets.Scripts.Player.UmbrellaMan
         {
             Attack = true;
             controller.Movement.Animator.SetBool("Spike", true);
-            MusicManager.Instance.PlaySound(SoundEffect, 1f);
+            MusicManager.Instance.PlaySound(SoundEffects[UnityEngine.Random.Range(0, SoundEffects.Length)], 0.9f);
             base.Use();
         }
 

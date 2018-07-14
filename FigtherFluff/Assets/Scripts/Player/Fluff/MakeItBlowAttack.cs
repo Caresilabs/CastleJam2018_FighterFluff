@@ -35,7 +35,7 @@ namespace Assets.Scripts.Player.Fluff
 
             controller.Movement.Animator.SetTrigger("Blow");
 
-            MusicManager.Instance.PlaySound(SoundEffects[UnityEngine.Random.Range(0, SoundEffects.Length - 1)], 0.9f);
+            MusicManager.Instance.PlaySound(SoundEffects[UnityEngine.Random.Range(0, SoundEffects.Length)], 0.9f);
 
             base.Use();
         }

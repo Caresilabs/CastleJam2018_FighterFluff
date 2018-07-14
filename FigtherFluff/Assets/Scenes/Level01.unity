@@ -5152,6 +5152,11 @@ Prefab:
       propertyPath: JumpSounds.Array.size
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 114881671323506238, guid: be80dd07d552b6a4eb1a8a30177c8519,
+        type: 2}
+      propertyPath: SoundEffects.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 114419103241580658, guid: be80dd07d552b6a4eb1a8a30177c8519,
         type: 2}
       propertyPath: Animations.Array.data[0].sprite.Array.size
@@ -5952,17 +5957,17 @@ Prefab:
         type: 2}
       propertyPath: JumpSounds.Array.data[0]
       value: 
-      objectReference: {fileID: 8300000, guid: 7decdfd740160de48ae6f09172dadb3d, type: 3}
+      objectReference: {fileID: 8300000, guid: cb7844693bc492d4090e1b12e388f27e, type: 3}
     - target: {fileID: 114898854001810534, guid: be80dd07d552b6a4eb1a8a30177c8519,
         type: 2}
       propertyPath: JumpSounds.Array.data[1]
       value: 
-      objectReference: {fileID: 8300000, guid: 2bdfb3c958b3199428c1ceac8c7790e5, type: 3}
+      objectReference: {fileID: 8300000, guid: 0e40d73161d769640a15c9957ec405db, type: 3}
     - target: {fileID: 114898854001810534, guid: be80dd07d552b6a4eb1a8a30177c8519,
         type: 2}
       propertyPath: JumpSounds.Array.data[2]
       value: 
-      objectReference: {fileID: 8300000, guid: 640bcb7e2edd8414188e17a0d9c61aa0, type: 3}
+      objectReference: {fileID: 8300000, guid: a798ba42e61f83c459dcdf6bc6d90aea, type: 3}
     - target: {fileID: 114881671323506238, guid: be80dd07d552b6a4eb1a8a30177c8519,
         type: 2}
       propertyPath: SoundEffect
@@ -5988,6 +5993,21 @@ Prefab:
       propertyPath: SoundEffect
       value: 
       objectReference: {fileID: 8300000, guid: ea49c89cc2a8f3b4183ff83d3efd2de3, type: 3}
+    - target: {fileID: 114881671323506238, guid: be80dd07d552b6a4eb1a8a30177c8519,
+        type: 2}
+      propertyPath: SoundEffects.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 07b531467c3107f4bb9e35052d5f4c20, type: 3}
+    - target: {fileID: 114881671323506238, guid: be80dd07d552b6a4eb1a8a30177c8519,
+        type: 2}
+      propertyPath: SoundEffects.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: f2971f375aa97064b815b03a4446264c, type: 3}
+    - target: {fileID: 114881671323506238, guid: be80dd07d552b6a4eb1a8a30177c8519,
+        type: 2}
+      propertyPath: SoundEffects.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: cf61fcce3efa9394a9ee0de855fb7a2d, type: 3}
     m_RemovedComponents:
     - {fileID: 199736942474261752, guid: be80dd07d552b6a4eb1a8a30177c8519, type: 2}
     - {fileID: 198792529993351046, guid: be80dd07d552b6a4eb1a8a30177c8519, type: 2}
@@ -6242,8 +6262,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 754581040}
-  m_LocalRotation: {x: 0.0832958, y: 0.296248, z: 0.025946047, w: -0.9511182}
-  m_LocalPosition: {x: 281.19556, y: -51.07462, z: 222.03378}
+  m_LocalRotation: {x: -0.14670305, y: 0.14499307, z: 0.021742402, w: 0.97825485}
+  m_LocalPosition: {x: 221.67218, y: -56.747154, z: 96.881195}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -6290,7 +6310,10 @@ MonoBehaviour:
   Damage: 10
   Speed: 10
   WinddownTime: 0.22
-  SoundEffect: {fileID: 8300000, guid: 0338f1cc43638af4abf2786cd6d8688c, type: 3}
+  SoundEffects:
+  - {fileID: 8300000, guid: 29a1fbed02e47cf4cb9a233890abfd9b, type: 3}
+  - {fileID: 8300000, guid: cc06a8b7fbf2c1c499ce927d206523d8, type: 3}
+  - {fileID: 8300000, guid: 9822a43f57c3e4c4d846207369102b45, type: 3}
 --- !u!1 &975928591
 GameObject:
   m_ObjectHideFlags: 0
@@ -6443,6 +6466,11 @@ Prefab:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 114680413514164174, guid: 3003978c7bf1fff459c9a715e3372d2c,
+        type: 2}
+      propertyPath: SoundEffects.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114795125783035502, guid: 3003978c7bf1fff459c9a715e3372d2c,
         type: 2}
       propertyPath: SoundEffects.Array.size
       value: 3
@@ -6999,17 +7027,17 @@ Prefab:
         type: 2}
       propertyPath: JumpSounds.Array.data[0]
       value: 
-      objectReference: {fileID: 8300000, guid: 7decdfd740160de48ae6f09172dadb3d, type: 3}
+      objectReference: {fileID: 8300000, guid: cb7844693bc492d4090e1b12e388f27e, type: 3}
     - target: {fileID: 114124194295301828, guid: 3003978c7bf1fff459c9a715e3372d2c,
         type: 2}
       propertyPath: JumpSounds.Array.data[1]
       value: 
-      objectReference: {fileID: 8300000, guid: 2bdfb3c958b3199428c1ceac8c7790e5, type: 3}
+      objectReference: {fileID: 8300000, guid: a798ba42e61f83c459dcdf6bc6d90aea, type: 3}
     - target: {fileID: 114124194295301828, guid: 3003978c7bf1fff459c9a715e3372d2c,
         type: 2}
       propertyPath: JumpSounds.Array.data[2]
       value: 
-      objectReference: {fileID: 8300000, guid: 640bcb7e2edd8414188e17a0d9c61aa0, type: 3}
+      objectReference: {fileID: 8300000, guid: 0e40d73161d769640a15c9957ec405db, type: 3}
     - target: {fileID: 114134326548373960, guid: 3003978c7bf1fff459c9a715e3372d2c,
         type: 2}
       propertyPath: SoundEffects.Array.data[0]
@@ -7045,6 +7073,21 @@ Prefab:
       propertyPath: SoundEffect
       value: 
       objectReference: {fileID: 8300000, guid: 4a3428a1c04877b449593e83c5b7453f, type: 3}
+    - target: {fileID: 114795125783035502, guid: 3003978c7bf1fff459c9a715e3372d2c,
+        type: 2}
+      propertyPath: SoundEffects.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 7a1aef3a6bb54d2429419abc625aca55, type: 3}
+    - target: {fileID: 114795125783035502, guid: 3003978c7bf1fff459c9a715e3372d2c,
+        type: 2}
+      propertyPath: SoundEffects.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: d7e5567b7f82d5d4080bf9be168f7a34, type: 3}
+    - target: {fileID: 114795125783035502, guid: 3003978c7bf1fff459c9a715e3372d2c,
+        type: 2}
+      propertyPath: SoundEffects.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 93a7c91521aedd64eb49eed2ea196cb9, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3003978c7bf1fff459c9a715e3372d2c, type: 2}
   m_IsPrefabParent: 0

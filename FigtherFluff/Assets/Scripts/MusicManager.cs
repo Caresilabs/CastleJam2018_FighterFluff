@@ -26,6 +26,7 @@ public class MusicManager : MonoBehaviour
 
     void Awake()
     {
+        DynamicGI.synchronousMode = true;
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
