@@ -53,6 +53,7 @@ Shader "Toon/Basic" {
 				fixed4 cube = texCUBE(_ToonShade, i.cubenormal);
 				fixed4 c = fixed4(2.0f * cube.rgb * col.rgb, col.a);
 				UNITY_APPLY_FOG(i.fogCoord, c);
+				c.a = 0.5;
 				return c;
 			}
 			ENDCG			

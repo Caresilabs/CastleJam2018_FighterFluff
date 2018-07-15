@@ -10,7 +10,10 @@ Shader "Toon/Lit" {
 		LOD 200
 		
 CGPROGRAM
-#pragma surface surf ToonRamp
+#pragma surface surf Lambert //ToonRamp
+
+// Use shader model 3.0 target, to get nicer looking lighting
+#pragma target 3.0
 
 sampler2D _Ramp;
 
@@ -27,7 +30,7 @@ inline half4 LightingToonRamp (SurfaceOutput s, half3 lightDir, half atten)
 	half3 ramp = tex2D (_Ramp, float2(d,d)).rgb;
 	
 	half4 c;
-	c.rgb = s.Albedo * _LightColor0.rgb * ramp * (atten * 2);
+	c.rgb = s.Albedo * _LightColor0.rgb *ramp * (atten * 2);
 	c.a = 0;
 	return c;
 }
