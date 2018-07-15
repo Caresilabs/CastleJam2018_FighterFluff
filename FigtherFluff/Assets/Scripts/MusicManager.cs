@@ -66,15 +66,16 @@ public class MusicManager : MonoBehaviour
     public void PlayWinMusic()
     {
         MusicSource.clip = WinMusic;
+        MusicSource.loop = false;
         MusicSource.Play();
-        Invoke("PlayMenuMusic", WinMusic.length);
+        Invoke("PlayMenuMusic", WinMusic.length - 1f);
     }
 
     public void PlaySound(AudioClip sound, float volume)
     {
         if (sound != null)
         {
-            FxSource.PlayOneShot(sound, volume);
+            FxSource.PlayOneShot(sound, volume * 1.3f);
         }
     }
 
